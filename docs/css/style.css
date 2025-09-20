@@ -325,19 +325,20 @@ a.contact-card:hover {
     animation-delay: 0.5s;
 }
 
-/* 页面加载动画 */
+/* 页面加载动画 - 奢华版 */
 .loading {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #293241;
+    background: linear-gradient(135deg, var(--dark-deep), var(--dark));
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(255, 255, 255, 0.05);
 }
 
 .loading.fade-out {
@@ -347,12 +348,14 @@ a.contact-card:hover {
 
 .loading::after {
     content: '';
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(255, 77, 77, 0.3);
-    border-top-color: #FF4D4D;
+    width: 60px;
+    height: 60px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--primary);
+    border-right: 3px solid var(--accent);
     border-radius: 50%;
-    animation: spin 1s ease-in-out infinite;
+    animation: spin 1.2s linear infinite;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
 }
 
 @keyframes spin {
@@ -361,76 +364,127 @@ a.contact-card:hover {
     }
 }
 
-/* 响应式调整 */
+/* 响应式调整 - 增强版 */
 @media (max-width: 768px) {
     .nav-link::after {
         display: none;
     }
     
     .feature-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     
     .schedule-row:hover {
         transform: translateX(4px);
     }
+    
+    .btn-primary,
+    .btn-secondary {
+        font-weight: 600;
+    }
 }
 
-/* 卡片阴影效果 */
+/* 卡片阴影效果 - 奢华版 */
 .card-shadow {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .card-shadow-hover:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 文字渐变 */
+/* 文字渐变 - 高级版 */
 .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    background-image: linear-gradient(135deg, var(--primary-light), var(--accent), var(--primary-light));
+    background-size: 200% auto;
+    animation: text-gradient-animation 3s ease infinite;
+    font-weight: 600;
 }
 
-/* 背景渐变 */
-.bg-gradient {
-    background: linear-gradient(135deg, #293241, #3D5A80);
-}
-
-/* 发光效果 */
-.glow {
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
-}
-
-/* 脉冲效果 */
-@keyframes pulse {
+@keyframes text-gradient-animation {
     0% {
-        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.4);
+        background-position: 0% 50%;
     }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 77, 77, 0);
+    50% {
+        background-position: 100% 50%;
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
+        background-position: 0% 50%;
+    }
+}
+
+/* 背景渐变 - 奢华版 */
+.bg-gradient {
+    background: linear-gradient(135deg, var(--dark-deep), var(--dark-light), var(--dark-deep));
+    background-size: 200% auto;
+    animation: bg-gradient-animation 15s ease infinite;
+}
+
+@keyframes bg-gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 发光效果 - 高级版 */
+.glow {
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.3), 0 0 40px rgba(255, 77, 77, 0.1);
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    transition: all 0.4s ease;
+}
+
+.glow:hover {
+    box-shadow: 0 0 30px rgba(255, 77, 77, 0.5), 0 0 60px rgba(255, 77, 77, 0.2);
+    border-color: rgba(255, 77, 77, 0.3);
+}
+
+/* 脉冲效果 - 精致版 */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 77, 77, 0.5);
     }
 }
 
 .pulse {
-    animation: pulse 2s infinite;
+    animation: pulse 4s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 呼吸效果 */
-@keyframes breath {
+/* 呼吸效果 - 高级版 */
+@keyframes breathe {
     0%, 100% {
-        opacity: 1;
+        box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+        opacity: 0.8;
     }
     50% {
-        opacity: 0.6;
+        box-shadow: 0 0 30px rgba(255, 77, 77, 0.6);
+        opacity: 1;
     }
 }
 
 .breath {
-    animation: breath 4s ease-in-out infinite;
+    animation: breathe 5s infinite ease-in-out;
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.1), rgba(242, 204, 143, 0.1));
 }
 
 /* 波浪动画 */
