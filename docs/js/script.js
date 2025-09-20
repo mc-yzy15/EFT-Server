@@ -9,11 +9,18 @@ const playerCount = document.getElementById('player-count');
 const totalPlayers = document.getElementById('total-players');
 const serverStatusLight = document.getElementById('server-status-light');
 const serverStatusContainer = document.getElementById('server-status-container');
+const parallaxElements = document.querySelectorAll('.parallax-element');
+const hoverElements = document.querySelectorAll('.hover-scale, .img-hover');
+const featureCards = document.querySelectorAll('.feature-card');
+const contactCards = document.querySelectorAll('.contact-card');
+const heroSection = document.querySelector('.hero-section');
+const allClickableElements = document.querySelectorAll('button, a, .btn, input[type="submit"], .click-feedback');
 
 // 初始化函数
 function init() {
     // 事件监听器
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
     menuToggle.addEventListener('click', toggleMobileMenu);
     backToTop.addEventListener('click', scrollToTop);
     if (contactForm) {
@@ -21,7 +28,10 @@ function init() {
     }
     navLinks.forEach(link => {
         link.addEventListener('click', smoothScroll);
-    });
+    })
+    
+    // 添加元素动画效果
+    enhanceElements();
     
     // 模拟玩家数量
     simulatePlayerCount();
@@ -35,8 +45,24 @@ function init() {
     // 更新服务器状态
     updateServerStatus();
     
-    // 每分钟检查一次服务器状态
-    setInterval(updateServerStatus, 60000);
+    // 每5秒检查一次服务器状态
+    setInterval(updateServerStatus, 5000);
+    
+    // 添加点击反馈动画
+    addClickFeedback();
+    
+    // 添加元素拖动交互
+    enableDraggableElements();
+    
+    // 添加元素悬停增强效果
+    addEnhancedHoverEffects();
+    
+    // 淡入动画
+    setTimeout(() => {
+        document.body.classList.remove('loading');
+        // 页面加载完成后的入场动画
+        entranceAnimation();
+    }, 1500);
 }
 
 // 更新服务器状态
@@ -107,6 +133,9 @@ function handleScroll() {
     
     // 检查元素是否在视口中并添加动画
     checkElementsInView();
+    
+    // 滚动时应用视差效果
+    applyParallaxOnScroll();
 }
 
 // 切换移动菜单
@@ -120,6 +149,18 @@ function toggleMobileMenu() {
     } else {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+    }
+    
+    // 添加菜单打开/关闭动画
+    if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('fade-in');
+        setTimeout(() => {
+            mobileMenu.style.opacity = '1';
+            mobileMenu.style.transform = 'translateY(0)';
+        }, 10);
+    } else {
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-20px)';
     }
 }
 
@@ -161,22 +202,78 @@ function scrollToTop() {
     });
 }
 
+// 增强元素样式和交互
+function enhanceElements() {
+    // 为特性卡片添加深度效果
+    featureCards.forEach((card, index) => {
+        card.classList.add('depth-effect', 'metallic-sheen');
+        // 添加延迟动画效果
+        card.style.animationDelay = `${index * 0.1}s`;
+        // 标记为可拖动
+        card.setAttribute('draggable', 'true');
+        card.classList.add('draggable-element');
+    });
+    
+    // 为联系卡片添加玻璃态效果
+    contactCards.forEach((card, index) => {
+        card.classList.add('glass-card');
+        // 添加延迟动画效果
+        card.style.animationDelay = `${index * 0.15}s`;
+        // 标记为可拖动
+        card.setAttribute('draggable', 'true');
+        card.classList.add('draggable-element');
+    });
+    
+    // 为按钮添加发光效果
+    const buttons = document.querySelectorAll('button, .btn');
+    buttons.forEach(button => {
+        if (!button.classList.contains('btn-secondary')) {
+            button.classList.add('glow-button');
+        }
+    });
+    
+    // 为所有链接添加悬停效果
+    const links = document.querySelectorAll('a:not(.btn):not(.contact-card)');
+    links.forEach(link => {
+        addHoverEffect(link);
+    });
+}
+
 // 处理表单提交
 function handleFormSubmit(e) {
     e.preventDefault();
     
-    // 获取表单数据
-    const formData = new FormData(contactForm);
-    const formValues = Object.fromEntries(formData.entries());
+    // 表单验证
+    const emailInput = contactForm.querySelector('input[type="email"]');
+    const nameInput = contactForm.querySelector('input[type="text"]');
+    const messageInput = contactForm.querySelector('textarea');
     
-    // 在实际应用中，这里会发送数据到服务器
-    console.log('表单数据:', formValues);
+    if (!nameInput.value || !emailInput.value || !messageInput.value) {
+        alert('请填写所有必填字段！');
+        return;
+    }
     
-    // 显示提交成功消息
-    alert('感谢您的留言！我们会尽快回复您。');
+    // 模拟表单提交动画
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
     
-    // 重置表单
-    contactForm.reset();
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> 提交中...';
+    
+    setTimeout(() => {
+        submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> 提交成功！';
+        submitButton.classList.add('bg-green-500');
+        
+        // 重置表单
+        contactForm.reset();
+        
+        // 3秒后恢复按钮状态
+        setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+            submitButton.classList.remove('bg-green-500');
+        }, 3000);
+    }, 1500);
 }
 
 // 添加淡入动画
@@ -298,6 +395,243 @@ function smoothPageLoad() {
                 }, 500);
             }
         }, 500);
+        
+        // 初始化粒子效果
+        createParticles();
+        
+        // 平滑页面加载
+        const elements = document.querySelectorAll('*');
+        elements.forEach((element, index) => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            element.style.transitionDelay = `${index * 0.001}s`;
+        });
+    });
+}
+
+// 添加元素悬停效果
+function addHoverEffect(element) {
+    element.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+        this.style.transition = 'transform 0.3s ease';
+    });
+    
+    element.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+}
+
+// 添加增强的悬停效果
+function addEnhancedHoverEffects() {
+    // 为卡片添加更复杂的悬停效果
+    const cards = document.querySelectorAll('.feature-card, .contact-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.02)';
+            this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '';
+        });
+    });
+    
+    // 为按钮添加按压效果
+    const buttons = document.querySelectorAll('button, .btn');
+    buttons.forEach(button => {
+        button.addEventListener('mousedown', function() {
+            this.style.transform = 'scale(0.98)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        button.addEventListener('mouseup', function() {
+            this.style.transform = 'scale(1)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+}
+
+// 添加点击反馈动画
+function addClickFeedback() {
+    // 全局点击反馈效果
+    document.addEventListener('click', function(e) {
+        // 忽略右键点击
+        if (e.button !== 0) return;
+        
+        // 创建点击效果元素
+        const clickEffect = document.createElement('div');
+        clickEffect.classList.add('click-effect');
+        
+        // 设置位置
+        clickEffect.style.left = `${e.clientX}px`;
+        clickEffect.style.top = `${e.clientY}px`;
+        
+        // 添加到body
+        document.body.appendChild(clickEffect);
+        
+        // 动画结束后移除
+        setTimeout(() => {
+            clickEffect.remove();
+        }, 1000);
+    });
+    
+    // 为可点击元素添加特定的点击反馈
+    allClickableElements.forEach(element => {
+        element.addEventListener('click', function(e) {
+            e.stopPropagation(); // 防止触发全局点击效果
+            
+            // 创建特定元素的点击效果
+            const elementClickEffect = document.createElement('div');
+            elementClickEffect.classList.add('element-click-effect');
+            
+            // 获取元素的位置和大小
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // 设置位置
+            elementClickEffect.style.left = `${x}px`;
+            elementClickEffect.style.top = `${y}px`;
+            
+            // 添加到元素
+            this.appendChild(elementClickEffect);
+            
+            // 动画结束后移除
+            setTimeout(() => {
+                elementClickEffect.remove();
+            }, 800);
+        });
+    });
+}
+
+// 启用元素拖动交互
+function enableDraggableElements() {
+    const draggableElements = document.querySelectorAll('.draggable-element');
+    let draggedElement = null;
+    let initialX, initialY, currentX, currentY;
+    let initialTranslateX = 0, initialTranslateY = 0;
+    
+    draggableElements.forEach(element => {
+        // 拖动开始
+        element.addEventListener('dragstart', function(e) {
+            draggedElement = this;
+            
+            // 存储初始位置
+            initialX = e.clientX;
+            initialY = e.clientY;
+            
+            // 获取当前的transform值
+            const transform = window.getComputedStyle(this).getPropertyValue('transform');
+            if (transform !== 'none') {
+                const matrix = new DOMMatrix(transform);
+                initialTranslateX = matrix.e;
+                initialTranslateY = matrix.f;
+            }
+            
+            // 添加拖动样式
+            this.classList.add('dragging');
+            this.style.transition = 'none';
+        });
+        
+        // 拖动结束
+        element.addEventListener('dragend', function() {
+            if (draggedElement === this) {
+                // 移除拖动样式
+                this.classList.remove('dragging');
+                this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                
+                // 添加回弹动画
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                }, 100);
+                
+                draggedElement = null;
+            }
+        });
+        
+        // 鼠标移动时更新位置
+        element.addEventListener('mousemove', function(e) {
+            if (draggedElement === this) {
+                currentX = e.clientX;
+                currentY = e.clientY;
+                
+                const diffX = currentX - initialX;
+                const diffY = currentY - initialY;
+                
+                this.style.transform = `translate(${initialTranslateX + diffX}px, ${initialTranslateY + diffY}px)`;
+            }
+        });
+    });
+    
+    // 为了让拖动功能正常工作，需要阻止默认的拖动行为
+    document.addEventListener('dragover', function(e) {
+        e.preventDefault();
+    });
+    
+    document.addEventListener('drop', function(e) {
+        e.preventDefault();
+        if (draggedElement) {
+            draggedElement.classList.remove('dragging');
+            draggedElement.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            draggedElement = null;
+        }
+    });
+}
+
+// 鼠标移动时应用视差效果
+function handleMouseMove(e) {
+    const x = e.clientX / window.innerWidth - 0.5;
+    const y = e.clientY / window.innerHeight - 0.5;
+    
+    parallaxElements.forEach(element => {
+        const depth = element.getAttribute('data-depth') || 0.05;
+        const translateX = x * depth * 20;
+        const translateY = y * depth * 20;
+        
+        element.style.transform = `translate(${translateX}px, ${translateY}px)`;
+    });
+}
+
+// 滚动时应用视差效果
+function applyParallaxOnScroll() {
+    const scrollPosition = window.scrollY;
+    
+    if (heroSection) {
+        const translateY = scrollPosition * 0.4;
+        heroSection.style.backgroundPositionY = `${translateY}px`;
+    }
+}
+
+// 入场动画
+function entranceAnimation() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+        setTimeout(() => {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+    
+    // 为关键元素添加特殊的入场动画
+    const keyElements = document.querySelectorAll('h1, .hero-section .btn, #features h2');
+    keyElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        
+        setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }, 1000 + (index * 300));
     });
 }
 
