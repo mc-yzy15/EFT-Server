@@ -21,13 +21,15 @@ http://server.yzy15.dpdns.org:26969
 - 如有任何问题或建议，欢迎联系管理员
 
 ## 联系方式
-- Telegram：@Dddddavidd
-- Discord：shixiaoyaoyaoya
-- Discord 群组：https://discord.gg/UwMFBuCbU8
-- Telegram 群组：https://t.me/+1nZnaWWryz1kNDll
-- 邮箱：yingmoliuguang@yeah.net
-- Bilibili 主页：https://space.bilibili.com/1338637552
-- CSDN 主页：https://blog.csdn.net/m0_68339835
-- 个人博客：https://home159263.wordpress.com/
+- QQ群：1034718897
+- **Telegram 账号**：@Dddddavidd
+- **Telegram 双向机器人(最优先使用)**: @ShuangXiang_Dddddavidd_bot
+- **Telegram 群组**：https://t.me/+1nZnaWWryz1kNDll
+- **Discord 账号**：shixiaoyaoyaoya
+- **Discord 群组**：https://discord.gg/UwMFBuCbU8
+- **邮箱**：yingmoliuguang@yeah.net
+- **Bilibili 主页**：https://space.bilibili.com/1338637552
+- **CSDN 主页**：https://blog.csdn.net/m0_68339835
+- **个人博客**：https://home159263.wordpress.com/
 
 祝您游戏愉快！🎮
