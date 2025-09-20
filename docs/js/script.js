@@ -1,200 +1,147 @@
-// DOM 元素
-const navbar = document.getElementById('navbar');
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-const backToTop = document.getElementById('back-to-top');
-const contactForm = document.getElementById('contact-form');
-const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
-const playerCount = document.getElementById('player-count');
-const totalPlayers = document.getElementById('total-players');
-const serverStatusLight = document.getElementById('server-status-light');
-const serverStatusContainer = document.getElementById('server-status-container');
-const parallaxElements = document.querySelectorAll('.parallax-element');
-const hoverElements = document.querySelectorAll('.hover-scale, .img-hover');
-const featureCards = document.querySelectorAll('.feature-card');
-const contactCards = document.querySelectorAll('.contact-card');
+// 获取DOM元素
+const nav = document.querySelector('nav');
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+const closeMenu = document.querySelector('.close-menu');
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
+const backToTop = document.querySelector('.back-to-top');
+const playerCount = document.querySelector('.player-count');
+const totalPlayers = document.querySelector('.total-players');
 const heroSection = document.querySelector('.hero-section');
-const allClickableElements = document.querySelectorAll('button, a, .btn, input[type="submit"], .click-feedback');
+const serverStatusLight = document.querySelector('.server-status-indicator');
+const allClickableElements = document.querySelectorAll('a, button');
+const parallaxElements = document.querySelectorAll('.parallax');
 
 // 初始化函数
 function init() {
-    // 事件监听器
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
+    // 添加事件监听器
     menuToggle.addEventListener('click', toggleMobileMenu);
+    closeMenu.addEventListener('click', toggleMobileMenu);
+    window.addEventListener('scroll', handleScroll);
     backToTop.addEventListener('click', scrollToTop);
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
-    }
-    navLinks.forEach(link => {
-        link.addEventListener('click', smoothScroll);
-    })
     
-    // 添加元素动画效果
-    enhanceElements();
-    
-    // 模拟玩家数量
-    simulatePlayerCount();
-    
-    // 添加淡入动画
-    addFadeInAnimation();
-    
-    // 监听窗口大小变化
-    window.addEventListener('resize', checkMobileMenu);
-    
-    // 更新服务器状态
-    updateServerStatus();
-    
-    // 每5秒检查一次服务器状态
-    setInterval(updateServerStatus, 5000);
+    // 为移动菜单链接添加点击事件
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMobileMenu();
+        });
+    });
     
     // 添加点击反馈动画
     addClickFeedback();
     
-    // 添加元素拖动交互
+    // 启用元素拖动交互
     enableDraggableElements();
     
-    // 添加元素悬停增强效果
+    // 添加增强的悬停效果
     addEnhancedHoverEffects();
     
-    // 淡入动画
-    setTimeout(() => {
-        document.body.classList.remove('loading');
-        // 页面加载完成后的入场动画
-        entranceAnimation();
-    }, 1500);
+    // 监听滚动事件
+    window.addEventListener('scroll', handleScroll);
+    
+    // 监听鼠标移动事件
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    // 监听滚动事件，应用视差效果
+    window.addEventListener('scroll', applyParallaxOnScroll);
+    
+    // 初始化服务器状态
+    updateServerStatus();
+    
+    // 模拟玩家数量
+    simulatePlayerCount();
+    
+    // 入场动画
+    entranceAnimation();
+    
+    // 检查移动菜单状态
+    checkMobileMenu();
+    
+    // 监听窗口大小变化
+    window.addEventListener('resize', checkMobileMenu);
 }
 
 // 更新服务器状态
 function updateServerStatus() {
-    if (!serverStatusLight) return;
-    
+    // 获取当前时间
     const now = new Date();
-    const day = now.getDay(); // 0 = 星期日, 1 = 星期一, ..., 6 = 星期六
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
+    const day = now.getDay(); // 0-6, 0为星期日
+    const hour = now.getHours();
     
-    // 当前时间的总分钟数
-    const currentMinutes = hours * 60 + minutes;
+    // 定义服务器开放时间（星期日 12:00-23:00）
+    const isOpen = day === 0 && hour >= 12 && hour < 23;
     
-    let status = 'closed'; // 默认关闭状态
-    
-    // 检查是否是开放时间
-    if (day === 6) {
-        // 周六: 全天开放
-        status = 'open';
-    } else if (day === 0) {
-        // 周日: 00:00 - 18:00
-        const openTime = 0; // 00:00
-        const closeTime = 18 * 60; // 18:00
-        
-        if (currentMinutes >= openTime && currentMinutes <= closeTime) {
-            status = 'open';
-        }
-    } else if ((day === 5 && hours >= 20) || (day === 1 && hours < 2)) {
-        // 周五晚上8点后和周一凌晨2点前 - 可能开启的时段
-        status = 'maybe';
-    }
-    
-    // 更新状态灯颜色和动画
-    if (status === 'open') {
-        serverStatusLight.className = 'w-3 h-3 rounded-full bg-green-500 animate-pulse';
-        if (serverStatusContainer.querySelector('.status-text')) {
-            serverStatusContainer.querySelector('.status-text').innerText = '在线';
-        }
-    } else if (status === 'maybe') {
-        serverStatusLight.className = 'w-3 h-3 rounded-full bg-yellow-500 animate-pulse';
-        if (serverStatusContainer.querySelector('.status-text')) {
-            serverStatusContainer.querySelector('.status-text').innerText = '可能在线';
-        }
-    } else {
-        serverStatusLight.className = 'w-3 h-3 rounded-full bg-red-500';
-        if (serverStatusContainer.querySelector('.status-text')) {
-            serverStatusContainer.querySelector('.status-text').innerText = '离线';
+    // 更新服务器状态指示灯
+    if (serverStatusLight) {
+        if (isOpen) {
+            serverStatusLight.classList.remove('bg-red-500');
+            serverStatusLight.classList.add('bg-green-500');
+        } else {
+            serverStatusLight.classList.remove('bg-green-500');
+            serverStatusLight.classList.add('bg-red-500');
         }
     }
 }
 
 // 处理滚动事件
 function handleScroll() {
-    // 导航栏滚动效果
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    const scrollPosition = window.scrollY;
+    
+    // 改变导航栏样式
+    if (nav) {
+        if (scrollPosition > 50) {
+            nav.classList.add('bg-dark/90', 'backdrop-blur-md', 'shadow-lg');
+            nav.classList.remove('bg-transparent');
+        } else {
+            nav.classList.remove('bg-dark/90', 'backdrop-blur-md', 'shadow-lg');
+            nav.classList.add('bg-transparent');
+        }
     }
     
-    // 返回顶部按钮显示/隐藏
-    if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
+    // 显示/隐藏回到顶部按钮
+    if (backToTop) {
+        if (scrollPosition > 300) {
+            backToTop.classList.remove('opacity-0', 'pointer-events-none');
+            backToTop.classList.add('opacity-100');
+        } else {
+            backToTop.classList.add('opacity-0', 'pointer-events-none');
+            backToTop.classList.remove('opacity-100');
+        }
     }
-    
-    // 检查元素是否在视口中并添加动画
-    checkElementsInView();
-    
-    // 滚动时应用视差效果
-    applyParallaxOnScroll();
 }
 
 // 切换移动菜单
 function toggleMobileMenu() {
-    mobileMenu.classList.toggle('hidden');
-    // 切换图标
-    const icon = menuToggle.querySelector('i');
-    if (icon.classList.contains('fa-bars')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-    
-    // 添加菜单打开/关闭动画
-    if (!mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('fade-in');
-        setTimeout(() => {
-            mobileMenu.style.opacity = '1';
-            mobileMenu.style.transform = 'translateY(0)';
-        }, 10);
-    } else {
-        mobileMenu.style.opacity = '0';
-        mobileMenu.style.transform = 'translateY(-20px)';
+    if (mobileMenu && menuToggle && closeMenu) {
+        // 添加过渡类
+        mobileMenu.classList.toggle('mobile-menu-visible');
+        
+        // 更新图标状态
+        if (mobileMenu.classList.contains('mobile-menu-visible')) {
+            menuToggle.style.display = 'none';
+            closeMenu.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        } else {
+            setTimeout(() => {
+                menuToggle.style.display = 'block';
+                closeMenu.style.display = 'none';
+                document.body.style.overflow = ''; // 恢复背景滚动
+            }, 300); // 与CSS过渡时间匹配
+        }
     }
 }
 
-// 检查移动菜单是否需要关闭
+// 检查移动菜单状态
 function checkMobileMenu() {
-    if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        const icon = menuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+    if (window.innerWidth >= 768) {
+        // 大屏幕下关闭移动菜单
+        if (mobileMenu && mobileMenu.classList.contains('mobile-menu-visible')) {
+            toggleMobileMenu();
+        }
     }
 }
 
-// 平滑滚动
-function smoothScroll(e) {
-    e.preventDefault();
-    
-    // 关闭移动菜单
-    if (!mobileMenu.classList.contains('hidden')) {
-        toggleMobileMenu();
-    }
-    
-    const targetId = this.getAttribute('href');
-    const targetElement = document.querySelector(targetId);
-    
-    if (targetElement) {
-        window.scrollTo({
-            top: targetElement.offsetTop - 80, // 减去导航栏高度
-            behavior: 'smooth'
-        });
-    }
-}
-
-// 滚动到顶部
+// 平滑滚动到顶部
 function scrollToTop() {
     window.scrollTo({
         top: 0,
@@ -202,107 +149,47 @@ function scrollToTop() {
     });
 }
 
-// 增强元素样式和交互
-function enhanceElements() {
-    // 为特性卡片添加深度效果
-    featureCards.forEach((card, index) => {
-        card.classList.add('depth-effect', 'metallic-sheen');
-        // 添加延迟动画效果
-        card.style.animationDelay = `${index * 0.1}s`;
-        // 标记为可拖动
-        card.setAttribute('draggable', 'true');
-        card.classList.add('draggable-element');
-    });
-    
-    // 为联系卡片添加玻璃态效果
-    contactCards.forEach((card, index) => {
-        card.classList.add('glass-card');
-        // 添加延迟动画效果
-        card.style.animationDelay = `${index * 0.15}s`;
-        // 标记为可拖动
-        card.setAttribute('draggable', 'true');
-        card.classList.add('draggable-element');
-    });
-    
-    // 为按钮添加发光效果
-    const buttons = document.querySelectorAll('button, .btn');
-    buttons.forEach(button => {
-        if (!button.classList.contains('btn-secondary')) {
-            button.classList.add('glow-button');
-        }
-    });
-    
-    // 为所有链接添加悬停效果
-    const links = document.querySelectorAll('a:not(.btn):not(.contact-card)');
-    links.forEach(link => {
-        addHoverEffect(link);
-    });
+// 平滑滚动到指定元素
+function smoothScroll(target) {
+    const element = document.querySelector(target);
+    if (element) {
+        window.scrollTo({
+            top: element.offsetTop - 80, // 考虑导航栏高度
+            behavior: 'smooth'
+        });
+    }
 }
 
 // 处理表单提交
 function handleFormSubmit(e) {
     e.preventDefault();
     
-    // 表单验证
-    const emailInput = contactForm.querySelector('input[type="email"]');
-    const nameInput = contactForm.querySelector('input[type="text"]');
-    const messageInput = contactForm.querySelector('textarea');
+    // 获取表单数据
+    const form = e.target;
+    const formData = new FormData(form);
     
-    if (!nameInput.value || !emailInput.value || !messageInput.value) {
-        alert('请填写所有必填字段！');
-        return;
-    }
-    
-    // 模拟表单提交动画
-    const submitButton = contactForm.querySelector('button[type="submit"]');
+    // 显示提交成功消息
+    const submitButton = form.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
     
     submitButton.disabled = true;
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> 提交中...';
+    submitButton.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 提交中...';
     
+    // 模拟表单提交
     setTimeout(() => {
-        submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> 提交成功！';
+        submitButton.innerHTML = '<i class="fa fa-check mr-2"></i> 提交成功!';
         submitButton.classList.add('bg-green-500');
         
         // 重置表单
-        contactForm.reset();
+        form.reset();
         
-        // 3秒后恢复按钮状态
+        // 恢复按钮状态
         setTimeout(() => {
             submitButton.disabled = false;
             submitButton.innerHTML = originalText;
             submitButton.classList.remove('bg-green-500');
         }, 3000);
     }, 1500);
-}
-
-// 添加淡入动画
-function addFadeInAnimation() {
-    const fadeElements = document.querySelectorAll('.feature-card, #schedule .schedule-row, #guide .flex, #contact a, #contact form');
-    
-    fadeElements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        element.dataset.delay = index * 100;
-    });
-}
-
-// 检查元素是否在视口中
-function checkElementsInView() {
-    const fadeElements = document.querySelectorAll('.feature-card, #schedule .schedule-row, #guide .flex, #contact a, #contact form');
-    
-    fadeElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-            setTimeout(() => {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }, element.dataset.delay || 0);
-        }
-    });
 }
 
 // 模拟玩家数量

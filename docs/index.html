@@ -60,44 +60,62 @@
 </head>
 <body class="font-inter bg-dark text-light min-h-screen overflow-x-hidden">
     <!-- 导航栏 -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 ease-in-out">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center bg-glass rounded-b-xl">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                    <i class="fa fa-crosshairs text-white text-xl"></i>
+    <nav class="fixed w-full top-0 z-50 bg-transparent transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                        <i class="fa fa-crosshairs text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">EFT Server</span>
+                </a>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-light hover:text-primary transition-colors duration-300">首页</a>
+                    <a href="#features" class="text-light hover:text-primary transition-colors duration-300">服务器特色</a>
+                    <a href="#schedule" class="text-light hover:text-primary transition-colors duration-300">开放时间</a>
+                    <a href="#guide" class="text-light hover:text-primary transition-colors duration-300">安装指南</a>
+                    <a href="#faq" class="text-light hover:text-primary transition-colors duration-300">常见问题</a>
+                    <a href="#contact" class="text-light hover:text-primary transition-colors duration-300">联系我们</a>
+                    
+                    <!-- 服务器状态指示器 -->
+                    <div class="flex items-center space-x-2 ml-4">
+                        <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse server-status-indicator"></span>
+                        <span class="text-light">服务器状态</span>
+                    </div>
                 </div>
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">EFT Server</span>
+                
+                <!-- 移动菜单按钮 -->
+                <button class="md:hidden text-light text-2xl menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+                
+                <!-- 关闭菜单按钮 (默认隐藏) -->
+                <button class="md:hidden text-light text-2xl close-menu" style="display: none;">
+                    <i class="fa fa-times"></i>
+                </button>
             </div>
-            
-            <!-- 桌面导航 -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="nav-link hover:text-primary transition-colors duration-300">首页</a>
-                <a href="#features" class="nav-link hover:text-primary transition-colors duration-300">特色</a>
-                <a href="#schedule" class="nav-link hover:text-primary transition-colors duration-300">开放时间</a>
-                <a href="#guide" class="nav-link hover:text-primary transition-colors duration-300">安装指南</a>
-                <a href="#contact" class="nav-link hover:text-primary transition-colors duration-300">联系我们</a>
-            </div>
-            
-            <!-- 服务器状态指示器 -->
-            <div class="flex items-center space-x-2" id="server-status-container">
-                <span class="text-sm hidden md:inline">服务器状态:</span>
-                <div id="server-status-light" class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-            </div>
-            
-            <!-- 移动导航按钮 -->
-            <button id="menu-toggle" class="md:hidden text-2xl">
-                <i class="fa fa-bars"></i>
-            </button>
         </div>
         
         <!-- 移动导航菜单 -->
-        <div id="mobile-menu" class="md:hidden hidden bg-dark/95 backdrop-blur-lg border-t border-white/10">
-            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
-                <a href="#home" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">首页</a>
-                <a href="#features" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">特色</a>
-                <a href="#schedule" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">开放时间</a>
-                <a href="#guide" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">安装指南</a>
-                <a href="#contact" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">联系我们</a>
+        <div class="mobile-menu md:hidden bg-dark/95 backdrop-blur-lg border-t border-white/10 w-full overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0; opacity: 0;">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-light hover:text-primary transition-colors duration-300 py-2">首页</a>
+                    <a href="#features" class="text-light hover:text-primary transition-colors duration-300 py-2">服务器特色</a>
+                    <a href="#schedule" class="text-light hover:text-primary transition-colors duration-300 py-2">开放时间</a>
+                    <a href="#guide" class="text-light hover:text-primary transition-colors duration-300 py-2">安装指南</a>
+                    <a href="#faq" class="text-light hover:text-primary transition-colors duration-300 py-2">常见问题</a>
+                    <a href="#contact" class="text-light hover:text-primary transition-colors duration-300 py-2">联系我们</a>
+                    
+                    <!-- 移动菜单中的服务器状态 -->
+                    <div class="flex items-center space-x-2 py-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse server-status-indicator"></span>
+                        <span class="text-light">服务器状态</span>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -460,90 +478,102 @@
     </section>
 
     <!-- 联系我们 -->
-    <section id="contact" class="py-20 bg-dark/50 relative">
-        <!-- 背景效果 -->
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(61,90,128,0.15),transparent_70%)]"></div>
-            <div class="absolute inset-0 bg-[linear-gradient(rgba(41,50,65,0.95),rgba(41,50,65,0.95))]"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold mb-4">联系我们</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-                <p class="text-light/80 max-w-2xl mx-auto text-lg">有问题？建议？加入我们的社区，与我们交流</p>
+    <section id="contact" class="py-16 bg-gradient-to-b from-dark to-dark/95">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">联系我们</h2>
+                <p class="text-light/70 max-w-2xl mx-auto">如果您有任何问题或建议，请随时与我们联系。我们致力于为您提供最好的游戏体验。</p>
             </div>
-            
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 gap-12">
-                    <!-- 联系信息 -->
-                    <div class="max-w-2xl mx-auto">
-                        <div class="bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white/10 mb-8">
-                            <div class="p-6 md:p-8">
-                                <h3 class="text-2xl font-semibold mb-6">联系方式</h3>
-                                <div class="space-y-6">
-                                    <a href="mailto:yingmoliuguang@yeah.net" class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4 group-hover:bg-primary/30 transition-all duration-300">
-                                            <i class="fa fa-envelope text-xl text-primary"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium">电子邮箱</h4>
-                                            <p class="text-light/70">yingmoliuguang@yeah.net</p>
-                                        </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <!-- 联系方式 -->
+                <div class="order-2 lg:order-1">
+                    <div class="bg-dark/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 h-full">
+                        <h3 class="text-2xl font-semibold mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- 社交媒体链接 -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mr-4 group-hover:bg-blue-500/30 transition-all duration-300">
+                                        <i class="fa fa-envelope text-xl text-blue-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">电子邮箱</h4>
+                                        <a href="mailto:yingmoliuguang@yeah.net" class="text-primary hover:underline transition-colors duration-300">yingmoliuguang@yeah.net</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mr-4 group-hover:bg-blue-500/30 transition-all duration-300">
+                                        <i class="fa fa-telegram text-xl text-blue-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Telegram</h4>
+                                        <a href="https://t.me/Dddddavidd" target="_blank" class="text-primary hover:underline transition-colors duration-300">@Dddddavidd</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                    <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mr-4 group-hover:bg-purple-500/30 transition-all duration-300">
+                                        <i class="fa fa-comments text-xl text-purple-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Telegram 群组</h4>
+                                        <a href="https://t.me/+1nZnaWWryz1kNDll" target="_blank" class="text-primary hover:underline transition-colors duration-300">加入群组</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mr-4 group-hover:bg-blue-500/30 transition-all duration-300">
+                                        <i class="fa fa-envelope text-xl text-blue-400"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Telegram 机器人</h4>
+                                        <a href="https://t.me/ShuangXiang_Dddddavidd_bot" target="_blank" class="text-primary hover:underline transition-colors duration-300">@ShuangXiang_Dddddavidd_bot</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 社区链接 -->
+                            <div class="mt-6">
+                                <h4 class="text-xl font-medium mb-4">我们的社区</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                    <a href="https://space.bilibili.com/1338637552" target="_blank" class="contact-card flex flex-col items-center justify-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300">
+                                        <i class="fa fa-play-circle text-2xl text-primary mb-2"></i>
+                                        <span class="text-sm">Bilibili</span>
                                     </a>
                                     
-                                    <a href="https://t.me/Dddddavidd" target="_blank" class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
-                                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mr-4 group-hover:bg-blue-500/30 transition-all duration-300">
-                                            <i class="fa fa-telegram text-xl text-blue-400"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium">Telegram</h4>
-                                            <p class="text-light/70">@Dddddavidd</p>
-                                        </div>
+                                    <a href="https://blog.csdn.net/m0_68339835" target="_blank" class="contact-card flex flex-col items-center justify-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300">
+                                        <i class="fa fa-book text-2xl text-primary mb-2"></i>
+                                        <span class="text-sm">CSDN</span>
                                     </a>
                                     
-                                    <a href="https://discord.com/users/shixiaoyaoyaoya" target="_blank" class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
-                                        <div class="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mr-4 group-hover:bg-indigo-500/30 transition-all duration-300">
-                                            <i class="fa fa-comments text-xl text-indigo-400"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium">Discord</h4>
-                                            <p class="text-light/70">shixiaoyaoyaoya</p>
-                                        </div>
+                                    <a href="https://home159263.wordpress.com/" target="_blank" class="contact-card flex flex-col items-center justify-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300">
+                                        <i class="fa fa-globe text-2xl text-primary mb-2"></i>
+                                        <span class="text-sm">博客</span>
+                                    </a>
+                                    
+                                    <a href="https://discord.gg/UwMFBuCbU8" target="_blank" class="contact-card flex flex-col items-center justify-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300">
+                                        <i class="fa fa-comments text-2xl text-primary mb-2"></i>
+                                        <span class="text-sm">Discord</span>
                                     </a>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- 社区链接 (仅保留QQ群) -->
-                        <div class="bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                            <div class="p-6 md:p-8">
-                                <h3 class="text-2xl font-semibold mb-6">加入社区</h3>
-                                <div class="space-y-6">
-                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
-                                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mr-4 group-hover:bg-green-500/30 transition-all duration-300">
-                                            <i class="fa fa-qq text-xl text-green-400"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium">QQ 群</h4>
-                                            <p class="text-light/70">1034718897</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
-                                        <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mr-4 group-hover:bg-purple-500/30 transition-all duration-300">
-                                            <i class="fa fa-headphones text-xl text-purple-400"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium">OOPZ 语音聊天</h4>
-                                            <a href="https://oopz.cn/i/wORju7" target="_blank" class="text-primary hover:underline transition-colors duration-300">https://oopz.cn/i/wORju7</a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mt-4">
-                                        <p class="text-light/90 text-center">加入语音聊天请使用官方推荐软件：OOPZ</p>
-                                    </div>
+                            
+                            <!-- OOPZ语音聊天 -->
+                            <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mr-4 group-hover:bg-purple-500/30 transition-all duration-300">
+                                    <i class="fa fa-headphones text-xl text-purple-400"></i>
                                 </div>
+                                <div>
+                                    <h4 class="font-medium">OOPZ 语音聊天</h4>
+                                    <a href="https://oopz.cn/i/wORju7" target="_blank" class="text-primary hover:underline transition-colors duration-300">https://oopz.cn/i/wORju7</a>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mt-4">
+                                <p class="text-light/90 text-center">加入语音聊天请使用官方推荐软件：OOPZ</p>
                             </div>
                         </div>
                     </div>
