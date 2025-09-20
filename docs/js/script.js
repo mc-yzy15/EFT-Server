@@ -7,6 +7,8 @@ const contactForm = document.getElementById('contact-form');
 const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
 const playerCount = document.getElementById('player-count');
 const totalPlayers = document.getElementById('total-players');
+const serverStatusLight = document.getElementById('server-status-light');
+const serverStatusContainer = document.getElementById('server-status-container');
 
 // 初始化函数
 function init() {
