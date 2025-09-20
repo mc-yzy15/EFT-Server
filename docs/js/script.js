@@ -13,10 +13,22 @@ const allClickableElements = document.querySelectorAll('a, button');
 const parallaxElements = document.querySelectorAll('.parallax');
 
 // 初始化函数
+// 增强初始化函数
 function init() {
-    // 添加事件监听器
-    menuToggle.addEventListener('click', toggleMobileMenu);
-    closeMenu.addEventListener('click', toggleMobileMenu);
+    // 获取所有DOM元素
+    nav = document.querySelector('nav');
+    mobileMenu = document.querySelector('.mobile-menu');
+    menuToggle = document.querySelector('.menu-toggle');
+    closeMenu = document.querySelector('.close-menu');
+    backToTop = document.getElementById('back-to-top');
+    
+    // 安全的事件监听绑定
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    if (closeMenu) {
+        closeMenu.addEventListener('click', toggleMobileMenu);
+    }
     window.addEventListener('scroll', handleScroll);
     backToTop.addEventListener('click', scrollToTop);
     
