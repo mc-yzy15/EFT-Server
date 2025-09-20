@@ -1166,3 +1166,384 @@ a.contact-card:hover {
 .float-card {
     animation: float 6s ease-in-out infinite;
 }
+
+/* 全局视觉优化 - 专业版 */
+
+/* 增强英雄区域视觉效果 */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(31, 40, 51, 0.95), rgba(41, 50, 65, 0.95)), 
+                radial-gradient(circle at 20% 80%, rgba(255, 77, 77, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(242, 204, 143, 0.15), transparent 40%);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* 增强标题视觉效果 */
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 600px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 增强特性卡片视觉效果 */
+.feature-card-enhanced {
+    background: linear-gradient(135deg, rgba(41, 50, 65, 0.8), rgba(31, 40, 51, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+    transition: left 0.8s ease;
+}
+
+.feature-card-enhanced:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.feature-card-enhanced:hover::before {
+    left: 100%;
+}
+
+.feature-card-enhanced .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.15), rgba(242, 204, 143, 0.15));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.feature-card-enhanced .icon-wrapper i {
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* 增强开放时间表视觉效果 */
+.schedule-table-enhanced {
+    background: linear-gradient(135deg, rgba(41, 50, 65, 0.8), rgba(31, 40, 51, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    overflow: hidden;
+}
+
+.schedule-row-enhanced {
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.schedule-row-enhanced:last-child {
+    border-bottom: none;
+}
+
+.schedule-row-enhanced:hover {
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(8px);
+}
+
+.schedule-row-enhanced.open {
+    background: linear-gradient(90deg, rgba(255, 77, 77, 0.1), transparent);
+    border-left: 4px solid var(--primary);
+}
+
+/* 增强安装指南视觉效果 */
+.guide-step-enhanced {
+    background: linear-gradient(135deg, rgba(41, 50, 65, 0.8), rgba(31, 40, 51, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.guide-step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(255, 77, 77, 0.3);
+}
+
+/* 增强常见问题视觉效果 */
+.faq-item-enhanced {
+    background: linear-gradient(135deg, rgba(41, 50, 65, 0.8), rgba(31, 40, 51, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.faq-item-enhanced:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* 增强联系卡片视觉效果 */
+.contact-card-enhanced {
+    background: linear-gradient(135deg, rgba(41, 50, 65, 0.8), rgba(31, 40, 51, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+    transition: left 0.8s ease;
+}
+
+.contact-card-enhanced:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.contact-card-enhanced:hover::before {
+    left: 100%;
+}
+
+.contact-card-enhanced .contact-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255, 77, 77, 0.15), rgba(242, 204, 143, 0.15));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contact-card-enhanced .contact-icon i {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* 增强页脚视觉效果 */
+.footer-enhanced {
+    background: linear-gradient(135deg, rgba(31, 40, 51, 0.95), rgba(41, 50, 65, 0.95));
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.footer-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.footer-logo i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* 增强按钮视觉效果 */
+.btn-enhanced {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.8s ease;
+}
+
+.btn-enhanced:hover::before {
+    left: 100%;
+}
+
+.btn-enhanced:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 77, 77, 0.4);
+}
+
+/* 增强文本排版 */
+.text-enhanced {
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.heading-enhanced {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-rendering: optimizeLegibility;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .feature-card-enhanced,
+    .guide-step-enhanced,
+    .faq-item-enhanced,
+    .contact-card-enhanced {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn-enhanced {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* 微调动画效果 */
+@keyframes enhanced-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.enhanced-fade-in {
+    animation: enhanced-fade-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 新增高级视觉效果 */
+.neon-glow {
+    text-shadow: 
+        0 0 5px rgba(255, 77, 77, 0.5),
+        0 0 10px rgba(255, 77, 77, 0.3),
+        0 0 15px rgba(255, 77, 77, 0.2);
+    animation: neon-pulse 3s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px rgba(255, 77, 77, 0.5),
+            0 0 10px rgba(255, 77, 77, 0.3),
+            0 0 15px rgba(255, 77, 77, 0.2);
+    }
+    50% {
+        text-shadow: 
+            0 0 10px rgba(255, 77, 77, 0.7),
+            0 0 20px rgba(255, 77, 77, 0.5),
+            0 0 30px rgba(255, 77, 77, 0.3);
+    }
+}
+
+/* 高级网格背景 */
+.advanced-grid-bg {
+    background: 
+        linear-gradient(135deg, rgba(31, 40, 51, 0.95), rgba(41, 50, 65, 0.95)),
+        radial-gradient(circle at 20% 80%, rgba(255, 77, 77, 0.08), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(242, 204, 143, 0.08), transparent 25%);
+    background-size: 100% 100%, 200px 200px, 200px 200px;
+    background-position: 0 0, 0 0, 100% 100%;
+    animation: grid-drift 20s linear infinite;
+}
+
+@keyframes grid-drift {
+    0% {
+        background-position: 0 0, 0 0, 100% 100%;
+    }
+    100% {
+        background-position: 0 0, 200px 200px, calc(100% - 200px) calc(100% - 200px);
+    }
+}
