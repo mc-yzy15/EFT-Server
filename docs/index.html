@@ -304,14 +304,14 @@
                         <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center py-3 border-b border-white/10 schedule-row hover:bg-white/5 transition-colors duration-300 rounded-lg mx-2 my-1">
                             <div class="font-medium">周日</div>
                             <div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">开放</span></div>
-                            <div>18:00 - 23:59</div>
+                            <div>00:00 - 18:00</div>
                             <div class="md:col-span-2">
                                 <div class="w-full bg-white/20 rounded-full h-2">
                                     <div class="bg-gradient-to-r from-green-400 to-accent h-2 rounded-full" style="width: 55%"></div>
                                 </div>
                                 <div class="text-sm text-light/80 mt-1">中等 (约55%)</div>
                             </div>
-                            <div class="md:col-span-2 text-light/80">晚间开放</div>
+                            <div class="md:col-span-2 text-light/80">日间开放</div>
                         </div>
 
                         <!-- 服务器说明 -->
@@ -328,59 +328,7 @@
                     </div>
                 </div>
                 
-                <!-- 活动日历 -->
-                <div class="mt-12">
-                    <h3 class="text-xl font-semibold mb-6 text-center">近期活动安排</h3>
-                    <div class="bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                        <div class="p-6">
-                            <div class="flex flex-col space-y-4">
-                                <!-- 活动1 -->
-                                <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors duration-300">
-                                    <div class="w-full md:w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-xl flex flex-col items-center justify-center text-white font-bold">
-                                        <span class="text-3xl">10</span>
-                                        <span class="text-sm">十月</span>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="text-lg font-semibold mb-1">周末双倍奖励活动</h4>
-                                        <p class="text-light/70 mb-2">完成任务和击败敌人获得双倍经验和奖励</p>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">双倍经验</span>
-                                            <span class="text-xs bg-secondary/20 text-secondary px-2 py-1 rounded-full">双倍 loot</span>
-                                            <span class="text-xs bg-accent/20 text-accent px-2 py-1 rounded-full">全地图</span>
-                                        </div>
-                                    </div>
-                                    <div class="self-start md:self-auto">
-                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
-                                            <i class="fa fa-calendar mr-1"></i> 周六至周日
-                                        </span>
-                                    </div>
-                                </div>
-                                
-                                <!-- 活动2 -->
-                                <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors duration-300">
-                                    <div class="w-full md:w-24 h-24 bg-gradient-to-br from-secondary to-primary rounded-xl flex flex-col items-center justify-center text-white font-bold">
-                                        <span class="text-3xl">14</span>
-                                        <span class="text-sm">十月</span>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="text-lg font-semibold mb-1">PvP竞技场锦标赛</h4>
-                                        <p class="text-light/70 mb-2">参与激烈的PvP对战，赢取专属武器皮肤和称号</p>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">PvP</span>
-                                            <span class="text-xs bg-secondary/20 text-secondary px-2 py-1 rounded-full">团队赛</span>
-                                            <span class="text-xs bg-accent/20 text-accent px-2 py-1 rounded-full">奖励丰厚</span>
-                                        </div>
-                                    </div>
-                                    <div class="self-start md:self-auto">
-                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
-                                            <i class="fa fa-calendar mr-1"></i> 周六 20:00
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -407,12 +355,19 @@
                                         <h3 class="text-2xl font-semibold mb-4">安装 SPT3.9.8 版本</h3>
                                         <p class="text-light/70 mb-6">首先需要安装《逃离塔科夫》的 SPT3.9.8 版本，这是连接到我们服务器的基础。</p>
                                         <div class="bg-white/5 p-4 rounded-lg">
-                                            <h4 class="font-medium text-accent mb-2">安装步骤：</h4>
+                                            <h4 class="font-medium text-accent mb-2">安装前准备：</h4>
+                                            <ul class="list-disc list-inside space-y-2 text-light/80">
+                                                <li>确保您的电脑物理内存达到或超过16GB，虚拟内存设置为物理内存的1-1.2倍</li>
+                                                <li>确保游戏路径中不包含中文</li>
+                                                <li>建议使用Bandizip、Winrar或7Z解压，避免使用Windows系统自带解压功能</li>
+                                            </ul>
+                                            
+                                            <h4 class="font-medium text-accent mt-4 mb-2">安装步骤：</h4>
                                             <ol class="list-decimal list-inside space-y-2 text-light/80">
-                                                <li>下载 SPT3.9.8 安装包</li>
-                                                <li>解压缩到您选择的目录</li>
-                                                <li>运行安装程序并按照提示完成安装</li>
-                                                <li>确保游戏能够正常启动</li>
+                                                <li>下载SPT-AKI 3.9.8客户端（版本0.14.9.1.30626）</li>
+                                                <li>将下载的压缩包解压到您选择的目录</li>
+                                                <li>确保解压完整，不要有任何遗漏文件</li>
+                                                <li>运行SPT.Launcher.exe启动器</li>
                                             </ol>
                                         </div>
                                     </div>
@@ -430,10 +385,10 @@
                                         <div class="bg-white/5 p-4 rounded-lg">
                                             <h4 class="font-medium text-accent mb-2">安装步骤：</h4>
                                             <ol class="list-decimal list-inside space-y-2 text-light/80">
-                                                <li>下载0.9.1版本的 modSync 模组</li>
-                                                <li>将模组文件复制到游戏的 mods 文件夹中</li>
-                                                <li>启动游戏并启用 modSync 模组</li>
-                                                <li>按照模组提示完成初始设置</li>
+                                                <li>下载modSync模组</li>
+                                                <li>将模组压缩包解压至游戏根目录</li>
+                                                <li>解压后模组将自动安装到正确位置</li>
+                                                <li>安装完成后模组将自动启用，无需进行手动配置</li>
                                             </ol>
                                         </div>
                                     </div>
@@ -476,11 +431,25 @@
                                 </div>
                                 <div class="bg-white/5 p-4 rounded-lg">
                                     <h4 class="font-medium text-accent mb-2">游戏版本不兼容怎么办？</h4>
-                                    <p class="text-light/80">确保您使用的是 SPT3.9.8 版本，并已安装最新版本的 modSync 模组。modSync 会自动同步所需的模组和版本。</p>
+                                    <p class="text-light/80">确保您使用的是 SPT3.9.8 版本（客户端版本0.14.9.1.30626），并已安装 modSync 模组。modSync 会自动同步所需的模组和版本。</p>
                                 </div>
                                 <div class="bg-white/5 p-4 rounded-lg">
                                     <h4 class="font-medium text-accent mb-2">游戏中遇到问题如何寻求帮助？</h4>
-                                    <p class="text-light/80">您可以通过页面底部的联系方式联系管理员，或加入我们的 Discord/Telegram 群组寻求社区帮助。</p>
+                                    <p class="text-light/80">您可以通过页面底部的联系方式联系管理员，或加入我们的 QQ 群（1034718897）寻求社区帮助。</p>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-lg">
+                                    <h4 class="font-medium text-accent mb-2">游戏过程中出现卡顿怎么办？</h4>
+                                    <p class="text-light/80">确保您的电脑满足最低配置要求（至少16GB内存），并关闭其他占用系统资源的程序。在服务器人流量较大时，可能会出现轻微卡顿，这是正常现象。</p>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-lg">
+                                    <h4 class="font-medium text-accent mb-2">为什么不能使用老版存档？</h4>
+                                    <p class="text-light/80">从SPT3.9.0开始，存档架构已发生变化，老版存档无法直接使用。如果您有编译知识，可以尝试移植存档，否则建议创建新的游戏角色。</p>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-lg">
+                                    <h4 class="font-medium text-accent mb-2">玩离线版有什么注意事项？</h4>
+                                    <p class="text-light/80">1. 不要同时开着线上和离线版一起玩<br>
+                                       2. 不要使用修改过的客户端玩逃离塔科夫线上版<br>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -506,44 +475,9 @@
             </div>
             
             <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <!-- 联系表单 -->
-                    <div class="bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                        <div class="p-6 md:p-8">
-                            <h3 class="text-2xl font-semibold mb-6">发送消息</h3>
-                            <form id="contact-form" class="space-y-6">
-                                <div class="space-y-2">
-                                    <label for="name" class="block text-sm font-medium text-light">您的名字</label>
-                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300" placeholder="请输入您的名字" required>
-                                </div>
-                                <div class="space-y-2">
-                                    <label for="email" class="block text-sm font-medium text-light">电子邮箱</label>
-                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300" placeholder="请输入您的电子邮箱" required>
-                                </div>
-                                <div class="space-y-2">
-                                    <label for="subject" class="block text-sm font-medium text-light">主题</label>
-                                    <select id="subject" name="subject" class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300" required>
-                                        <option value="">请选择消息主题</option>
-                                        <option value="connection">连接问题</option>
-                                        <option value="gameplay">游戏玩法</option>
-                                        <option value="suggestion">建议反馈</option>
-                                        <option value="report">举报问题</option>
-                                        <option value="other">其他问题</option>
-                                    </select>
-                                </div>
-                                <div class="space-y-2">
-                                    <label for="message" class="block text-sm font-medium text-light">消息内容</label>
-                                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300" placeholder="请输入您的消息内容" required></textarea>
-                                </div>
-                                <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/30">
-                                    发送消息
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    
+                <div class="grid grid-cols-1 gap-12">
                     <!-- 联系信息 -->
-                    <div>
+                    <div class="max-w-2xl mx-auto">
                         <div class="bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white/10 mb-8">
                             <div class="p-6 md:p-8">
                                 <h3 class="text-2xl font-semibold mb-6">联系方式</h3>
@@ -596,8 +530,18 @@
                                         </div>
                                     </div>
                                     
+                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                        <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mr-4 group-hover:bg-purple-500/30 transition-all duration-300">
+                                            <i class="fa fa-headphones text-xl text-purple-400"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium">OOPZ 语音聊天</h4>
+                                            <a href="https://oopz.cn/i/wORju7" target="_blank" class="text-primary hover:underline transition-colors duration-300">https://oopz.cn/i/wORju7</a>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mt-4">
-                                        <p class="text-light/90 text-center">社区联系方式仅保留QQ群</p>
+                                        <p class="text-light/90 text-center">加入语音聊天请使用官方推荐软件：OOPZ</p>
                                     </div>
                                 </div>
                             </div>
@@ -644,11 +588,11 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">资源</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors duration-300">模组库</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors duration-300">攻略指南</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors duration-300">常见问题</a></li>
-                        <li><a href="#" class="text-light/70 hover:text-primary transition-colors duration-300">服务器规则</a></li>
+                        <li><a href="https://sns.oddba.cn/135493.html?t=229572" class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载</a></li>
+                        <li><a href="https://github.com/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载2-Github</a></li>
+                        <li><a href="https://sns.oddba.cn/8011.html" class="text-light/70 hover:text-primary transition-colors duration-300">攻略指南</a></li>
+                        <li><a href="https://sns.oddba.cn/4245.html" class="text-light/70 hover:text-primary transition-colors duration-300">常见问题</a></li>
+                        <li><a href="rule.html" class="text-light/70 hover:text-primary transition-colors duration-300">服务器规则</a></li>
                     </ul>
                 </div>
                 

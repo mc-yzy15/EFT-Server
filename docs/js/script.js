@@ -31,6 +31,62 @@ function init() {
     
     // 监听窗口大小变化
     window.addEventListener('resize', checkMobileMenu);
+    
+    // 更新服务器状态
+    updateServerStatus();
+    
+    // 每分钟检查一次服务器状态
+    setInterval(updateServerStatus, 60000);
+}
+
+// 更新服务器状态
+function updateServerStatus() {
+    if (!serverStatusLight) return;
+    
+    const now = new Date();
+    const day = now.getDay(); // 0 = 星期日, 1 = 星期一, ..., 6 = 星期六
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    
+    // 当前时间的总分钟数
+    const currentMinutes = hours * 60 + minutes;
+    
+    let status = 'closed'; // 默认关闭状态
+    
+    // 检查是否是开放时间
+    if (day === 6) {
+        // 周六: 全天开放
+        status = 'open';
+    } else if (day === 0) {
+        // 周日: 00:00 - 18:00
+        const openTime = 0; // 00:00
+        const closeTime = 18 * 60; // 18:00
+        
+        if (currentMinutes >= openTime && currentMinutes <= closeTime) {
+            status = 'open';
+        }
+    } else if ((day === 5 && hours >= 20) || (day === 1 && hours < 2)) {
+        // 周五晚上8点后和周一凌晨2点前 - 可能开启的时段
+        status = 'maybe';
+    }
+    
+    // 更新状态灯颜色和动画
+    if (status === 'open') {
+        serverStatusLight.className = 'w-3 h-3 rounded-full bg-green-500 animate-pulse';
+        if (serverStatusContainer.querySelector('.status-text')) {
+            serverStatusContainer.querySelector('.status-text').innerText = '在线';
+        }
+    } else if (status === 'maybe') {
+        serverStatusLight.className = 'w-3 h-3 rounded-full bg-yellow-500 animate-pulse';
+        if (serverStatusContainer.querySelector('.status-text')) {
+            serverStatusContainer.querySelector('.status-text').innerText = '可能在线';
+        }
+    } else {
+        serverStatusLight.className = 'w-3 h-3 rounded-full bg-red-500';
+        if (serverStatusContainer.querySelector('.status-text')) {
+            serverStatusContainer.querySelector('.status-text').innerText = '离线';
+        }
+    }
 }
 
 // 处理滚动事件
