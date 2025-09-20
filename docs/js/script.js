@@ -111,24 +111,38 @@ function handleScroll() {
 }
 
 // 切换移动菜单
+// 增强移动菜单动画
 function toggleMobileMenu() {
-    if (mobileMenu && menuToggle && closeMenu) {
-        // 添加过渡类
+    if (mobileMenu) {
+        mobileMenu.style.maxHeight = mobileMenu.classList.contains('mobile-menu-visible') ? '0' : `${mobileMenu.scrollHeight}px`;
+        mobileMenu.style.opacity = mobileMenu.classList.contains('mobile-menu-visible') ? '0' : '1';
         mobileMenu.classList.toggle('mobile-menu-visible');
         
-        // 更新图标状态
-        if (mobileMenu.classList.contains('mobile-menu-visible')) {
-            menuToggle.style.display = 'none';
-            closeMenu.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // 防止背景滚动
-        } else {
-            setTimeout(() => {
-                menuToggle.style.display = 'block';
-                closeMenu.style.display = 'none';
-                document.body.style.overflow = ''; // 恢复背景滚动
-            }, 300); // 与CSS过渡时间匹配
-        }
+        // 添加图标旋转动画
+        menuToggle.querySelector('i').style.transform = mobileMenu.classList.contains('mobile-menu-visible') 
+            ? 'rotate(90deg)' 
+            : 'rotate(0deg)';
+        
+        // 滚动锁定逻辑
+        document.body.style.overflow = mobileMenu.classList.contains('mobile-menu-visible') ? 'hidden' : '';
     }
+}
+
+// 新增视差滚动动画
+function applyParallaxEffect() {
+    document.querySelectorAll('.parallax-layer').forEach(layer => {
+        const speed = parseFloat(layer.dataset.speed);
+        const yPos = -(window.pageYOffset * speed);
+        layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
+    });
+}
+
+// 卡片浮动动画
+function addFloatAnimation() {
+    document.querySelectorAll('.float-card').forEach(card => {
+        card.style.animation = `float 6s ease-in-out infinite`;
+        card.style.transformOrigin = 'center bottom';
+    });
 }
 
 // 检查移动菜单状态
