@@ -514,13 +514,19 @@ a.contact-card:hover {
     overflow: hidden;
 }
 
-/* 网格背景动画 */
+/* 网格背景动画 - 奢华版 */
 .grid-bg {
-    background-size: 40px 40px;
+    background-size: 50px 50px;
     background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    animation: gridMove 20s linear infinite;
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    animation: gridMove 25s linear infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
 }
 
 @keyframes gridMove {
@@ -528,40 +534,89 @@ a.contact-card:hover {
         background-position: 0 0;
     }
     100% {
-        background-position: 40px 40px;
+        background-position: 50px 50px;
     }
 }
 
-/* 悬停卡片缩放效果 */
+/* 悬停卡片缩放效果 - 高级版 */
 .hover-scale {
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-scale::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.8s ease;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hover-scale:hover {
-    transform: scale(1.03);
+    transform: scale(1.06);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
 }
 
-/* 标签页样式 */
+.hover-scale:hover::before {
+    left: 100%;
+}
+
+/* 标签页样式 - 精致版 */
 .tab {
     cursor: pointer;
-    padding: 10px 20px;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
+    padding: 12px 24px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    transition: width 0.4s ease;
+}
+
+.tab:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.tab:hover::after {
+    width: 100%;
 }
 
 .tab.active {
-    border-bottom: 2px solid #FF4D4D;
-    color: #FF4D4D;
+    border-bottom: 3px solid transparent;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.tab.active::after {
+    width: 100%;
 }
 
 .tab-content {
     display: none;
-    padding: 20px 0;
+    padding: 24px 0;
+    position: relative;
 }
 
 .tab-content.active {
     display: block;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* 进度条动画 */
@@ -591,7 +646,7 @@ a.contact-card:hover {
     animation: countUp 0.5s ease-out forwards;
 }
 
-/* 工具提示样式 */
+/* 工具提示样式 - 高级版 */
 .tooltip {
     position: relative;
     cursor: help;
@@ -600,47 +655,60 @@ a.contact-card:hover {
 .tooltip::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 125%;
+    bottom: 130%;
     left: 50%;
-    margin-left: -60px;
-    width: 120px;
-    background-color: rgba(41, 50, 65, 0.9);
-    color: #EEF5FF;
+    transform: translateX(-50%);
+    min-width: 140px;
+    max-width: 300px;
+    background: linear-gradient(135deg, var(--dark), var(--dark-deep));
+    color: var(--light);
     text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    font-size: 12px;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.4;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .tooltip::before {
     content: '';
     position: absolute;
-    bottom: 110%;
+    bottom: 115%;
     left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
+    transform: translateX(-50%);
+    border-width: 6px;
     border-style: solid;
     border-color: transparent transparent rgba(41, 50, 65, 0.9) transparent;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
 }
 
 .tooltip:hover::after,
 .tooltip:hover::before {
     opacity: 1;
     visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
 }
 
-/* 骨架屏加载效果 */
+/* 骨架屏加载效果 - 高级版 */
 .skeleton {
-    background: linear-gradient(90deg, #293241 25%, #3D5A80 50%, #293241 75%);
+    background: linear-gradient(90deg, 
+        var(--dark) 25%, 
+        rgba(61, 90, 128, 0.4) 50%, 
+        var(--dark) 75%);
     background-size: 200% 100%;
-    animation: loading 1.5s infinite;
+    animation: loading 1.8s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 @keyframes loading {
@@ -652,49 +720,87 @@ a.contact-card:hover {
     }
 }
 
-/* 页面过渡效果 */
+/* 页面过渡效果 - 奢华版 */
 .page-transition {
-    transition: opacity 0.5s ease-in-out;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .page-transition.fade-out {
     opacity: 0;
+    transform: translateY(20px);
 }
 
 .page-transition.fade-in {
     opacity: 1;
+    transform: translateY(0);
 }
 
-/* 图片悬停效果 */
+/* 图片悬停效果 - 高级版 */
 .img-hover {
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.img-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.8s ease;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .img-hover img {
-    transition: transform 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.8s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.img-hover:hover::before {
+    left: 100%;
 }
 
 .img-hover:hover img {
-    transform: scale(1.1);
+    transform: scale(1.12);
+    filter: brightness(1.05) saturate(1.05);
 }
 
-/* 文本打字机效果 */
+/* 文本打字机效果 - 高级版 */
 @keyframes typing {
     from {
         width: 0;
+        opacity: 0;
     }
     to {
         width: 100%;
+        opacity: 1;
     }
 }
 
 .typewriter {
     overflow: hidden;
-    border-right: 0.15em solid #FF4D4D;
+    border-right: 0.15em solid var(--primary);
     white-space: nowrap;
     margin: 0 auto;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    animation: 
+        typing 3.5s steps(40, end) cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+        blink-caret 0.75s step-end infinite;
+    position: relative;
+    display: inline-block;
 }
 
 @keyframes blink-caret {
@@ -702,22 +808,48 @@ a.contact-card:hover {
         border-color: transparent;
     }
     50% {
-        border-color: #FF4D4D;
+        border-color: var(--primary);
+        box-shadow: 0 0 10px var(--primary);
     }
 }
 
-/* 3D翻转卡片 */
+.typewriter::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    transition: width 0.3s ease;
+    animation: underline-animation 3.8s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes underline-animation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* 3D翻转卡片 - 奢华版 */
 .flip-card {
-    perspective: 1000px;
+    perspective: 2000px;
 }
 
 .flip-card-inner {
-    transition: transform 0.8s;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .flip-card-front,
@@ -726,6 +858,17 @@ a.contact-card:hover {
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--dark-deep), var(--dark));
 }
 
 .flip-card-back {
