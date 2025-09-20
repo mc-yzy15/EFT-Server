@@ -1034,16 +1034,15 @@ a.contact-card:hover {
     transform: rotateY(180deg);
 }
 
-/* 新增霓虹光效动画 */
-@keyframes neon-glow {
-    0% { filter: drop-shadow(0 0 2px var(--primary)); }
-    50% { filter: drop-shadow(0 0 8px var(--accent)); }
-    100% { filter: drop-shadow(0 0 2px var(--primary)); }
-}
+/* 新增动画层 */
+@import url('animation.css');  /* 新增动画层 */
 
 .mobile-menu {
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-    animation: slide-in 0.4s ease-out forwards;
+  @apply glow-border;  /* 应用流光边框 */
+}
+
+.card {
+  @apply hover-3d transition-all duration-300;  /* 三维悬停效果 */
 }
 
 .mobile-menu-visible {
