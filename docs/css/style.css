@@ -1154,7 +1154,37 @@ a.contact-card:hover {
 }
 
 .mobile-menu-visible {
+    max-height: 1000px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     animation: neon-glow 2s infinite;
+}
+
+/* 汉堡菜单图标动画 */
+.menu-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.active i {
+    transform: rotate(90deg);
+}
+
+/* 关闭菜单按钮样式 */
+.close-menu {
+    display: none !important;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.close-menu.active {
+    display: flex !important;
+}
+
+/* 移动菜单打开时的body滚动锁定 */
+body.menu-open {
+    overflow: hidden;
 }
 
 /* 新增卡片浮动动画 */
