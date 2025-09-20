@@ -22,9 +22,21 @@ const init = () => {
   menuToggle?.addEventListener('click', toggleMobileMenu);
   closeMenu?.addEventListener('click', toggleMobileMenu);
 
+  // 移动菜单链接点击后关闭菜单
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('mobile-menu-visible')) {
+        toggleMobileMenu();
+      }
+    });
+  });
+
   // 保留原有滚动监听
   window.addEventListener('scroll', handleScroll);
   document.querySelector('.back-to-top')?.addEventListener('click', scrollToTop);
+  
+  // 窗口大小变化时检查移动菜单状态
+  window.addEventListener('resize', checkMobileMenu);
 };
 
 // 添加DOM加载完成检查
@@ -87,17 +99,34 @@ function handleScroll() {
 // 增强移动菜单动画
 function toggleMobileMenu() {
     if (mobileMenu) {
-        mobileMenu.style.maxHeight = mobileMenu.classList.contains('mobile-menu-visible') ? '0' : `${mobileMenu.scrollHeight}px`;
-        mobileMenu.style.opacity = mobileMenu.classList.contains('mobile-menu-visible') ? '0' : '1';
+        const isVisible = mobileMenu.classList.contains('mobile-menu-visible');
+        
+        // 切换移动菜单可见性
+        mobileMenu.style.maxHeight = isVisible ? '0' : `${mobileMenu.scrollHeight}px`;
+        mobileMenu.style.opacity = isVisible ? '0' : '1';
         mobileMenu.classList.toggle('mobile-menu-visible');
         
-        // 添加图标旋转动画
-        menuToggle.querySelector('i').style.transform = mobileMenu.classList.contains('mobile-menu-visible') 
-            ? 'rotate(90deg)' 
-            : 'rotate(0deg)';
+        // 切换汉堡菜单图标
+        menuToggle.classList.toggle('active');
+        
+        // 切换关闭菜单按钮
+        closeMenu.classList.toggle('active');
         
         // 滚动锁定逻辑
-        document.body.style.overflow = mobileMenu.classList.contains('mobile-menu-visible') ? 'hidden' : '';
+        document.body.classList.toggle('menu-open');
+        
+        // 添加图标旋转动画
+        menuToggle.querySelector('i').style.transform = isVisible ? 'rotate(0deg)' : 'rotate(90deg)';
+    }
+}
+
+// 检查移动菜单状态
+function checkMobileMenu() {
+    if (window.innerWidth >= 768) {
+        // 大屏幕下关闭移动菜单
+        if (mobileMenu && mobileMenu.classList.contains('mobile-menu-visible')) {
+            toggleMobileMenu();
+        }
     }
 }
 
@@ -116,16 +145,6 @@ function addFloatAnimation() {
         card.style.animation = `float 6s ease-in-out infinite`;
         card.style.transformOrigin = 'center bottom';
     });
-}
-
-// 检查移动菜单状态
-function checkMobileMenu() {
-    if (window.innerWidth >= 768) {
-        // 大屏幕下关闭移动菜单
-        if (mobileMenu && mobileMenu.classList.contains('mobile-menu-visible')) {
-            toggleMobileMenu();
-        }
-    }
 }
 
 // 平滑滚动到顶部
