@@ -73,6 +73,114 @@ body::before {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* 修复导航栏透明度问题 - 设置为非透明 */
+nav {
+    background: linear-gradient(135deg, rgba(41, 50, 65, 0.95), rgba(31, 40, 51, 0.95)) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 修复导航栏文字排版问题 */
+nav .container {
+    padding: 0 1rem;
+}
+
+nav .flex {
+    align-items: center;
+    height: 70px;
+}
+
+nav .text-xl {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+nav .hidden.md\:flex {
+    gap: 2rem;
+    align-items: center;
+}
+
+nav .hidden.md\:flex a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav .hidden.md\:flex a:hover {
+    color: #FF4D4D;
+    transform: translateY(-1px);
+}
+
+/* 服务器状态指示器样式修复 */
+nav .flex.items-center.space-x-2 {
+    margin-left: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav .flex.items-center.space-x-2 .w-3 {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+nav .flex.items-center.space-x-2 .text-light {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #EEF5FF;
+}
+
+/* 移动菜单按钮样式修复 */
+.menu-toggle, .close-menu {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover, .close-menu:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(1.05);
+}
+
+/* 移动导航菜单样式修复 */
+.mobile-menu {
+    background: linear-gradient(135deg, rgba(41, 50, 65, 0.98), rgba(31, 40, 51, 0.98)) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.mobile-menu .flex.flex-col.space-y-4 a {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu .flex.flex-col.space-y-4 a:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu .flex.items-center.space-x-2 {
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* 导航链接动画 - 精致版 */
 .nav-link {
     position: relative;

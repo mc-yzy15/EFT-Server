@@ -581,29 +581,6 @@ class ParticleSystem {
   }
 }
 
-// 更新服务器状态显示
-// 统一状态更新函数
-const updateServerStatus = (() => {
-  let isUpdating = false;
-  
-  return () => {
-    if(!isUpdating) {
-      isUpdating = true;
-      const totalPlayers = 50;
-      const activePlayers = generateOrganicData(45);
-      
-      animateCounter('.total-registered', totalPlayers, 1000, 'easeOutQuad');
-      animateCounter('.active-players', activePlayers, 1200, 'easeInOutCirc');
-      
-      setTimeout(() => isUpdating = false, 1500);
-    }
-  };
-})();
-
-// 初始化执行
-updateServerStatus();
-setInterval(updateServerStatus, 60000);
-
 // 请求动画帧优化
 // 贝塞尔曲线动画引擎
 const animateCounter = (selector, target, duration, easing) => {
@@ -638,3 +615,33 @@ const animateCounter = (selector, target, duration, easing) => {
   
   requestAnimationFrame(frame);
 };
+
+// 使用立即执行函数封装状态更新逻辑
+const updateServerStats = (() => {
+  let isUpdating = false;
+  
+  return (totalRegisters = 50, activeUsers) => {
+    if (isUpdating) return;
+    
+    isUpdating = true;
+    // 智能数据生成逻辑
+    const baseActive = generateOrganicData();
+    document.getElementById('total-players').textContent = totalRegisters;
+    document.getElementById('player-count').textContent = baseActive;
+    
+    // 动画触发逻辑
+    animateCounter({
+      element: document.querySelector('.status-badge'),
+      start: 0,
+      end: baseActive,
+      duration: 2000,
+      easing: 'easeOutQuad'
+    });
+    
+    isUpdating = false;
+  };
+})();
+
+// 初始化执行
+updateServerStats();
+setInterval(updateServerStats, 60000);
