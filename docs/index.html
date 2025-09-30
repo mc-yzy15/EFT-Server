@@ -146,7 +146,7 @@
                     <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
                         <div class="text-3xl text-accent mb-3"><i class="fa fa-calendar"></i></div>
                         <h3 class="text-xl font-semibold mb-2">开放时间</h3>
-                        <p class="text-light/80">仅在周末开放<br>(因流量计费较高)</p>
+                        <p class="text-light/80">仅在周末和假期开放<br>(因流量计费较高)</p>
                     </div>
                     <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
                         <div class="text-3xl text-secondary mb-3"><i class="fa fa-users"></i></div>
@@ -246,89 +246,6 @@
                         <p class="text-light/70">持续优化服务器性能和游戏体验，确保流畅的游戏过程和低延迟连接。</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 开放时间 -->
-    <section id="schedule" class="py-20 bg-dark/50 relative">
-        <!-- 背景效果 -->
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(61,90,128,0.15),transparent_70%)]"></div>
-            <div class="absolute inset-0 bg-[linear-gradient(rgba(41,50,65,0.95),rgba(41,50,65,0.95))]"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold mb-4">服务器开放时间</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-                <p class="text-light/80 max-w-2xl mx-auto text-lg">合理安排游戏时间，享受最佳游戏体验</p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <!-- 开放时间表 -->
-                <div class="bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                    <div class="p-6 md:p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-7 gap-4 text-center mb-8">
-                            <div class="schedule-header font-semibold text-accent">星期</div>
-                            <div class="schedule-header font-semibold text-accent">状态</div>
-                            <div class="schedule-header font-semibold text-accent">开放时间</div>
-                            <div class="schedule-header font-semibold text-accent md:col-span-2">预计人数</div>
-                            <div class="schedule-header font-semibold text-accent md:col-span-2">备注</div>
-                        </div>
-                        
-                        <!-- 工作日 -->
-                        <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center py-3 border-b border-white/10 schedule-row">
-                            <div class="font-medium">周一至周五</div>
-                            <div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">关闭</span></div>
-                            <div class="text-light/60">不开放</div>
-                            <div class="text-light/60 md:col-span-2">0</div>
-                            <div class="text-light/60 md:col-span-2">因流量计费较高</div>
-                        </div>
-                        
-                        <!-- 周六 -->
-                        <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center py-3 border-b border-white/10 schedule-row hover:bg-white/5 transition-colors duration-300 rounded-lg mx-2 my-1">
-                            <div class="font-medium">周六</div>
-                            <div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">开放</span></div>
-                            <div>00:00 - 23:59</div>
-                            <div class="md:col-span-2">
-                                <div class="w-full bg-white/20 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-green-400 to-accent h-2 rounded-full" style="width: 75%"></div>
-                                </div>
-                                <div class="text-sm text-light/80 mt-1">高 (约75%)</div>
-                            </div>
-                            <div class="md:col-span-2 text-light/80">全天开放，活动较多</div>
-                        </div>
-                        
-                        <!-- 周日 -->
-                        <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center py-3 border-b border-white/10 schedule-row hover:bg-white/5 transition-colors duration-300 rounded-lg mx-2 my-1">
-                            <div class="font-medium">周日</div>
-                            <div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">开放</span></div>
-                            <div>00:00 - 18:00</div>
-                            <div class="md:col-span-2">
-                                <div class="w-full bg-white/20 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-green-400 to-accent h-2 rounded-full" style="width: 55%"></div>
-                                </div>
-                                <div class="text-sm text-light/80 mt-1">中等 (约55%)</div>
-                            </div>
-                            <div class="md:col-span-2 text-light/80">日间开放</div>
-                        </div>
-
-                        <!-- 服务器说明 -->
-                        <div class="mt-8 p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/30">
-                            <div class="flex items-start">
-                                <div class="text-yellow-500 mr-3 mt-1"><i class="fa fa-info-circle text-xl"></i></div>
-                                <div>
-                                    <p class="text-light/90 mb-2">由于服务器配置较低，在人流量较大时可能出现轻微卡顿，敬请谅解。</p>
-                                    <p class="text-light/90 mb-2">目前暂无活动安排，服务器可能随时进行停机维护，相关活动信息将在QQ群内发布。</p>
-                                    <p class="text-light/90">服务器状态会随时间变化，在可能开启的时间段将显示黄灯。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
             </div>
         </div>
     </section>
@@ -591,7 +508,7 @@
                         <li><a href="https://sns.oddba.cn/135493.html?t=229572" class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载</a></li>
                         <li><a href="https://github.com/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载2-Github</a></li>
                                 <li><a href="https://bgithub.xyz/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像1（bgithub）</a></li>
-                                <li><a href="https://kkgithub.xyz/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像2（KKgithub）</a></li>
+                                <li><a href="https://kkgithub.com/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像2（KKgithub）</a></li>
                                 <li><a href="https://dgithub.xyz/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像3（Dgithub）</a></li>
                                 <li><a href="https://github.akams.cn/" class="text-light/70 hover:text-primary transition-colors duration-300">GitHub 文件代理加速</a></li>
                         <li><a href="https://sns.oddba.cn/8011.html" class="text-light/70 hover:text-primary transition-colors duration-300">攻略指南</a></li>
