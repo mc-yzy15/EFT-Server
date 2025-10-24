@@ -58,15 +58,39 @@
     </style>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="font-inter bg-dark text-light min-h-screen overflow-x-hidden">
-    <!-- 导航栏（有问题就Shit Fuck CloudFlare CDN） -->
+    <body class="font-inter bg-dark text-light min-h-screen overflow-x-hidden">
+        <!-- 加载动画 -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-container">
+                <div class="loading-logo">
+                    <i class="fa fa-crosshairs"></i>
+                </div>
+                <h2 class="loading-title">EFT Server</h2>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <p class="loading-text">正在加载资源...</p>
+                <div class="loading-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 网格背景动画 -->
+        <div class="grid-bg"></div>
+        <!-- 噪点覆盖层 -->
+        <div class="noise-overlay"></div>
+        
+        <!-- 导航栏（有问题就Shit Fuck CloudFlare CDN） -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 ease-in-out">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center bg-glass rounded-b-xl">
             <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center pulse">
                     <i class="fa fa-crosshairs text-white text-xl"></i>
                 </div>
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">EFT Server</span>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-3d">EFT Server</span>
             </div>
             
             <!-- 桌面导航（有问题就Shit Fuck CloudFlare CDN） -->
@@ -109,7 +133,7 @@
         <!-- 背景效果（有问题就Shit Fuck CloudFlare CDN） -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-secondary/20 via-dark/80 to-dark"></div>
-            <img src="https://picsum.photos/id/237/1920/1080" alt="背景" class="w-full h-full object-cover opacity-30">
+            <img src="https://picsum.photos/seed/picsum/1920/1080" alt="背景" class="w-full h-full object-cover opacity-30 background-overlay hero-background">
             
             <!-- 装饰性网格（有问题就Shit Fuck CloudFlare CDN） -->
             <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -122,24 +146,24 @@
         <!-- 内容（有问题就Shit Fuck CloudFlare CDN） -->
         <div class="container mx-auto px-4 py-20 relative z-10 text-center">
             <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-extrabold leading-tight text-shadow-lg mb-6">
-                <span class="block">逃离塔科夫</span>
+                <span class="block typewriter-enhanced">逃离塔科夫</span>
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary">私人服务器</span>
             </h1>
             <p class="text-[clamp(1rem,3vw,1.5rem)] max-w-3xl mx-auto mb-10 text-light/90">
                 打造专属于你的塔科夫体验，与志同道合的玩家一起探索这片危险的战场
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                <a href="#guide" class="btn-primary bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+                <a href="#guide" class="btn-primary magnetic-btn bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
                     立即加入
                 </a>
-                <a href="#features" class="btn-secondary bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-full transition-all duration-300">
+                <a href="#features" class="btn-secondary magnetic-btn bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-full transition-all duration-300">
                     了解更多
                 </a>
             </div>
             
             <!-- 服务器信息卡片（有问题就Shit Fuck CloudFlare CDN） -->
 		<section id="opentime">
-            <div class="max-w-4xl mx-auto bg-glass rounded-2xl p-6 md:p-8 shadow-2xl border border-white/10 backdrop-blur-xl transform transition-all duration-500 hover:translate-y-[-5px]">
+            <div class="max-w-4xl mx-auto bg-glass rounded-2xl p-6 md:p-8 shadow-2xl border border-white/10 backdrop-blur-xl transform transition-all duration-500 hover:translate-y-[-5px] shimmer-border pulse-light">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
                         <div class="text-3xl text-primary mb-3"><i class="fa fa-server"></i></div>
@@ -154,7 +178,7 @@
                     <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
                         <div class="text-3xl text-secondary mb-3"><i class="fa fa-users"></i></div>
                         <h3 class="text-xl font-semibold mb-2">社区玩家</h3>
-                        <p class="text-light/80">活跃玩家: <span id="player-count">请进 OOPZ 查看</span><br>总注册: <span id="total-players">请进群查看</span></p>
+                        <p class="text-light/80">活跃玩家: 请进 OOPZ 查看<br>总注册: 请进群查看</p>
                     </div>
                 </div>
             </div>
@@ -179,7 +203,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- 特色卡片 1（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
                         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
@@ -191,7 +215,7 @@
                 </div>
                 
                 <!-- 特色卡片 2（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
                         <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
@@ -203,7 +227,7 @@
                 </div>
                 
                 <!-- 特色卡片 3（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
                         <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-all duration-300">
@@ -215,7 +239,7 @@
                 </div>
                 
                 <!-- 特色卡片 4（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
                         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
@@ -227,7 +251,7 @@
                 </div>
                 
                 <!-- 特色卡片 5（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
                         <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
@@ -239,7 +263,7 @@
                 </div>
                 
                 <!-- 特色卡片 6（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
                         <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-all duration-300">
@@ -408,7 +432,7 @@
                             <div class="p-6 md:p-8">
                                 <h3 class="text-2xl font-semibold mb-6">联系方式（请务必优先加群）</h3>
                                 <div class="space-y-6">
-                                    <a href="mailto:yingmoliuguang@yeah.net" class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                    <a href="mailto:yingmoliuguang@yeah.net" class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
                                         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4 group-hover:bg-primary/30 transition-all duration-300">
                                             <i class="fa fa-envelope text-xl text-primary"></i>
                                         </div>
@@ -426,7 +450,7 @@
                             <div class="p-6 md:p-8">
                                 <h3 class="text-2xl font-semibold mb-6">加入社区</h3>
                                 <div class="space-y-6">
-                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
                                         <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mr-4 group-hover:bg-green-500/30 transition-all duration-300">
                                             <i class="fa fa-qq text-xl text-green-400"></i>
                                         </div>
@@ -436,7 +460,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group">
+                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
                                         <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mr-4 group-hover:bg-purple-500/30 transition-all duration-300">
                                             <i class="fa fa-headphones text-xl text-purple-400"></i>
                                         </div>
@@ -517,7 +541,7 @@
     </footer>
 
     <!-- 返回顶部按钮（有问题就Shit Fuck CloudFlare CDN） -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary/80 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible">
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary/80 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-100 visible">
         <i class="fa fa-arrow-up"></i>
     </button>
 
