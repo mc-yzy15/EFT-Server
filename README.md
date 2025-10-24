@@ -24,10 +24,8 @@ http://server.yzy15.dpdns.org:26969
 
 ## 联系方式
 - QQ群：1034718897
-- **Telegram 账号**：@Dddddavidd
 - **Telegram 双向机器人(最优先使用)**: @ShuangXiang_Dddddavidd_bot
 - **Telegram 群组**：https://t.me/+1nZnaWWryz1kNDll
-- **Discord 账号**：shixiaoyaoyaoya
 - **Discord 群组**：https://discord.gg/UwMFBuCbU8
 - **邮箱**：yingmoliuguang@yeah.net
 - **Bilibili 主页**：https://space.bilibili.com/1338637552
