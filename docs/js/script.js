@@ -161,24 +161,6 @@ function scrollToTop() {
     });
 }
 
-// 处理表单提交
-function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    // 获取表单数据
-    const formData = new FormData(contactForm);
-    const formValues = Object.fromEntries(formData.entries());
-    
-    // 在实际应用中，这里会发送数据到服务器
-    console.log('表单数据:', formValues);
-    
-    // 显示提交成功消息
-    alert('感谢您的留言！我们会尽快回复您。');
-    
-    // 重置表单
-    contactForm.reset();
-}
-
 // 添加淡入动画
 function addFadeInAnimation() {
     const fadeElements = document.querySelectorAll('.feature-card, #schedule .schedule-row, #guide .flex, #contact a, #contact form');
@@ -206,24 +188,6 @@ function checkElementsInView() {
             }, element.dataset.delay || 0);
         }
     });
-}
-
-// 模拟玩家数量
-function simulatePlayerCount() {
-    // 随机生成在线玩家数量 (10-50)
-    const online = Math.floor(Math.random() * 41) + 10;
-    // 随机生成总注册玩家数量 (50-200)
-    const total = Math.floor(Math.random() * 151) + 50;
-    
-    // 数字增长动画
-    animateNumber(playerCount, 0, online, 1500);
-    animateNumber(totalPlayers, 0, total, 1500);
-    
-    // 每30秒更新一次
-    setInterval(() => {
-        const newOnline = Math.floor(Math.random() * 41) + 10;
-        animateNumber(playerCount, parseInt(playerCount.innerText), newOnline, 1500);
-    }, 30000);
 }
 
 // 数字增长动画
@@ -347,6 +311,5 @@ window.addEventListener('DOMContentLoaded', () => {
 window.EFTSERVER = {
     init,
     handleScroll,
-    smoothScroll,
-    simulatePlayerCount
+    smoothScroll
 };
