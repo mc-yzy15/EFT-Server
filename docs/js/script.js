@@ -51,9 +51,6 @@ function init() {
         createAdvancedParticles();
     }
     
-    // 添加页面加载进度条
-    createLoadingAnimation();
-    
     // 每分钟检查一次服务器状态
     setInterval(updateServerStatus, 60000);
 }
@@ -355,145 +352,9 @@ function createParticle(container, index) {
 }
 
 // 华丽加载动画
-function createLoadingAnimation() {
-    const loadingScreen = document.getElementById('loading-screen');
-    const loadingProgress = document.querySelector('.loading-progress');
-    const loadingText = document.querySelector('.loading-text');
-    
-    if (!loadingScreen || !loadingProgress) return;
-    
-    // 确保加载屏幕初始可见
-    loadingScreen.style.display = 'flex';
-    loadingScreen.style.opacity = '1';
-    loadingScreen.style.pointerEvents = 'all';
-    
-    // 动态调整加载动画容器大小
-    function adjustLoadingContainer() {
-        const container = document.querySelector('.loading-container');
-        if (!container) return;
-        
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-        
-        // 根据屏幕尺寸调整容器大小
-        if (screenWidth < 768) {
-            container.style.width = '90%';
-            container.style.padding = '1.5rem';
-        } else if (screenWidth < 1024) {
-            container.style.width = '70%';
-            container.style.padding = '2rem';
-        } else {
-            container.style.width = '400px';
-            container.style.padding = '2rem';
-        }
-        
-        // 根据屏幕高度调整容器位置
-        if (screenHeight < 600) {
-            container.style.padding = '1rem';
-        }
-    }
-    
-    // 初始调整
-    adjustLoadingContainer();
-    
-    // 监听窗口大小变化
-    window.addEventListener('resize', adjustLoadingContainer);
-    
-    // 模拟加载进度和状态文本
-    const loadingStates = [
-        '正在初始化...',
-        '加载资源...', 
-        '准备界面...',
-        '优化性能...',
-        '即将完成...'
-    ];
-    let progress = 0;
-    let stateIndex = 0;
-    
-    const interval = setInterval(() => {
-        // 更新进度
-        progress += Math.random() * 12 + 3; // 3-15% 的随机增量
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
-            
-            // 更新最终状态文本
-            if (loadingText) {
-                loadingText.textContent = '加载完成！';
-            }
-            
-            // 加载完成后淡出动画
-            setTimeout(() => {
-                loadingScreen.classList.add('fade-out');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    loadingScreen.style.pointerEvents = 'none';
-                    // 触发自定义事件表示加载完成
-                    window.dispatchEvent(new CustomEvent('loadingComplete'));
-                }, 800);
-            }, 800);
-        } else {
-            // 更新状态文本
-            if (loadingText && progress > (stateIndex + 1) * 20) {
-                stateIndex = Math.min(stateIndex + 1, loadingStates.length - 1);
-                loadingText.textContent = loadingStates[stateIndex];
-            }
-        }
-        
-        loadingProgress.style.width = `${progress}%`;
-    }, 200);
-    
-    // 添加额外的安全机制，确保加载动画不会永远显示
-    const safetyTimeout = setTimeout(() => {
-        if (loadingScreen.style.display !== 'none') {
-            console.log('安全超时：强制隐藏加载动画');
-            clearInterval(interval);
-            loadingProgress.style.width = '100%';
-            if (loadingText) {
-                loadingText.textContent = '加载完成！';
-            }
-            
-            setTimeout(() => {
-                loadingScreen.classList.add('fade-out');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    loadingScreen.style.pointerEvents = 'none';
-                }, 800);
-            }, 500);
-        }
-    }, 5000); // 5秒后强制隐藏
-    
-    // 当加载完成时清除安全超时
-    window.addEventListener('loadingComplete', () => {
-        clearTimeout(safetyTimeout);
-    });
-    
-    // 监听页面加载完成事件
-    window.addEventListener('load', () => {
-        clearTimeout(safetyTimeout);
-        clearInterval(interval);
-        
-        // 立即完成加载进度
-        loadingProgress.style.width = '100%';
-        if (loadingText) {
-            loadingText.textContent = '加载完成！';
-        }
-        
-        setTimeout(() => {
-            loadingScreen.classList.add('fade-out');
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-                loadingScreen.style.pointerEvents = 'none';
-                window.dispatchEvent(new CustomEvent('loadingComplete'));
-            }, 800);
-        }, 300);
-    });
-}
 
-// 创建加载进度条（保持向后兼容）
-function createLoadingBar() {
-    createLoadingAnimation();
-}
+
+
 
 // 数字增长动画
 function animateNumber(element, start, end, duration) {
@@ -554,21 +415,7 @@ function createParticles() {
     }
 }
 
-// 平滑页面加载效果
-function smoothPageLoad() {
-    // 页面加载完成后移除加载动画
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const loading = document.getElementById('loading-screen');
-            if (loading) {
-                loading.classList.add('fade-out');
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                }, 800);
-            }
-        }, 500);
-    });
-}
+
 
 // 为链接添加悬停效果
 function addLinkHoverEffects() {
@@ -609,7 +456,6 @@ window.addEventListener('DOMContentLoaded', () => {
     adjustContentHeight();
     addLinkHoverEffects();
     // createParticles(); // 可选：如果需要粒子效果，可以取消注释
-    smoothPageLoad();
     
     // 确保所有元素初始可见
     const allElements = document.querySelectorAll('*');
@@ -618,17 +464,6 @@ window.addEventListener('DOMContentLoaded', () => {
             el.style.opacity = '1';
         }
     });
-    
-    // 额外确保加载动画能隐藏（防止出现异常）
-    setTimeout(() => {
-        const loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen && loadingScreen.style.display !== 'none') {
-            loadingScreen.classList.add('fade-out');
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 800);
-        }
-    }, 3000); // 3秒后强制隐藏加载动画
 });
 
 
@@ -701,6 +536,5 @@ window.EFTSERVER = {
     handleScroll,
     smoothScroll,
     addKeyboardShortcuts,
-    optimizePerformance,
-    createLoadingAnimation
+    optimizePerformance
 };
