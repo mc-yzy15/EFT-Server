@@ -13,15 +13,71 @@ let lastScrollTop = 0;
 let ticking = false;
 let particlesCreated = false;
 
+// 表单提交处理函数
+function handleFormSubmit(e) {
+    e.preventDefault();
+    // 基本表单验证和提交逻辑
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+    
+    console.log('表单数据:', data);
+    
+    // 这里可以添加AJAX请求发送表单数据
+    // 显示成功消息或错误处理
+    alert('表单已提交，谢谢！');
+    contactForm.reset();
+}
+
+// 显示键盘快捷键帮助
+function showKeyboardShortcuts() {
+    const shortcuts = [
+        { key: 'ESC', action: '关闭菜单' },
+        { key: 'Ctrl+/ 或 Cmd+/', action: '显示快捷键帮助' },
+        { key: 'Home', action: '回到顶部' }
+    ];
+    
+    // 这里可以添加一个漂亮的模态框显示快捷键
+    console.log('键盘快捷键:', shortcuts);
+}
+
+// 添加键盘快捷键
+function addKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // ESC键关闭移动菜单
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            toggleMobileMenu();
+        }
+        
+        // Ctrl + / 或 Cmd + / 显示帮助
+        if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+            e.preventDefault();
+            showKeyboardShortcuts();
+        }
+    });
+}
+
 // 初始化函数
 function init() {
+    // 检查DOM元素是否存在，避免空引用错误
+    if (!navbar || !menuToggle || !mobileMenu || !backToTop) {
+        console.warn('部分DOM元素未找到，某些功能可能无法正常工作');
+    }
+    
     // 事件监听器 - 使用防抖优化性能
     window.addEventListener('scroll', throttle(handleScroll, 16));
-    menuToggle.addEventListener('click', toggleMobileMenu);
-    backToTop.addEventListener('click', scrollToTop);
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    if (backToTop) {
+        backToTop.addEventListener('click', scrollToTop);
+    }
+    
     if (contactForm) {
         contactForm.addEventListener('submit', handleFormSubmit);
     }
+    
     navLinks.forEach(link => {
         link.addEventListener('click', smoothScroll);
     });
@@ -53,6 +109,297 @@ function init() {
     
     // 每分钟检查一次服务器状态
     setInterval(updateServerStatus, 60000);
+    
+    // 初始化版本选择模态窗口
+    initVersionModal();
+}
+
+// 服务器版本选择模态窗口相关函数
+function initVersionModal() {
+    // 获取DOM元素
+    const joinServerBtn = document.getElementById('join-server-btn');
+    const versionModal = document.getElementById('version-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalContent = document.getElementById('modal-content');
+    const closeModalBtn = document.getElementById('close-modal');
+    const cancelSelectBtn = document.getElementById('cancel-select-btn');
+    const selectVersionBtn = document.getElementById('select-version-btn');
+    const versionOptions = document.querySelectorAll('.version-option');
+    const radioButtons = document.querySelectorAll('input[name="server-version"]');
+    
+    // 确认对话框元素
+    const confirmDialog = document.getElementById('confirm-dialog');
+    const confirmBackdrop = document.getElementById('confirm-backdrop');
+    const confirmContent = document.getElementById('confirm-content');
+    const confirmMessage = document.getElementById('confirm-message');
+    const confirmYesBtn = document.getElementById('confirm-yes');
+    const confirmNoBtn = document.getElementById('confirm-no');
+    
+    // 当前选中的版本
+    let selectedVersion = null;
+    
+    // 检查所有元素是否存在
+    if (!joinServerBtn || !versionModal || !modalBackdrop || !modalContent || 
+        !closeModalBtn || !cancelSelectBtn || !selectVersionBtn || 
+        !confirmDialog || !confirmBackdrop || !confirmContent || 
+        !confirmMessage || !confirmYesBtn || !confirmNoBtn) {
+        console.warn('版本选择模态窗口的部分DOM元素未找到');
+        return;
+    }
+    
+    // 禁用确认按钮直到选择版本
+    selectVersionBtn.disabled = true;
+    
+    // 打开模态窗口函数
+    function openModal() {
+        // 防止背景滚动
+        document.body.style.overflow = 'hidden';
+        
+        // 显示模态窗口
+        versionModal.classList.remove('hidden');
+        
+        // 添加动画效果
+        setTimeout(() => {
+            modalBackdrop.style.opacity = '1';
+            modalContent.style.opacity = '1';
+            modalContent.style.transform = 'scale(1)';
+        }, 10);
+    }
+    
+    // 关闭模态窗口函数
+    function closeModal() {
+        // 移除动画效果
+        modalBackdrop.style.opacity = '0';
+        modalContent.style.opacity = '0';
+        modalContent.style.transform = 'scale(0.95)';
+        
+        // 隐藏模态窗口
+        setTimeout(() => {
+            versionModal.classList.add('hidden');
+            // 恢复背景滚动
+            document.body.style.overflow = 'auto';
+            // 重置选中状态
+            resetSelection();
+        }, 300);
+    }
+    
+    // 打开确认对话框函数
+    function openConfirmDialog(version) {
+        const versionNames = {
+            '3.9.8': '3.9.8 低配版本',
+            '3.11': '3.11 还原版本'
+        };
+        
+        // 更新确认消息
+        confirmMessage.textContent = `您确定要选择 ${versionNames[version]} 吗？`;
+        
+        // 显示确认对话框
+        confirmDialog.classList.remove('hidden');
+        
+        // 添加动画效果
+        setTimeout(() => {
+            confirmBackdrop.style.opacity = '1';
+            confirmContent.style.opacity = '1';
+            confirmContent.style.transform = 'scale(1)';
+        }, 10);
+    }
+    
+    // 关闭确认对话框函数
+    function closeConfirmDialog() {
+        // 移除动画效果
+        confirmBackdrop.style.opacity = '0';
+        confirmContent.style.opacity = '0';
+        confirmContent.style.transform = 'scale(0.95)';
+        
+        // 隐藏确认对话框
+        setTimeout(() => {
+            confirmDialog.classList.add('hidden');
+        }, 300);
+    }
+    
+    // 重置选择状态
+    function resetSelection() {
+        // 取消所有单选按钮的选择
+        radioButtons.forEach(radio => {
+            radio.checked = false;
+        });
+        
+        // 移除版本选项的选中样式
+        versionOptions.forEach(option => {
+            option.classList.remove('border-primary', 'border-secondary');
+            option.classList.add('border-white/10');
+        });
+        
+        // 重置选中版本和禁用确认按钮
+        selectedVersion = null;
+        selectVersionBtn.disabled = true;
+    }
+    
+    // 处理版本选择
+    function handleVersionSelect(version) {
+        // 更新选中版本
+        selectedVersion = version;
+        
+        // 更新确认按钮状态
+        selectVersionBtn.disabled = false;
+        
+        // 更新UI状态
+        versionOptions.forEach(option => {
+            option.classList.remove('border-primary', 'border-secondary', 'border-white/10');
+            if (option.id === `version-${version.replace('.', '')}`) {
+                option.classList.add(version === '3.9.8' ? 'border-primary' : 'border-secondary');
+            } else {
+                option.classList.add('border-white/10');
+            }
+        });
+    }
+    
+    // 处理最终确认
+    function handleFinalConfirmation() {
+        if (!selectedVersion) return;
+        
+        // 跳转到相应的版本指南部分
+        // 这里我们暂时使用URL参数来传递版本信息
+        const guideSection = document.getElementById('guide');
+        if (guideSection) {
+            // 滚动到指南部分
+            guideSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // 存储选择的版本到localStorage，以便在指南部分使用
+            try {
+                localStorage.setItem('selectedServerVersion', selectedVersion);
+            } catch (e) {
+                console.warn('无法存储选择的版本:', e);
+            }
+            
+            // 关闭所有窗口
+            closeConfirmDialog();
+            closeModal();
+            
+            // 可以在这里添加额外的版本特定处理逻辑
+            setTimeout(() => {
+                showVersionNotification(selectedVersion);
+            }, 500);
+        }
+    }
+    
+    // 显示版本选择通知
+    function showVersionNotification(version) {
+        // 检查是否已存在通知元素
+        let notification = document.getElementById('version-notification');
+        
+        if (!notification) {
+            // 创建通知元素
+            notification = document.createElement('div');
+            notification.id = 'version-notification';
+            notification.className = 'fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-dark border border-white/10 rounded-xl px-6 py-4 shadow-lg z-50 transition-all duration-300 opacity-0 scale-95';
+            document.body.appendChild(notification);
+        }
+        
+        // 设置通知内容
+        const versionNames = {
+            '3.9.8': '3.9.8 低配版本',
+            '3.11': '3.11 还原版本'
+        };
+        
+        notification.innerHTML = `
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-full ${version === '3.9.8' ? 'bg-primary/20 text-primary' : 'bg-secondary/20 text-secondary'} flex items-center justify-center">
+                    <i class="fa fa-check text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white">已选择 ${versionNames[version]}</h4>
+                    <p class="text-light/70 text-sm">正在显示相应版本的安装指南...</p>
+                </div>
+            </div>
+        `;
+        
+        // 显示通知
+        setTimeout(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translate(-50%, 0) scale(1)';
+        }, 10);
+        
+        // 3秒后隐藏通知
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translate(-50%, 10px) scale(0.95)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+    
+    // 事件监听器
+    // 立即加入按钮点击事件
+    joinServerBtn.addEventListener('click', openModal);
+    
+    // 关闭按钮点击事件
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelSelectBtn.addEventListener('click', closeModal);
+    
+    // 点击背景关闭模态窗口
+    modalBackdrop.addEventListener('click', closeModal);
+    
+    // 阻止点击内容时关闭模态窗口
+    modalContent.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    
+    // 单选按钮变化事件
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                handleVersionSelect(e.target.value);
+            }
+        });
+    });
+    
+    // 版本选项点击事件
+    versionOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const version = option.id.replace('version-', '').replace('398', '3.9.8').replace('311', '3.11');
+            const radio = document.querySelector(`input[name="server-version"][value="${version}"]`);
+            if (radio) {
+                radio.checked = true;
+                handleVersionSelect(version);
+            }
+        });
+    });
+    
+    // 确认选择按钮点击事件
+    selectVersionBtn.addEventListener('click', () => {
+        if (selectedVersion) {
+            openConfirmDialog(selectedVersion);
+        }
+    });
+    
+    // 确认对话框事件
+    confirmNoBtn.addEventListener('click', closeConfirmDialog);
+    confirmYesBtn.addEventListener('click', handleFinalConfirmation);
+    
+    // 点击背景关闭确认对话框
+    confirmBackdrop.addEventListener('click', closeConfirmDialog);
+    
+    // 阻止点击内容时关闭确认对话框
+    confirmContent.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    
+    // ESC键关闭当前打开的窗口
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (!confirmDialog.classList.contains('hidden')) {
+                closeConfirmDialog();
+            } else if (!versionModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        }
+    });
+    
+    console.log('版本选择模态窗口初始化完成');
 }
 
 // 更新服务器状态
@@ -134,29 +481,33 @@ function handleScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     // 导航栏滚动效果
-    if (scrollTop > 50) {
-        navbar.classList.add('scrolled');
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            navbar.style.transform = 'translateY(-100%)';
+    if (navbar) {
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
         } else {
+            navbar.classList.remove('scrolled');
             navbar.style.transform = 'translateY(0)';
         }
-    } else {
-        navbar.classList.remove('scrolled');
-        navbar.style.transform = 'translateY(0)';
     }
     
     lastScrollTop = scrollTop;
     
     // 返回顶部按钮显示/隐藏
-    if (scrollTop > 300) {
-        backToTop.classList.add('visible');
-        backToTop.style.opacity = '1';
-        backToTop.style.visibility = 'visible';
-    } else {
-        backToTop.classList.remove('visible');
-        backToTop.style.opacity = '1'; // 保持可见
-        backToTop.style.visibility = 'visible'; // 保持可见
+    if (backToTop) {
+        if (scrollTop > 300) {
+            backToTop.classList.add('visible');
+            backToTop.style.opacity = '1';
+            backToTop.style.visibility = 'visible';
+        } else {
+            backToTop.classList.remove('visible');
+            backToTop.style.opacity = '0.3'; // 降低透明度但保持可见
+            backToTop.style.visibility = 'visible';
+        }
     }
     
     // 视差效果
@@ -208,22 +559,28 @@ function checkMobileMenu() {
 
 // 平滑滚动
 function smoothScroll(e) {
-    e.preventDefault();
-    
-    // 关闭移动菜单
-    if (!mobileMenu.classList.contains('hidden')) {
-        toggleMobileMenu();
-    }
-    
+    // 获取链接地址
     const targetId = this.getAttribute('href');
-    const targetElement = document.querySelector(targetId);
     
-    if (targetElement) {
-        window.scrollTo({
-            top: targetElement.offsetTop - 80, // 减去导航栏高度
-            behavior: 'smooth'
-        });
+    // 判断是否为内部锚点链接（以#开头）
+    if (targetId.startsWith('#')) {
+        e.preventDefault();
+        
+        // 关闭移动菜单
+        if (!mobileMenu.classList.contains('hidden')) {
+            toggleMobileMenu();
+        }
+        
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // 减去导航栏高度
+                behavior: 'smooth'
+            });
+        }
     }
+    // 外部链接不阻止默认行为，让浏览器正常跳转
 }
 
 // 滚动到顶部
@@ -312,9 +669,17 @@ function createAdvancedParticles() {
     
     const particlesContainer = document.createElement('div');
     particlesContainer.classList.add('particles-container');
+    // 设置必要的CSS样式
+    particlesContainer.style.position = 'fixed';
+    particlesContainer.style.top = '0';
+    particlesContainer.style.left = '0';
+    particlesContainer.style.width = '100%';
+    particlesContainer.style.height = '100%';
+    particlesContainer.style.pointerEvents = 'none';
+    particlesContainer.style.zIndex = '0';
     document.body.appendChild(particlesContainer);
     
-    const particleCount = window.innerWidth > 1024 ? 200 : window.innerWidth > 768 ? 100 : 50;
+    const particleCount = window.innerWidth > 1024 ? 100 : window.innerWidth > 768 ? 50 : 30; // 减少粒子数量以提高性能
     
     for (let i = 0; i < particleCount; i++) {
         createParticle(particlesContainer, i);
@@ -328,33 +693,39 @@ function createParticle(container, index) {
     particle.classList.add('particle');
     
     // 随机属性
-    const size = Math.random() * 4 + 1;
+    const size = Math.random() * 3 + 1;
     const x = Math.random() * 100;
     const y = Math.random() * 100;
-    const opacity = Math.random() * 0.7 + 0.1;
+    const opacity = Math.random() * 0.5 + 0.1;
     const delay = Math.random() * 8;
-    const duration = Math.random() * 8 + 6;
+    const duration = Math.random() * 15 + 10;
     
     // 随机颜色
     const colors = ['#FF4D4D', '#3D5A80', '#F2CC8F', '#EEF5FF', '#FF6B6B', '#5A79A5'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     
+    // 设置粒子样式
+    particle.style.position = 'absolute';
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
     particle.style.backgroundColor = color;
+    particle.style.borderRadius = '50%';
     particle.style.left = `${x}%`;
     particle.style.top = `${y}%`;
     particle.style.opacity = opacity;
-    particle.style.animationDelay = `${delay}s`;
-    particle.style.animationDuration = `${duration}s`;
+    particle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+    particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+    particle.style.animationFillMode = 'both';
+    particle.style.animationDirection = Math.random() > 0.5 ? 'normal' : 'reverse';
     
     container.appendChild(particle);
 }
 
 // 华丽加载动画
-
-
-
+function createLoadingAnimation() {
+    // 仅作为占位函数，如果需要可以实现具体的加载动画
+    console.log('加载动画功能准备就绪');
+}
 
 // 数字增长动画
 function animateNumber(element, start, end, duration) {
@@ -376,44 +747,7 @@ function animateNumber(element, start, end, duration) {
     requestAnimationFrame(animation);
 }
 
-// 创建粒子效果
-function createParticles() {
-    const particlesContainer = document.createElement('div');
-    particlesContainer.classList.add('particles-container');
-    document.body.appendChild(particlesContainer);
-    
-    // 创建100个粒子
-    for (let i = 0; i < 100; i++) {
-        const particle = document.createElement('div');
-        
-        // 随机大小、位置、颜色和动画
-        const size = Math.random() * 3 + 1;
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        const opacity = Math.random() * 0.5 + 0.1;
-        const delay = Math.random() * 5;
-        const duration = Math.random() * 10 + 10;
-        
-        // 随机颜色（从主题色中选择）
-        const colors = ['#FF4D4D', '#3D5A80', '#F2CC8F', '#EEF5FF'];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        
-        particle.style.position = 'absolute';
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.backgroundColor = color;
-        particle.style.borderRadius = '50%';
-        particle.style.left = `${x}%`;
-        particle.style.top = `${y}%`;
-        particle.style.opacity = opacity;
-        particle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
-        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-        particle.style.animationFillMode = 'both';
-        particle.style.animationDirection = Math.random() > 0.5 ? 'normal' : 'reverse';
-        
-        particlesContainer.appendChild(particle);
-    }
-}
+// 注意：createParticles函数已被createAdvancedParticles替代，保留兼容性
 
 
 
@@ -448,7 +782,8 @@ function adjustContentHeight() {
 }
 
 // 监听窗口大小变化，调整内容高度
-window.addEventListener('resize', adjustContentHeight);
+const resizeHandler = debounce(adjustContentHeight, 250);
+window.addEventListener('resize', resizeHandler);
 
 // 初始化页面
 window.addEventListener('DOMContentLoaded', () => {
@@ -463,6 +798,13 @@ window.addEventListener('DOMContentLoaded', () => {
         if (el.style.opacity === '0') {
             el.style.opacity = '1';
         }
+    });
+    
+    // 添加页面卸载时的清理函数，防止内存泄漏
+    window.addEventListener('beforeunload', () => {
+        // 移除事件监听器
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', resizeHandler);
     });
 });
 
@@ -536,5 +878,21 @@ window.EFTSERVER = {
     handleScroll,
     smoothScroll,
     addKeyboardShortcuts,
-    optimizePerformance
+    optimizePerformance,
+    updateServerStatus,
+    createAdvancedParticles
 };
+
+// 添加CSS动画关键帧
+(function() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-10px) translateX(10px); }
+            50% { transform: translateY(0) translateX(20px); }
+            75% { transform: translateY(10px) translateX(10px); }
+        }
+    `;
+    document.head.appendChild(style);
+})();

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.9.8版本安装指南 - EFT Server</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #f0f0f0;
+            min-height: 100vh;
+        }
+        
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .text-primary {
+            color: #4facfe;
+        }
+        
+        .text-accent {
+            color: #00f2fe;
+        }
+        
+        .border-white-10 {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4 text-primary">3.9.8版本安装指南 <span class="text-sm bg-red-500 text-white px-2 py-1 rounded">低配版</span></h1>
+            <p class="text-light/70 max-w-2xl mx-auto">适合配置较低的电脑，提供更加流畅的游戏体验</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white-10">
+            <div class="p-6 md:p-8">
+                <!-- 步骤列表 -->
+                <div class="space-y-12">
+                    <!-- 步骤 1 -->
+                    <div class="relative">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-6">1</div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-semibold mb-4">安装 SPT3.9.8 版本</h3>
+                                <p class="text-light/70 mb-6">首先需要安装《逃离塔科夫》的 SPT3.9.8 版本，这是连接到我们服务器的基础。</p>
+                                <div class="bg-white/5 p-4 rounded-lg">
+                                    <h4 class="font-medium text-accent mb-2">安装前准备：</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-light/80">
+                                        <li>确保您的电脑物理内存达到或超过16GB，虚拟内存设置为物理内存的1-1.2倍</li>
+                                        <li>确保游戏路径中不包含中文</li>
+                                        <li>建议使用Bandizip、Winrar或7ZIP解压，避免使用Windows系统自带解压功能</li>
+                                    </ul>
+                                    
+                                    <h4 class="font-medium text-accent mt-4 mb-2">安装步骤：</h4>
+                                    <ol class="list-decimal list-inside space-y-2 text-light/80">
+                                        <li>下载SPT-AKI 3.9.8客户端（版本0.14.9.1.30626）</li>
+                                        <li><a href="../index.html#downloadcenter" class="text-light/70 hover:text-primary transition-colors duration-300">点此进入资源下载中心</a></li>
+                                        <li>将下载的压缩包解压到您选择的目录</li>
+                                        <li>确保解压完整，不要有任何遗漏文件</li>
+                                        <li>运行SPT.Launcher.exe启动器</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute top-12 left-6 h-full w-0.5 bg-primary/30"></div>
+                    </div>
+                    
+                    <!-- 步骤 2 -->
+                    <div class="relative">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-6">2</div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-semibold mb-4">安装 modSync 模组</h3>
+                                <p class="text-light/70 mb-6">安装 modSync 模组以确保您的游戏版本与服务器兼容，并自动同步所需的模组。</p>
+                                <div class="bg-white/5 p-4 rounded-lg">
+                                    <h4 class="font-medium text-accent mb-2">安装步骤：</h4>
+                                    <ol class="list-decimal list-inside space-y-2 text-light/80">
+                                        <li>下载modSync模组</li>
+                                        <li><a href="../index.html#downloadcenter" class="text-light/70 hover:text-primary transition-colors duration-300">点此进入资源下载中心</a></li>
+                                        <li>将模组压缩包解压至游戏根目录</li>
+                                        <li>解压后模组将自动安装到正确位置</li>
+                                        <li>安装完成后模组将自动启用，无需进行手动配置</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute top-12 left-6 h-full w-0.5 bg-primary/30"></div>
+                    </div>
+                    
+                    <!-- 步骤 3 -->
+                    <div class="relative">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-6">3</div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-semibold mb-4">连接到服务器</h3>
+                                <p class="text-light/70 mb-6">完成上述步骤后，您就可以连接到我们的服务器了。</p>
+                                <div class="bg-white/5 p-4 rounded-lg">
+                                    <h4 class="font-medium text-accent mb-2">连接步骤：</h4>
+                                    <ol class="list-decimal list-inside space-y-2 text-light/80">
+                                        <li>确保服务器处于开放时间</li>
+                                        <li>打开SPT.Launcher.exe</li>
+                                        <li>等待出现"不可用"提示后选择"设置"</li>
+                                        <li>开启"DeveloperMode"</li>
+                                        <li>输入服务器地址：<code class="bg-dark px-2 py-1 rounded text-primary">http://server.yzy15.dpdns.org:26969</code></li>
+                                        <li>游戏路径保持不变</li>
+                                        <li>点击右上角小箭头返回主界面</li>
+                                        <li>成功连接后，输入邮箱创建角色（必须选择Edge Of Darkness、Standard、Left Behind、Prepare To Escape的其中之一）</li>
+                                        <li>可以点击开始游戏进行游戏了</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 常见问题 -->
+                <div class="mt-16">
+                    <h3 class="text-xl font-semibold mb-6">常见问题</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white/5 p-4 rounded-lg">
+                            <h4 class="font-medium text-accent mb-2">无法连接到服务器怎么办？</h4>
+                            <p class="text-light/80">首先确认服务器是否处于开放时间，然后检查您的网络连接和防火墙设置。如果问题依然存在，请尝试联系腐竹或群管寻求帮助。</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-lg">
+                            <h4 class="font-medium text-accent mb-2">游戏版本不兼容怎么办？</h4>
+                            <p class="text-light/80">确保您使用的是 SPT3.9.8 版本（客户端版本0.14.9.1.30626），并已安装 modSync 模组。modSync 会自动同步所需的模组和版本。</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-lg">
+                            <h4 class="font-medium text-accent mb-2">游戏中遇到问题如何寻求帮助？</h4>
+                            <p class="text-light/80">您可以通过页面底部的联系方式加入我们的 QQ 群（1034718897）寻求社区帮和腐竹及群管帮助。</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-lg">
+                            <h4 class="font-medium text-accent mb-2">游戏过程中出现卡顿怎么办？</h4>
+                            <p class="text-light/80">确保您的电脑满足最低配置要求（至少16GB内存），并关闭其他占用系统资源的程序。在服务器人流量较大时，可能会出现轻微卡顿，这是正常现象。</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-lg">
+                            <h4 class="font-medium text-accent mb-2">玩离线版有什么注意事项？</h4>
+                            <p class="text-light/80">1. 不要同时开着线上和离线版一起玩<br>
+                               2. 不要使用修改过的客户端玩逃离塔科夫线上版<br>
+                               3. <strong>如果弹出是否更新mod，请务必选择Continue，否则将会被服务器封禁！！！</strong><br>
+                               <span class="text-red-500 font-bold">封禁！封禁！封禁！重要的事情说三遍！</span><br>
+                               4. 如果无法自动SyncMod，请前往最下方资源下载<br>选择Backup Mods里面的Assets进行手动下载<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="../index.html" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300">
+                <i class="fa fa-arrow-left mr-2"></i> 返回首页
+            </a>
+        </div>
+    </div>
+</body>
+</html>
