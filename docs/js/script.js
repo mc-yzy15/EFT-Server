@@ -258,25 +258,27 @@ function initVersionModal() {
     function handleFinalConfirmation() {
         if (!selectedVersion) return;
         
-        // 跳转到相应的版本指南部分
-        // 这里我们暂时使用URL参数来传递版本信息
-        const guideSection = document.getElementById('guide');
-        if (guideSection) {
-            // 滚动到指南部分
-            guideSection.scrollIntoView({ behavior: 'smooth' });
-            
-            // 存储选择的版本到localStorage，以便在指南部分使用
-            try {
-                localStorage.setItem('selectedServerVersion', selectedVersion);
-            } catch (e) {
-                console.warn('无法存储选择的版本:', e);
-            }
-            
-            // 关闭所有窗口
-            closeConfirmDialog();
-            closeModal();
-            
-            // 可以在这里添加额外的版本特定处理逻辑
+        // 存储选择的版本到localStorage
+        try {
+            localStorage.setItem('selectedServerVersion', selectedVersion);
+        } catch (e) {
+            console.warn('无法存储选择的版本:', e);
+        }
+        
+        // 关闭所有窗口
+        closeConfirmDialog();
+        closeModal();
+        
+        // 跳转到相应的版本指南页面作为回退方案
+        const guideUrls = {
+            '3.9.8': 'guides/guide-3.9.8.html',
+            '3.11': 'guides/guide-3.11.html'
+        };
+        
+        if (guideUrls[selectedVersion]) {
+            window.location.href = guideUrls[selectedVersion];
+        } else {
+            // 如果没有对应的URL，显示通知
             setTimeout(() => {
                 showVersionNotification(selectedVersion);
             }, 500);
