@@ -1,203 +1,323 @@
-Rules of the Game
-版本日期 二月 27th, 2024
-These Rules of the Game regulate the relations between BATTLESTATE GAMES LIMITED, legal address Wework Aviation House, 125 Kingsway, London, United Kingdom, WC2B 6NH and/or another person that, with the consent of Battlestate Games Limited, grants you the right to use the Game (hereinafter “Battlestate Games Limited” and/or “the Licensor”), and you, the end user of the computer game Escape From Tarkov (hereinafter “the User”), hereinafter separately referred to as “the Party” and jointly as “the Parties”.
+# EFT网络私服规则文档
+
+## 版本信息
+- 版本日期：2025年3月1日
+- 版本号：1.0.0
+
+## 文档目的
+本文档规范了用户在使用《逃离塔科夫》网络私服（基于离线版修改并需要网络连接）时应遵守的规则和注意事项。本文档构成本人（个人运营者）与用户之间服务协议的关键文件，明确了游戏使用规则以及用户违反规则的责任。请所有用户务必仔细阅读并遵守。
+
+## 目录
+1. [基本定义](#基本定义)
+2. [玩家资格与账号管理](#玩家资格与账号管理)
+3. [游戏使用规则](#游戏使用规则)
+4. [违规处理](#违规处理)
+5. [服务器管理](#服务器管理)
+6. [免责声明](#免责声明)
+7. [规则修改](#规则修改)
+8. [实施步骤](#实施步骤)
+9. [常见问题解答（FAQ）](#常见问题解答faq)
+10. [相关案例分析](#相关案例分析)
+11. [更新历史记录](#更新历史记录)
+12. [联系方式](#联系方式)
+
+## 基本定义
+
+### 1.1 核心概念
+- **私服**：指由个人运营者运营的《逃离塔科夫》网络私人服务器，基于官方游戏离线版修改，提供多人游戏体验。
+- **玩家**：指注册并使用本私服的所有用户。
+- **管理员**：指个人运营者委派的负责维护服务器秩序、处理玩家问题的工作人员。
+- **作弊行为**：指使用第三方软件、脚本、修改游戏文件或利用游戏漏洞等方式获取不公平优势的行为。作弊行为包括但不限于：透视、自瞄、无后坐力、加速、穿墙、物品复制、修改游戏数据等。
+- **恶意行为**：指故意破坏游戏环境、影响其他玩家游戏体验的行为，包括但不限于：恶意击杀队友、刷屏、故意破坏服务器资源等。
+- **游戏漏洞**：指游戏中存在的程序缺陷或设计缺陷，可能被玩家利用以获取不当利益。
+
+## 玩家资格与账号管理
+
+### 2.1 玩家资格
+- 玩家必须年满16周岁，若未满16周岁需在监护人的指导下使用本私服。
+- 玩家需确保提供的个人信息真实有效，并对其账户内的所有行为负责。
+
+### 2.2 账号注册与安全
+- 玩家需通过官方指定渠道注册账号，每个玩家仅限拥有一个游戏账号。
+- 玩家应妥善保管账号信息，禁止将账号出售、转让、出租或赠送给他人。
+- 如发现账号被盗或异常登录，应立即联系管理员进行处理。
+
+### 2.3 账号安全最佳实践
+为保障您的账号安全，请遵循以下最佳实践：
+- 使用强密码，包含大小写字母、数字和特殊字符
+- 定期更换密码（建议每3个月更换一次）
+- 不要在多个平台使用相同的密码
+- 不要点击来历不明的链接或下载未知文件
+- 开启双重认证（如果可用）
+- 不要与他人共享您的账号信息
+
+## 游戏使用规则
+
+### 3.1 网络连接要求
+- 本私服需要稳定的互联网连接才能正常运行，玩家需自行确保网络环境良好。
+- 玩家需使用推荐的网络配置，避免使用可能影响游戏体验的网络代理或VPN。
+
+### 3.2 游戏行为规范
+- 禁止使用任何形式的作弊软件、脚本或利用游戏漏洞。
+- 禁止恶意破坏游戏环境，包括但不限于：恶意刷屏、恶意击杀队友、恶意卡bug等。
+- 禁止在游戏内传播色情暴力、政治敏感等不良信息。
+- 禁止侮辱、诽谤、威胁其他玩家或管理员，尊重他人，保持良好的游戏氛围。
+- 禁止进行任何形式的游戏内交易，包括但不限于装备、账号、游戏货币等。
+
+### 3.3 服务器资源使用
+- 玩家应合理使用服务器资源，避免进行可能导致服务器过载的操作。
+- 禁止使用非官方客户端或修改过的客户端连接服务器。
+
+### 3.4 使用场景示例
+
+**场景一：公平竞技**
+玩家在游戏中应当依靠自身技能进行战斗，避免使用任何辅助工具。例如，在PVP战斗中，应使用真实的瞄准技巧，而不是依赖自瞄软件。
+
+**场景二：团队合作**
+在组队模式下，玩家应当与队友积极配合，分享资源和信息，共同完成游戏目标。不应恶意击杀队友或独占稀有资源。
+
+**场景三：交流互动**
+在游戏聊天中，应当保持文明用语，尊重其他玩家的意见和感受。避免使用侮辱性语言或进行人身攻击。
+
+### 3.5 注意事项
+- 本服务器是基于官方游戏修改的私人服务器，与官方游戏无关
+- 游戏数据可能会定期重置，玩家应做好心理准备
+- 服务器可能会进行定期维护，维护时间会提前通知
+- 请遵守国家相关法律法规，不得利用本服务器进行任何违法活动
+- 如有发现游戏漏洞，请及时向管理员报告，不要恶意利用
+
+## 违规处理
+
+### 4.1 处罚措施
+对于违反本规则的玩家，管理员有权根据违规情节轻重采取以下措施：
+- 口头警告
+- 临时禁言
+- 短期封号（1-7天）
+- 长期封号（30天以上）
+- 永久封号
+
+### 4.2 特殊情况处理
+- 对于使用作弊软件的玩家，一经发现将直接永久封号。
+- 对于多次违规或严重违规的玩家，将加重处罚并可能列入服务器黑名单。
+- 玩家如对处罚结果有异议，可在处罚后48小时内向管理员提交申诉。
+
+### 4.3 违规认定标准
+
+| 违规行为 | 认定标准 | 处罚措施 |
+|---------|---------|--------|
+| 轻度违规 | 语言不当、轻微影响他人游戏体验 | 口头警告或临时禁言 |
+| 中度违规 | 重复轻度违规、恶意破坏游戏环境 | 短期封号（1-7天） |
+| 严重违规 | 使用辅助工具、严重影响游戏公平性 | 长期封号或永久封号 |
+
+### 4.4 申诉流程
+如果您对处罚结果有异议，请按照以下流程提交申诉：
+1. 准备申诉材料，包括：处罚通知截图、相关证据（如有）、详细说明
+2. 通过官方渠道联系管理员（推荐使用Telegram双向机器人）
+3. 在处罚后的48小时内提交申诉
+4. 等待管理员审核（通常在3个工作日内）
+
+## 服务器管理
+
+- 个人运营者有权根据服务器运行情况调整游戏设置、更新服务器版本。
+- 管理员有权在必要时对服务器进行维护、重启或临时关闭。
+- 管理员有权拒绝任何不符合服务器规则的玩家进入游戏。
+
+## 免责声明
+
+- 本私服仅供学习和交流使用，不涉及任何商业行为。
+- 个人运营者不保证服务器的绝对稳定性，对于因服务器故障导致的游戏数据丢失、游戏中断等情况，不承担任何责任。
+- 玩家需自行承担因网络问题、设备故障等非服务器原因导致的游戏问题。
+
+## 规则修改
+
+- 个人运营者有权根据实际情况修改本规则，修改后的规则将在服务器公告中发布。
+- 玩家继续使用本私服即视为接受修改后的规则。
+
+## 实施步骤
+
+### 8.1 玩家注册与加入流程
+1. **准备工作**
+   - 确保您的计算机满足游戏最低配置要求
+   - 下载官方游戏客户端
+   - 准备稳定的网络连接
+
+2. **注册账号**
+   - 通过官方指定渠道（Discord、Telegram等）联系管理员
+   - 提供必要的个人信息（用户名、邮箱等）
+   - 等待管理员审核并创建账号
+
+3. **安装客户端**
+   - 下载私服专用补丁
+   - 按照管理员提供的教程安装补丁
+   - 配置游戏客户端连接设置
 
-The Rules of the Game constitute a Key Document in accordance with the Licence Agreement between the Licensor and you and regulate the rules for using the Game, as well as the User’s liability for breaching the Rules of the Game.
+4. **连接服务器**
+   - 启动游戏客户端
+   - 输入账号密码登录
+   - 选择服务器列表中的私人服务器
+   - 点击连接并等待成功连接
 
-TERMS USED IN THE RULES OF THE GAME
-1.1. Words and expressions in this Rules of the Game shall have the same meanings specified in the License Agreement granting a license to install and use the computer game Escape from Tarkov (hereinafter, the “Agreement”, the “Licence Agreement”) unless the Rules of the Game define and/or context requires otherwise.
+5. **开始游戏**
+   - 选择游戏模式
+   - 创建或选择角色
+   - 进入游戏开始体验
+
+### 8.2 管理员工作流程
+1. **账号管理**
+   - 审核新玩家注册请求
+   - 创建新账号
+   - 处理账号找回、密码重置等请求
+
+2. **服务器维护**
+   - 定期检查服务器运行状态
+   - 执行系统更新和补丁安装
+   - 监控服务器性能指标
+
+3. **违规处理**
+   - 接收玩家举报
+   - 调查违规行为
+   - 实施相应处罚措施
+   - 处理玩家申诉
 
-1.2. Content – the details, including but not limited to software, technologies, text materials, publications on forums, publications in chatrooms, mini-applications, messages, references, emails, music, audio-materials, graphic materials, photographs and video-materials, as well as layout and external attributes of the Game website and of the Game.
+4. **社区管理**
+   - 管理游戏内聊天
+   - 组织游戏活动
+   - 收集玩家反馈
+   - 解答玩家问题
 
-1.3. User materials – information materials created or uploaded by the User, including but not limited to account characters, publications on forums, publications in chatrooms, voice chat, functions for exchange of messages, information about the user, audio-visual materials, amateur literary works (including ones created by Users on the subjects of the Game), illustrative materials (including ones created by Users on the subjects of the Game), musical materials and any other information materials provided by users during gameplay.
+## 常见问题解答（FAQ）
 
-1.4. Platform – the Game operator, namely: Battlestate Games Limited or other platforms, web-applications and social networks that are Game operators with the consent of Battlestate Games Limited.
+### 9.1 技术问题
 
-RULES FOR USING THE GAME
-2.1. GAME USERS
+**Q1: 游戏无法启动或连接服务器失败怎么办？**
+A: 请检查以下几点：
+- 确保您的计算机满足游戏最低配置要求
+- 确认网络连接正常
+- 检查服务器是否在线（可通过Discord或Telegram查看公告）
+- 尝试重新安装游戏客户端和补丁
+- 联系管理员获取帮助
 
-2.1.1. If you are under 18 years of age (unless the legislation of the country in which you live provides for other age restrictions), ask one of your parents or your legal guardian to read and accept these Rules of the Game on your behalf before you start using the Game. If you (or, in relevant cases, one of your parents or your legal guardian) do not agree to these Rules of the Game, you are prohibited from using or accessing the Game or any part thereof. By registering an Account or using the Game, you represent and warrant that you are an individual over the age of 18 (eighteen) years (unless the legislation of the country in which you live provides for other age restrictions) or an individual whose legal guardian has accepted and agreed to these Rules of the Game.
+**Q2: 游戏中遇到卡顿或延迟高如何解决？**
+A: 建议采取以下措施：
+- 关闭后台运行的其他程序
+- 降低游戏画质和特效设置
+- 检查网络连接质量
+- 使用有线网络连接（如有条件）
+- 更换DNS服务器
 
-2.1.2. You agree that you will not consciously permit use of or provision of access tothe Game by persons under 18 (eighteen) years of age (unless the legislation of the country in which you live provides for other age restrictions) unsupervised by one of the parents or the legal guardian.
+**Q3: 如何更新游戏到最新版本？**
+A: 游戏更新通常通过以下方式：
+- 管理员会在Discord或Telegram发布更新公告
+- 下载并安装最新补丁
+- 按照更新说明完成更新流程
 
-2.1.3. The User agrees that the Game might include sound and (or) video-effects that, under certain circumstances, might cause epileptic or other disorders of a neurological nature in persons inclined thereto and confirms that they do not suffer from the given disorders and will not use the Game in that case.
+### 9.2 账号问题
 
-2.1.4. If anyone in your family has previously demonstrated symptoms of epilepsy (fits or loss of consciousness) under the impact of flashing lights, see a physician before beginning to use the Game. If, during the Game, you or your child develops the following symptoms: dizziness, blurred vision, twitching of the eyes or muscles, loss of consciousness, disorientation, any involuntary movement or convulsions, stop using the Game and see a physician IMMEDIATELY.
+**Q4: 忘记密码怎么办？**
+A: 请通过官方渠道联系管理员，提供账号相关信息进行身份验证，验证通过后可以重置密码。
+
+**Q5: 账号被盗或异常登录如何处理？**
+A: 请立即联系管理员，提供账号信息和异常登录的相关证据，管理员会冻结账号并协助您找回。
 
-2.1.5. The User understands, accepts and agrees that regular long-term (continuous) use of a personal computer or other technical device might cause various physical disorders, including eyesight deterioration, scoliosis, various neuroses and other adverse effects on the body. The User guarantees that they will use the Game exclusively for a reasonable period of time, with breaks for rest and other steps to prevent any physical disruption.
+**Q6: 可以创建多个账号吗？**
+A: 不可以。每个玩家仅限拥有一个游戏账号，禁止多开账号。
 
-2.2. TECHNICAL CONDITIONS FOR USING THE GAME
+### 9.3 游戏规则问题
 
-2.2.1. To use the Game, you need to create an Account.
+**Q7: 使用宏或鼠标侧键功能是否算作弊？**
+A: 简单的按键映射或重复按键宏通常是允许的，但任何模拟自动瞄准、自动射击或提供不公平优势的宏都属于作弊行为。
 
-2.2.2. To create an Account, an email address is needed; you will also be required to provide certain information. Detailed description of the information that you will need to provide, see the Confidentiality Policy, which is a Key Document. The User shall provide reliable and precise information when setting up an Account.
+**Q8: 如何举报其他玩家的违规行为？**
+A: 可以通过以下方式举报：
+- 游戏内举报功能（如有）
+- 向管理员发送私聊消息，提供违规者ID和相关证据
+- 在Discord或Telegram中提交举报表单
 
-2.2.3. In the process of setting up the Account, you will need to give a user name and/or person for use in the Game and on the Game website. User names and persons are linked to your Account.
+**Q9: 服务器数据会定期重置吗？**
+A: 是的，为了保持游戏的新鲜感和公平性，服务器数据可能会定期重置。重置前会提前发布公告。
 
-2.2.4. The User has the right to use the Game using the Account they set up previously according to the rules and principles established in this document and/or on the Game website.
+### 9.4 其他问题
 
-2.2.5.If you download and use the Game with the help of your Account created by the Platform, the Licensor automatically sets up an Account for you inthe Game on the basis of the data transmitted by the Platform. All the rules andinstructions contained in this document also apply to an Account set up in this way. The Licensor is not liable for any problems connected with your Account on the Platform, including ones with using your Account on the Platform, and does not consider any claims in relation to the Account on the Platform.
+**Q10: 如何获得游戏内的稀有物品？**
+A: 游戏内的稀有物品只能通过正常游戏途径获得，如完成任务、击败敌人、搜索地图等。禁止通过任何非正常途径获取物品。
 
-2.2.6. Should questions arise concerning setting up an Account, please contact the Licensor by email at: support@battlestategames.com.
+**Q11: 可以向管理员申请特殊权限或物品吗？**
+A: 不可以。所有玩家在游戏中享有平等的权利，管理员不会为任何玩家提供特殊权限或物品。
 
-2.2.7. In addition, in order to use the Game, the User needs, depending on the technical specifics of the Game, to install independently the Game Client on the PC or other device with the necessary technical characteristics or log in to the Game online or perform other required actions. The Game Client may be distributed by Battlestate Games Limited and (or) persons authorised thereby via the Internet.
+**Q12: 如何向服务器提出建议或反馈？**
+A: 您可以通过Discord、Telegram或游戏内聊天向管理员提供建议和反馈，我们会认真考虑每一条有价值的意见。
 
-2.2.8. The Game may be used exclusively in interactive (online) mode, so the User needs to ensure Internet connection.
+## 相关案例分析
 
-2.2.9. The Game is used via outside platforms with which the Licensor and/or Battlestate Games Limited collaborates on a partnership basis from the relevant websites, using corresponding registration data.
+### 10.1 作弊行为案例
 
-2.3. OTHER CONDITIONS FOR USING THE GAME
+**案例一：透视外挂使用**
+- **事件描述**：玩家A在游戏中使用透视外挂，可以看到墙后的敌人位置。
+- **后果**：管理员通过反作弊系统检测到异常行为，立即对玩家A进行永久封号处理。
+- **教训**：任何形式的作弊行为都将被严格打击，不要抱有侥幸心理。
 
-2.3.1. In order to use the Game, inaddition to accepting these Rules of the Game, the User must accept the terms of the Licence Agreement, the Confidentiality Policy and the Forum Rules.
+**案例二：自瞄辅助使用**
+- **事件描述**：玩家B在PVP战斗中展现出异常的瞄准精度，被其他玩家举报。
+- **调查过程**：管理员查看了战斗录像，发现其瞄准行为不符合人类操作模式，进一步检查客户端文件发现了自瞄辅助软件。
+- **处理结果**：玩家B被永久封号，并列入服务器黑名单。
+- **启示**：游戏会对异常行为进行监控，作弊行为很容易被发现。
 
-2.3.2. If you do not accept these Rules of the Game or the terms of the Licence Agreement, the Confidentiality Policy and the Forum Rules, you do not have the right to use the Game.
+### 10.2 恶意行为案例
 
-2.4. ACCOUNT CONFIDENTIALITY
+**案例三：恶意击杀队友**
+- **事件描述**：玩家C在组队模式下故意击杀队友，并抢夺其装备。
+- **处理过程**：接到举报后，管理员核实了相关证据，确认玩家C存在恶意行为。
+- **处罚措施**：对玩家C进行了短期封号（3天）处理，并警告其如有再犯将加重处罚。
+- **改进措施**：增加了组队模式下的伤害保护机制，减少恶意击杀的可能性。
 
-2.4.1. The User does not have the right to provide any other persons with their user name and/or character’s name. It is prohibited to use a user or character’s name that is used by another person, is obscene, derogatory or otherwise breaks these Rules of the Game.
+**案例四：游戏内辱骂**
+- **事件描述**：玩家D在游戏聊天中使用侮辱性语言辱骂其他玩家。
+- **处理结果**：管理员首先对玩家D进行了警告，但玩家D仍然继续辱骂行为，随后被禁言24小时。
+- **教育意义**：保持文明的游戏环境需要所有玩家共同努力，文明用语是基本要求。
 
-2.4.2. You are required to ensure confidentiality of all information connected with your Account. You must not disclose to anyone the registration date or your Account or password, secret question or the answer to it. This applies equally to your friends, children, spouse, colleagues, members and any other persons.
+### 10.3 账号安全案例
 
-2.4.3. You are liable for any deeds and actions performed using your Account and for all violations of these Rules of the Game committed using your Account as a result of deliberate omission or action in relation to the information on your Account. We bear no liability toward you for any losses or harm incurred as a result of unsanctioned use of your Account, or unsanctioned access, use, amendment, adjustment and/or disclosure of your personal information as a consequence of actions or omissions in relation to information on your Account.
+**案例五：账号被盗**
+- **事件描述**：玩家E的账号被盗，盗号者使用该账号进行了违规操作，导致账号被封。
+- **解决过程**：玩家E及时联系管理员，提供了身份验证信息和账号被盗的证据。管理员核实后解封了账号，并协助玩家E重置了密码和安全设置。
+- **安全建议**：请妥善保管账号信息，使用强密码，并开启双重认证（如有）。
 
-2.4.4. You are required to ensure protection of your Account and hardware against access by third parties. The User shall promptly notify Battlestate Games Limited and/or the Licensor by email to: support@battlestategames.com, if they become aware of:
+## 更新历史记录
 
-unsanctioned use of their Account or other security breaches;
-any actual or potential use in relation to the Game of tools for gaining unlawful access to the information resources.
-2.4.5. Battlestate Games Limited uses electronic and administrative methods for security purposes and to preclude unsanctioned access, use, amendments, adjustment and/or disclosure of your personal information. Even though Battlestate Games Limited applies all the requisite measures to protect your personal information, data uploaded on to the Internet and transmitted via the Internet, as well as personal information stored on the servers of Battlestate Games Limited, the Platform and/ or the Licensor, as well as other servers of third parties and used for operating and servicing the Game, might be subject to attack and Battlestate Games Limited does not guarantee their safety.
+### 11.1 版本更新日志
 
-2.5. GAME USER’S OBLIGATIONS WHEN USING THE GAME
+| 日期 | 版本号 | 更新内容 | 负责人 |
+|------|-------|---------|-------|
+| 2025-03-01 | 1.0.0 | 初始版本发布，包含基本规则和管理制度 | 个人运营者 |
+| 2025-02-15 | 0.9.0 | 测试版本发布，收集玩家反馈 | 个人运营者 |
 
-2.5.1. NOT to use the contact information of other Game users for distributing undesirable information (Spam) or post Intellectual products in the Game without the consent of their right holders.
+### 11.2 规则修改记录
 
-2.5.2. Not to post within the Game personal information about third parties without their consent, including home address, telephone number, passport details.
+| 日期 | 修改内容 | 修改原因 | 生效日期 |
+|------|---------|---------|----------|
+| 2025-03-01 | 正式确定并发布游戏规则 | 服务器正式上线需要明确的规则体系 | 2025-03-01 |
+| 2025-02-15 | 起草初步规则文档 | 测试阶段需要基本的行为规范 | 2025-02-15 |
 
-2.5.3. Not to post within the Game any advertisement, commercial offers, campaigning or any other information, unless agreed with Battlestate Games Limited.
+### 11.3 文档维护信息
+- **文档所有者**：个人运营者
+- **维护频率**：根据需要不定期更新
+- **审核流程**：规则修改需经管理员团队审核后发布
+- **发布渠道**：Discord、Telegram、游戏内公告
 
-2.5.4. Not to post within the Game any materials denigrating, humiliating or dishonouring other users or third parties or links to such materials.
+## 联系方式
 
-2.5.5. Not to post or otherwise use within in the Game any obscene or indecent words or expressions, including using them as a user name.
+如有任何问题、建议或需要帮助，请通过以下方式联系个人运营者：
 
-2.5.6. Not to post within the Game any malware or links that might contain or do contain malware.
+- QQ群：1034718897
+- Discord 群组：https://discord.gg/UwMFBuCbU8
+- Telegram 群组：https://t.me/+1nZnaWWryz1kNDll
+- Telegram 双向机器人（优先使用）：@ShuangXiang_Dddddavidd_bot
+- 邮箱：yingmoliuguang@yeah.net
+- Github 主页：https://github.com/yzy15
+- Github 仓库：https://github.com/yzy15/eft-server
 
-2.5.7. Not to post within the Game any materials of a pornographic nature or links thereto.
+---
 
-2.5.8. Not to post within the Game any threats, exhortations to violence or performance of illegal acts.
+**重要提示**：本规则旨在维护公平、健康的游戏环境，所有玩家必须严格遵守。违规行为将受到相应处罚，严重者将被永久封禁。
 
-2.5.9. Not to post within the Game any materials with elements of violence, cruelty, racial, ethnic or religious discord or links to such materials.
-
-2.5.10. Not to advocate or demonstrate within the Game any Nazi, extremist or other equivalent attributes or symbols or to perform any actions designed to rehabilitate Nazism.
-
-2.5.11. Not to advocate within the Game any criminal or other unlawful activities or post instructions for performing unlawful actions.
-
-2.5.12. Not to post within the Game any other information that, in the opinion of Battlestate Games Limited, is undesirable or violates the rules of morality and ethics and (or) the effective legislation.
-
-2.6. USE BY THE PARTIES OF THE CONTENT, USER MATERIALS, WEBSITES OF THIRD PARTIES DURING USE OF THE GAME
-
-2.6.1. The Game contains a large scope of Content. The User accesses individual Content only online and such access depends on the scope of the rights to use the Game granted to the User by the Licence Agreement.
-
-2.6.2. The Content and all intellectual property rights thereto belong to Battlestate Games Limited and/or the Licensor.
-
-2.6.3. Rights to use the Content are granted to the User in connection with provision thereto of the rights to use the Game within the scope set by the Licence Agreement and these Rules of the Game. The User does not have the right (without the Licensor’s written permission):
-
-2.6.3.1. to copy or download Content from the Game or part thereof (other than within the scope of the right to use the Game envisaged by the Licence Agreement).
-
-2.6.3.2. to distribute, publicly reproduce or demonstrate, lease out, sell, transfer, publish, copy, create derivatives, lease, sublicense, disseminate, decompile, disassemble, reverse engineer or otherwise use the Content by any unsanctioned method.
-
-2.6.3.3. to use the Content for commercial purposes (i.e., to gain a profit).
-
-2.6.3.4. to delete, conceal or amend notices of copyright, patents, trademarks and other ownership rights posted in the Content.
-
-2.6.4. Battlestate Games Limited provides the User with the Content in the process of use by the User of the Game in observance of the following conditions and specifics:
-
-2.6.4.1. User has an access to the content within the region of purchase.
-
-2.6.4.2. The User receives the Content only from Battlestate Games Limited and/or persons authorised thereby; it is prohibited to receive or try to obtain the Content from third parties.
-
-2.6.4.3. Battlestate Games Limited reserves the right to refuse to satisfy a request (requests) from the User to acquire Content and the right to restrict or block requests to acquire or receive Content at its own discretion, given relevant grounds, in particular technical problems and/or legal restrictions, such as under the legislation on protection of copyright, the criminal legislation, the legislation on protection of the rights of minors, etc.
-
-2.6.4.4. Battlestate Games Limited does not guarantee constant access to any Content in all countries and/or geographical regions or any relevant time; nor does Battlestate Games Limited guarantee that it will continue to offer specific Content for a determined time (unless otherwise stated during use of the Game).
-
-2.6.4.5. The Content to which the User gains access is not subject to return or exchange for other Content or cash, goods and services, unless otherwise envisaged by the Rules of the Game or of the Game.
-
-2.6.4.6. Battlestate Games Limited has the right to make periodical amendments or updates to the Content, whereupon Battlestate Games Limited published a detailed description of all the changes in the “News” section of the relevant Game website.
-
-2.6.5. The User has the right to create user websites in relation to any of the Games of Battlestate Games Limited in observance of the conditions set forth in these Rules of the Game.
-
-2.6.6. On some Game websites, Battlestate Games Limited specially indicates separate Content (such as images, graphic images and illustrative materials and trademarks belonging to Battlestate Games Limited) as intended “for use on user websites”. In these Rules of the Game, specially indicated Content is called “Content for user websites”.
-
-2.6.7. Rights to use the Content are granted to the User for reproduction and subsequent distribution of the Content on user websites in observance of the following conditions:
-
-2.6.7.1. you confirm and agree that Battlestate Games Limited retains ownership rights to the Content for user websites and is entitled to make changes, delete, supplement or otherwise modify it at any time.
-
-2.6.7.2. you agree to include notices of trade marks, copyrights and other ownership rights of Battlestate Games Limited and/or its authorised persons if Content for user websites is shown, if Battlestate Games Limited so demands, and by the means selected by Battlestate Games Limited for this purpose.
-
-2.6.7.3. you agree to observe the instructions for using the Content and/or the Game furnished from time to time by Battlestate Games Limited.
-
-2.6.7.4. you do not have the right to delete or change any identifying information or information about management of copy rights provided together with copies of the Content for user websites, including in digital format, or to challenge the ownership rights of Battlestate Games Limited (or those of third parties) to the Content for user websites.
-
-2.6.7.5. you do not have the right to use or utilise trade marks that are confusingly similar to the Content for user websites.
-
-2.6.7.6. it is prohibited to publish on user website any denigrating or illegal materials or materials that violate the right of third parties or cause (or might cause) harm to the reputation of Battlestate Games Limited or of the Game.
-
-2.6.7.7. unless expressly permitted in these Rules of the Game, you are prohibited from leasing, leasing out, reproducing, amending or translating the Content for user websites into other languages, adapting (including, among other things, literary texts or images) or otherwise using the Content without the direct written permission of Battlestate Games Limited.
-
-2.6.7.8. you do not have the right to use or attempt to use the Content for user websites or commercial purposes or to gain a profit (such as by selling subscriptions to your user website) without the direct written permission of Battlestate Games Limited.
-
-2.6.8. If the User fails to observe the conditions of these Rules of the Game regarding the procedure for using the Content, Battlestate Games Limited reserves the right to close the User’s Account or terminate use of the Game by the User.
-
-2.6.9. User create, download and use User materials at their own risk. If you download or provide other users with your User materials by means of use of the Game, Battlestate Games Limited does not control, monitor, approve or possess your User materials and you authorised Battlestate Games Limited to store and provide such user materials within the scope gameplay.
-
-2.6.10. In relation to User materials created by your or User materials you wish to provide to other users, you agree and undertake to observe the following conditions:
-
-2.6.10.1. any part of the User materials that includes intellectual property of Battlestate Games Limited belongs to Battlestate Games Limited;
-
-2.6.10.2. you are prohibited from downloading User materials belonging to other persons without relevant permission from the right holder;
-
-2.6.10.3. you are prohibited from downloading User materials violating the intellectual property rights or Confidentiality Policy or other rights of third parties, as well as ones that are illegal or break these Rules of the Game;
-
-2.6.10.4. you waive the right to lodge claims against us in relation to your personal non-property or analogous rights to the User materials;
-
-2.6.10.5. you bear personal liability for your User materials; Battlestate Games Limited does not make any preliminary check on all the User materials and does not approve, confirm or conduct a preliminary checks on the User materials you or other users might provide during gameplay;
-
-2.6.10.6. you are prohibited from announcing or assuming in any way that the User materials have been approved, are support by or connected with Battlestate Games Limited;
-
-2.6.10.7. The User materials must comply with the applicable legislation and must not contain materials considered to be insulting, denigrating or illegal or that might damage the reputation or image of Battlestate Games Limited;
-
-2.6.10.8. you bear full liability for all the User materials you create; in certain circumstances, Battlestate Games Limited has the right to assume obligations and liability in relation to User materials; Battlestate Games Limited does not provide any support in connection with the User materials;
-
-2.6.10.9. if, in the opinion of Battlestate Games Limited, User materials used or downloaded by you violate any of the given conditions, Battlestate Games Limited has the right to delete, block, edit, move or switch off such User materials;
-
-2.6.10.10. if you violate any of the given conditions, Battlestate Games Limited reserves the right to suspend or close access to your User materials and to take any other measures it deems advisable.
-
-2.6.11. The Game may include hyperlinks to websites administered by third parties, including advertisers and other providers of information materials. Such sites might collect data or request person information from you. Battlestate Games Limited does not control such websites and is not liable for their information materials, Confidentiality policy or procedure for gathering, using and disclosing any information received thereby.
-
-LIABILITY OF THE USER FOR BREAKING THE RULES OF THE GAME
-3.1. If you break these Rules of the Game, Battlestate Games Limited and/or the Licensor has the right, at is justified discretion and depending on how serious the breach is, to adopt certain or all of the below measures:
-
-3.1.1. to suspend your Account for a short time determined at the discretion of Battlestate Games Limited and/or of the Licensor;
-
-3.1.2. to suspend your Account for a longer period determined at the discretion of Battlestate Games Limited and/or of the Licensor;
-
-3.1.3. to terminate your Account and cancel the Licence Agreement.
-
-3.2. In the event of a first, not gross and repairable violation, if permitted by the circumstances, Battlestate Games Limited and/or the Licensor will grant you 14 (fourteen) calendar days to eliminate it, otherwise Battlestate Games Limited and/or the Licensor will send you a notice of impending closure of the Account.
-
-3.3. If Battlestate Games Limited and/or the Licensor suspends access to your Account, you will be unable to log in to your Account or to use the Game for the relevant period. If Battlestate Games Limited and/or the Licensor closes your Account and cancels the Licence Agreement, you will no longer be able to log in to your Account; Battlestate Games Limited and/or the Licensor also has the right to prohibit for you access or use of the Game in the future.
-
-3.4. Battlestate Games Limited and/or the Licensor may also suspend your access to the functions of the Game Chat, in which case, for the relevant period, you be able to play the Game and read the Game Chat of other players, but not participate in the Game Chat yourself.
-
-3.5. Battlestate Games Limited and/or the Licensor closes your Account and cancels the Licence Agreement only for weighty reasons, when Battlestate Games Limited and/or the Licensor considers temporary measures to be inadequate. Such reasons might include, for instance, gross violation of these Rules of the Game, the Forum Rules or the Confidentiality Policy, as well as multiple violation of these Rules of the Game, the Forum Rules, the Confidentiality Policy or any of these documents. Analogous terms might be applied in the event of a gross violation or multiple violation of (i) the Licence Agreement or (ii) individual Rules of Game.
-
-3.6. If, in your opinion, Battlestate Games Limited and/or the Licensor has suspend or closed your Account in error, please email: support@battlestategames.com.
-
-AMENDMENTS AND ADDENDA TO THE RULES OF THE GAME
-4.1. 4.1. The Rules of the Game may be amended by Battlestate Games Limited unilaterally. A notice of amendment of the Rules of the Game is published on the Game website and (or) sent to the User’s attention by email to the address indicated thereby when setting up the Account at least ten (10) calendar days before the amendments come into effect.
-Use of the Game or authorisation in the Game following publication of the announcement and (or) dispatch of the notice of amendment of the Rules of the Game as described above means consent by the User to the amendments introduced into the Rules of the Game. The User is not released from obligations stipulated hereby in consideration of the amendments made hereto if the User failed to acquaint themselves with the changes to the Rules of the Game.
-
-4.2. The User does not have the right to use the Game if they disagree with the amendments introduced into the Rules of the Game.
-In this case, the User has the right to cancel the Agreement unilaterally within ten (10) calendar days of the amendments to the Rules of the Game being published on the Game website and (or) the relevant notification sent by email. If the User decides to cancel the Agreement, they shall send Battlestate Games Limited and/or the Licensor a notification of cancellation of the Agreement by email. If, within the above ten (10) calendar day period, the User does not express their wish to cancel the Agreement, the User is deemed to have accepted the conditions hereof in consideration of the amendments made to the Rules of the Game.
-After receiving the User’ notification of cancellation, Battlestate Games Limited and/or the Licensor suspends the User’s access to the Account. Whereat Battlestate Games Limited and/or the Licensor does not refund any money and does not make any other reimbursements, including losses of any kind.
-
-CONTACT DETAILS
-5.1. In the event of any questions, claims or comments arising in relation to these Rules of the Game, please contact Battlestate Games Limited by email at: support@battlestategames.com.
+*本文档最终解释权归个人运营者所有*

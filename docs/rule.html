@@ -3,209 +3,549 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>私服规则 - EFT网络私服</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>逃离塔科夫私服游戏规则</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #1a1a1a;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-        }
-        header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-            border-bottom: 3px solid #4a90e2;
+            background-color: #f9f9f9;
         }
         h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #4a90e2;
-        }
-        .version-date {
-            margin-top: 10px;
-            color: #aaa;
-            font-style: italic;
-        }
-        .rules-content {
-            background: #2d2d2d;
-            border-radius: 8px;
-            padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
         }
         h2 {
-            color: #4a90e2;
-            border-bottom: 2px solid #4a90e2;
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
             margin-top: 40px;
-            margin-bottom: 20px;
         }
         h3 {
-            color: #6aa3e8;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            color: #2980b9;
+            margin-top: 25px;
         }
         p {
-            color: #e0e0e0;
             margin-bottom: 15px;
         }
         ul, ol {
-            color: #e0e0e0;
-            margin-left: 20px;
             margin-bottom: 20px;
         }
         li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .important-note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .account-security {
+            background-color: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .example-box {
+            background-color: #e7f3e7;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .notice-box {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .case-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
         }
         .back-button {
-            display: inline-block;
-            background: #4a90e2;
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #3498db;
             color: white;
-            padding: 12px 24px;
             text-decoration: none;
             border-radius: 4px;
-            margin-top: 30px;
-            transition: background 0.3s ease;
+            transition: background-color 0.3s;
         }
         .back-button:hover {
-            background: #357abd;
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .rules-content {
-                padding: 20px;
-            }
+            background-color: #2980b9;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>EFT网络私服规则</h1>
-            <div class="version-date">版本日期 : 2025年3月1日</div>
+    <h1>逃离塔科夫私服游戏规则</h1>
+    
+    <div class="section">
+        <div class="important-note">
+            <strong>重要提示：</strong>本规则适用于个人运营的逃离塔科夫私人服务器。玩家在加入游戏前必须仔细阅读并理解所有规则。违反规则将面临相应的处罚，包括但不限于警告、禁言、临时封号或永久封禁。请保持良好的游戏行为，共同维护公平、健康的游戏环境。
         </div>
-    </header>
-
-    <div class="container">
-        <div class="rules-content">
-            <p>在此，个人运营者奉劝各位<br><br>绿色游戏，素质游戏<br><br>请勿使用游戏辅助等软件或补丁进行游戏</p>
-            
-            <p style="margin-top: 30px;">本规则适用于《逃离塔科夫》网络私服（基于离线版修改并需要网络连接），规范了用户在使用本私服时应遵守的规则和注意事项。</p>
-
-            <p>本规则构成本人（个人运营者）与用户之间服务协议的关键文件，明确了游戏使用规则以及用户违反规则的责任。请所有用户务必仔细阅读并遵守。</p>
-
-            <h2>基本定义</h2>
-            <p>1.1. 私服：指由个人运营者运营的《逃离塔科夫》网络私人服务器，基于官方游戏离线版修改，提供多人游戏体验。</p>
-
-            <p>1.2. 玩家：指注册并使用本私服的所有用户。</p>
-
-            <p>1.3. 管理员：指个人运营者委派的负责维护服务器秩序、处理玩家问题的工作人员。</p>
-
-            <p>1.4. 作弊行为：指使用第三方软件、脚本、修改游戏文件或利用游戏漏洞等方式获取不公平优势的行为。</p>
-
-            <h2>玩家资格与账号管理</h2>
-            <h3>2.1. 玩家资格</h3>
-
-            <p>2.1.1. 玩家必须年满16周岁，若未满16周岁需在监护人的指导下使用本私服。</p>
-
-            <p>2.1.2. 玩家需确保提供的个人信息真实有效，并对其账户内的所有行为负责。</p>
-
-            <h3>2.2. 账号注册与安全</h3>
-
-            <p>2.2.1. 玩家需通过官方指定渠道注册账号，每个玩家仅限拥有一个游戏账号。</p>
-
-            <p>2.2.2. 玩家应妥善保管账号信息，禁止将账号出售、转让、出租或赠送给他人。</p>
-
-            <p>2.2.3. 如发现账号被盗或异常登录，应立即联系管理员进行处理。</p>
-
-            <h2>游戏使用规则</h2>
-            <h3>3.1. 网络连接要求</h3>
-
-            <p>3.1.1. 本私服需要稳定的互联网连接才能正常运行,玩家需自行确保网络环境良好。</p>
-
-            <p>3.1.2. 玩家需使用推荐的网络配置,避免使用可能影响游戏体验的网络代理或VPN。</p>
-
-            <h3>3.2. 游戏行为规范</h3>
-
-            <p>3.2.1. 禁止使用任何形式的作弊软件、脚本或利用游戏漏洞。</p>
-
-            <p>3.2.2. 禁止恶意破坏游戏环境 , 包括但不限于 : 恶意刷屏、恶意击杀队友、恶意卡bug等。</p>
-
-            <p>3.2.3. 禁止在游戏内传播色情暴力、政治敏感等不良信息。</p>
-
-            <p>3.2.4. 禁止侮辱、诽谤、威胁其他玩家或管理员，尊重他人，保持良好的游戏氛围。</p>
-
-            <p>3.2.5. 禁止进行任何形式的游戏内交易，包括但不限于装备、账号、游戏货币等。</p>
-
-            <h3>3.3. 服务器资源使用</h3>
-
-            <p>3.3.1. 玩家应合理使用服务器资源，避免进行可能导致服务器过载的操作。</p>
-
-            <p>3.3.2. 禁止使用非官方客户端或修改过的客户端连接服务器。</p>
-
-            <h2>违规处理</h2>
-            <p>4.1. 对于违反本规则的玩家，管理员有权根据违规情节轻重采取以下措施：</p>
-
+        
+        <h2>基本定义</h2>
+        <p>本规则中所指的"私服"是指由个人运营的《逃离塔科夫》游戏服务器，用于玩家进行游戏体验、测试或娱乐活动。个人运营者是指维护和管理该服务器的个人或团队。</p>
+        
+        <p><strong>恶意行为：</strong>是指故意破坏游戏公平性、扰乱游戏秩序或损害其他玩家利益的行为，包括但不限于使用作弊程序、恶意干扰服务器运行、盗取他人账号等。</p>
+        
+        <p><strong>游戏漏洞：</strong>是指游戏程序中存在的技术缺陷，可能被玩家利用来获取不正当利益或影响游戏平衡性。发现游戏漏洞应及时向管理员报告，禁止利用漏洞进行违规活动。</p>
+        
+        <div class="account-security">
+            <h3>账号安全最佳实践</h3>
             <ul>
-                <li>口头警告</li>
-                <li>临时禁言</li>
-                <li>短期封号（1-7天）</li>
-                <li>长期封号（30天以上）</li>
-                <li>永久封号</li>
+                <li>使用强密码，包含字母、数字和特殊字符，长度不少于8位</li>
+                <li>不要与他人共享账号信息</li>
+                <li>定期更改密码</li>
+                <li>警惕钓鱼网站和诈骗信息</li>
+                <li>不要在不安全的网络环境下登录游戏</li>
+                <li>定期检查账号活动记录，及时发现异常情况</li>
             </ul>
-
-            <p>4.2. 对于使用作弊软件的玩家，一经发现将直接永久封号。</p>
-
-            <p>4.3. 对于多次违规或严重违规的玩家，将加重处罚并可能列入服务器黑名单。</p>
-
-            <p>4.4. 玩家如对处罚结果有异议，可在处罚后48小时内向管理员提交申诉。</p>
-
-            <h2>服务器管理</h2>
-            <p>5.1. 个人运营者有权根据服务器运行情况调整游戏设置、更新服务器版本。</p>
-
-            <p>5.2. 管理员有权在必要时对服务器进行维护、重启或临时关闭。</p>
-
-            <p>5.3. 管理员有权拒绝任何不符合服务器规则的玩家进入游戏。</p>
-
-            <h2>免责声明</h2>
-            <p>6.1. 本私服仅供学习和交流使用，不涉及任何商业行为。</p>
-
-            <p>6.2. 个人运营者不保证服务器的绝对稳定性，对于因服务器故障导致的游戏数据丢失、游戏中断等情况，不承担任何责任。</p>
-
-            <p>6.3. 玩家需自行承担因网络问题、设备故障等非服务器原因导致的游戏问题。</p>
-
-            <h2>规则修改</h2>
-            <p>7.1. 个人运营者有权根据实际情况修改本规则，修改后的规则将在服务器公告中发布。</p>
-
-            <p>7.2. 玩家继续使用本私服即视为接受修改后的规则。</p>
-
-            <h2>联系方式</h2>
-            <p>8.1. 如有任何问题、建议或需要帮助，请通过以下方式联系个人运营者：</p>
-            <p>- QQ群：1034718897</p>
-            <p>- Discord 群组（不建议）：https://discord.gg/UwMFBuCbU8</p>
-            <p>- Telegram 群组：https://t.me/+1nZnaWWryz1kNDll</p>
-            <p>- Telegram 双向机器人(优先使用)：@ShuangXiang_Dddddavidd_bot</p>
-            <p>- 邮箱：yingmoliuguang@yeah.net</p>
-            <p>- Github 主页：https://github.com/yzy15 </p>
-            <p>- Github 仓库：https://github.com/yzy15/eft-server </p>
-
-            <a href="index.html" class="back-button">返回主页</a>
         </div>
     </div>
+    
+    <div class="section">
+        <h2>玩家资格与账号管理</h2>
+        <p>1.1. 所有玩家必须通过官方指定渠道注册账号，提供真实有效的个人信息。</p>
+        <p>1.2. 每位玩家仅限拥有一个游戏账号，禁止多开账号。</p>
+        <p>1.3. 玩家需妥善保管账号和密码，因账号泄露导致的损失由玩家自行承担。</p>
+        <p>1.4. 禁止出售、转让、借用或租用游戏账号。</p>
+        <p>1.5. 玩家需对账号下的所有行为负责。</p>
+        <p>1.6. 个人运营者有权拒绝任何玩家加入服务器，或终止任何玩家的游戏资格。</p>
+    </div>
+    
+    <div class="section">
+        <h2>游戏使用规则</h2>
+        <p>2.1. 玩家必须遵守游戏规则，尊重其他玩家和服务器管理人员。</p>
+        <p>2.2. 禁止使用任何形式的作弊程序，包括但不限于自动瞄准、透视、加速等。</p>
+        <p>2.3. 禁止利用游戏漏洞获取不正当利益，或干扰其他玩家的游戏体验。</p>
+        <p>2.4. 禁止在游戏内发布广告、进行商业活动或传播违法信息。</p>
+        <p>2.5. 禁止恶意攻击服务器或干扰服务器正常运行。</p>
+        <p>2.6. 禁止在游戏内进行欺诈、诈骗或其他违法行为。</p>
+        
+        <div class="example-box">
+            <h3>使用场景示例</h3>
+            <h4>公平竞技场景</h4>
+            <p>在PVP战斗中，玩家应依靠自身技能进行战斗，不使用任何辅助工具。例如：在Factory地图进行1v1对战时，双方应公平竞争，禁止使用透视外挂查看对方位置。</p>
+            
+            <h4>团队合作场景</h4>
+            <p>在组队模式下，队友之间应相互配合，共同完成任务目标。例如：在完成Raider营地清剿任务时，团队成员应分工明确，互相支援，不恶意击杀队友或抢夺装备。</p>
+            
+            <h4>交流互动场景</h4>
+            <p>在游戏聊天中，玩家应保持文明用语，友好交流。例如：在发现稀有物品或完成困难任务时，可以在公共频道分享经验，但不应炫耀或嘲讽其他玩家。</p>
+        </div>
+        
+        <div class="notice-box">
+            <h3>注意事项</h3>
+            <ul>
+                <li>游戏过程中如遇到技术问题，请及时联系管理员，不要自行尝试修改游戏文件</li>
+                <li>合理安排游戏时间，避免沉迷游戏影响正常生活和工作</li>
+                <li>保护个人隐私，不要在游戏中透露真实姓名、地址、电话号码等敏感信息</li>
+                <li>对游戏内容有意见或建议时，请通过合法渠道向管理员反馈，不要采取过激行为</li>
+                <li>游戏内的虚拟物品仅在本服务器内有效，不具有现实价值</li>
+                <li>未成年人需在监护人指导下进行游戏</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>违规处理</h2>
+        <p>3.1. 个人运营者有权对违反游戏规则的玩家采取相应的处罚措施。</p>
+        <p>3.2. 处罚措施包括但不限于警告、禁言、临时封号、永久封禁等。</p>
+        <p>3.3. 对于严重违规行为，个人运营者有权拒绝该玩家再次加入服务器。</p>
+        
+        <h3>违规认定标准</h3>
+        <table>
+            <tr>
+                <th>违规类型</th>
+                <th>认定标准</th>
+                <th>处罚措施</th>
+            </tr>
+            <tr>
+                <td>使用作弊程序</td>
+                <td>1. 检测到作弊软件运行<br>2. 异常游戏行为（如自动瞄准、透视等）<br>3. 多位玩家举报并提供证据</td>
+                <td>永久封禁</td>
+            </tr>
+            <tr>
+                <td>利用游戏漏洞</td>
+                <td>1. 发现并利用漏洞获取不正当利益<br>2. 传播漏洞利用方法<br>3. 不及时报告发现的漏洞</td>
+                <td>临时封禁（7-30天）或永久封禁</td>
+            </tr>
+            <tr>
+                <td>恶意行为</td>
+                <td>1. 故意击杀队友<br>2. 抢夺队友装备<br>3. 干扰队友完成任务</td>
+                <td>警告、临时禁言或短期封禁（1-7天）</td>
+            </tr>
+            <tr>
+                <td>侮辱性语言</td>
+                <td>1. 在聊天中使用侮辱性词汇<br>2. 针对特定玩家进行人身攻击<br>3. 发布歧视性言论</td>
+                <td>警告、禁言（1-24小时）或短期封禁</td>
+            </tr>
+            <tr>
+                <td>广告行为</td>
+                <td>1. 在聊天中发布广告信息<br>2. 私信其他玩家进行广告宣传<br>3. 创建包含广告内容的角色名或公会名</td>
+                <td>警告、禁言或短期封禁</td>
+            </tr>
+        </table>
+        
+        <h3>申诉流程</h3>
+        <ol>
+            <li><strong>提交申诉</strong>：被处罚玩家可在处罚后的72小时内，通过官方指定渠道（如Discord、Telegram或电子邮箱）向管理员提交申诉。</li>
+            <li><strong>提供证据</strong>：申诉时需提供账号信息、处罚原因及相关证据，证明自己的行为不违反游戏规则或处罚过重。</li>
+            <li><strong>等待处理</strong>：管理员将在收到申诉后的48小时内进行审核，并给出处理结果。</li>
+            <li><strong>结果通知</strong>：处理结果将通过玩家注册时提供的联系方式进行通知。</li>
+            <li><strong>二次申诉</strong>：对处理结果不满意的玩家，可在收到结果后的24小时内提交二次申诉，但需提供新的证据或理由。</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>服务器管理</h2>
+        <p>4.1. 个人运营者负责服务器的维护和管理，有权根据实际情况调整服务器设置。</p>
+        <p>4.2. 服务器可能因维护、更新等原因临时关闭，个人运营者将提前发布公告。</p>
+        <p>4.3. 个人运营者有权备份或删除服务器数据，玩家数据不保证永久保存。</p>
+        <p>4.4. 禁止对服务器进行任何形式的攻击或破坏。</p>
+        <p>4.5. 禁止未经授权访问服务器后台或修改服务器文件。</p>
+    </div>
+    
+    <div class="section">
+        <h2>免责声明</h2>
+        <p>5.1. 个人运营的服务器仅供娱乐和测试使用，与官方《逃离塔科夫》游戏无关。</p>
+        <p>5.2. 个人运营者不对游戏内容的真实性、准确性、完整性作任何保证。</p>
+        <p>5.3. 玩家在游戏中遇到的任何问题或损失，个人运营者不承担赔偿责任。</p>
+        <p>5.4. 玩家需自行承担因网络问题、设备故障等非服务器原因导致的游戏问题。</p>
+    </div>
+    
+    <div class="section">
+        <h2>实施步骤</h2>
+        
+        <h3>玩家注册与加入流程</h3>
+        <ol>
+            <li><strong>准备工作</strong>
+                <ul>
+                    <li>确保您的计算机满足游戏最低配置要求</li>
+                    <li>下载官方游戏客户端</li>
+                    <li>准备稳定的网络连接</li>
+                </ul>
+            </li>
+            <li><strong>注册账号</strong>
+                <ul>
+                    <li>通过官方指定渠道（Discord、Telegram等）联系管理员</li>
+                    <li>提供必要的个人信息（用户名、邮箱等）</li>
+                    <li>等待管理员审核并创建账号</li>
+                </ul>
+            </li>
+            <li><strong>安装客户端</strong>
+                <ul>
+                    <li>下载私服专用补丁</li>
+                    <li>按照管理员提供的教程安装补丁</li>
+                    <li>配置游戏客户端连接设置</li>
+                </ul>
+            </li>
+            <li><strong>连接服务器</strong>
+                <ul>
+                    <li>启动游戏客户端</li>
+                    <li>输入账号密码登录</li>
+                    <li>选择服务器列表中的私人服务器</li>
+                    <li>点击连接并等待成功连接</li>
+                </ul>
+            </li>
+            <li><strong>开始游戏</strong>
+                <ul>
+                    <li>选择游戏模式</li>
+                    <li>创建或选择角色</li>
+                    <li>进入游戏开始体验</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>管理员工作流程</h3>
+        <ol>
+            <li><strong>账号管理</strong>
+                <ul>
+                    <li>审核新玩家注册请求</li>
+                    <li>创建新账号</li>
+                    <li>处理账号找回、密码重置等请求</li>
+                </ul>
+            </li>
+            <li><strong>服务器维护</strong>
+                <ul>
+                    <li>定期检查服务器运行状态</li>
+                    <li>执行系统更新和补丁安装</li>
+                    <li>监控服务器性能指标</li>
+                </ul>
+            </li>
+            <li><strong>违规处理</strong>
+                <ul>
+                    <li>接收玩家举报</li>
+                    <li>调查违规行为</li>
+                    <li>实施相应处罚措施</li>
+                    <li>处理玩家申诉</li>
+                </ul>
+            </li>
+            <li><strong>社区管理</strong>
+                <ul>
+                    <li>管理游戏内聊天</li>
+                    <li>组织游戏活动</li>
+                    <li>收集玩家反馈</li>
+                    <li>解答玩家问题</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>常见问题解答（FAQ）</h2>
+        
+        <h3>技术问题</h3>
+        <div class="faq-item">
+            <strong>Q1: 游戏无法启动或连接服务器失败怎么办？</strong>
+            <p>A: 请检查以下几点：</p>
+            <ul>
+                <li>确保您的计算机满足游戏最低配置要求</li>
+                <li>确认网络连接正常</li>
+                <li>检查服务器是否在线（可通过Discord或Telegram查看公告）</li>
+                <li>尝试重新安装游戏客户端和补丁</li>
+                <li>联系管理员获取帮助</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q2: 游戏中遇到卡顿或延迟高如何解决？</strong>
+            <p>A: 建议采取以下措施：</p>
+            <ul>
+                <li>关闭后台运行的其他程序</li>
+                <li>降低游戏画质和特效设置</li>
+                <li>检查网络连接质量</li>
+                <li>使用有线网络连接（如有条件）</li>
+                <li>更换DNS服务器</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q3: 如何更新游戏到最新版本？</strong>
+            <p>A: 游戏更新通常通过以下方式：</p>
+            <ul>
+                <li>管理员会在Discord或Telegram发布更新公告</li>
+                <li>下载并安装最新补丁</li>
+                <li>按照更新说明完成更新流程</li>
+            </ul>
+        </div>
+
+        <h3>账号问题</h3>
+        <div class="faq-item">
+            <strong>Q4: 忘记密码怎么办？</strong>
+            <p>A: 请通过官方渠道联系管理员，提供账号相关信息进行身份验证，验证通过后可以重置密码。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q5: 账号被盗或异常登录如何处理？</strong>
+            <p>A: 请立即联系管理员，提供账号信息和异常登录的相关证据，管理员会冻结账号并协助您找回。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q6: 可以创建多个账号吗？</strong>
+            <p>A: 不可以。每个玩家仅限拥有一个游戏账号，禁止多开账号。</p>
+        </div>
+
+        <h3>游戏规则问题</h3>
+        <div class="faq-item">
+            <strong>Q7: 使用宏或鼠标侧键功能是否算作弊？</strong>
+            <p>A: 简单的按键映射或重复按键宏通常是允许的，但任何模拟自动瞄准、自动射击或提供不公平优势的宏都属于作弊行为。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q8: 如何举报其他玩家的违规行为？</strong>
+            <p>A: 可以通过以下方式举报：</p>
+            <ul>
+                <li>游戏内举报功能（如有）</li>
+                <li>向管理员发送私聊消息，提供违规者ID和相关证据</li>
+                <li>在Discord或Telegram中提交举报表单</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q9: 服务器数据会定期重置吗？</strong>
+            <p>A: 是的，为了保持游戏的新鲜感和公平性，服务器数据可能会定期重置。重置前会提前发布公告。</p>
+        </div>
+
+        <h3>其他问题</h3>
+        <div class="faq-item">
+            <strong>Q10: 如何获得游戏内的稀有物品？</strong>
+            <p>A: 游戏内的稀有物品只能通过正常游戏途径获得，如完成任务、击败敌人、搜索地图等。禁止通过任何非正常途径获取物品。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q11: 可以向管理员申请特殊权限或物品吗？</strong>
+            <p>A: 不可以。所有玩家在游戏中享有平等的权利，管理员不会为任何玩家提供特殊权限或物品。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q12: 如何向服务器提出建议或反馈？</strong>
+            <p>A: 您可以通过Discord、Telegram或游戏内聊天向管理员提供建议和反馈，我们会认真考虑每一条有价值的意见。</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>相关案例分析</h2>
+        
+        <h3>作弊行为案例</h3>
+        <div class="case-item">
+            <strong>案例一：透视外挂使用</strong>
+            <ul>
+                <li><strong>事件描述</strong>：玩家A在游戏中使用透视外挂，可以看到墙后的敌人位置。</li>
+                <li><strong>后果</strong>：管理员通过反作弊系统检测到异常行为，立即对玩家A进行永久封号处理。</li>
+                <li><strong>教训</strong>：任何形式的作弊行为都将被严格打击，不要抱有侥幸心理。</li>
+            </ul>
+        </div>
+
+        <div class="case-item">
+            <strong>案例二：自瞄辅助使用</strong>
+            <ul>
+                <li><strong>事件描述</strong>：玩家B在PVP战斗中展现出异常的瞄准精度，被其他玩家举报。</li>
+                <li><strong>调查过程</strong>：管理员查看了战斗录像，发现其瞄准行为不符合人类操作模式，进一步检查客户端文件发现了自瞄辅助软件。</li>
+                <li><strong>处理结果</strong>：玩家B被永久封号，并列入服务器黑名单。</li>
+                <li><strong>启示</strong>：游戏会对异常行为进行监控，作弊行为很容易被发现。</li>
+            </ul>
+        </div>
+
+        <h3>恶意行为案例</h3>
+        <div class="case-item">
+            <strong>案例三：恶意击杀队友</strong>
+            <ul>
+                <li><strong>事件描述</strong>：玩家C在组队模式下故意击杀队友，并抢夺其装备。</li>
+                <li><strong>处理过程</strong>：接到举报后，管理员核实了相关证据，确认玩家C存在恶意行为。</li>
+                <li><strong>处罚措施</strong>：对玩家C进行了短期封号（3天）处理，并警告其如有再犯将加重处罚。</li>
+                <li><strong>改进措施</strong>：增加了组队模式下的伤害保护机制，减少恶意击杀的可能性。</li>
+            </ul>
+        </div>
+
+        <div class="case-item">
+            <strong>案例四：游戏内辱骂</strong>
+            <ul>
+                <li><strong>事件描述</strong>：玩家D在游戏聊天中使用侮辱性语言辱骂其他玩家。</li>
+                <li><strong>处理结果</strong>：管理员首先对玩家D进行了警告，但玩家D仍然继续辱骂行为，随后被禁言24小时。</li>
+                <li><strong>教育意义</strong>：保持文明的游戏环境需要所有玩家共同努力，文明用语是基本要求。</li>
+            </ul>
+        </div>
+
+        <h3>账号安全案例</h3>
+        <div class="case-item">
+            <strong>案例五：账号被盗</strong>
+            <ul>
+                <li><strong>事件描述</strong>：玩家E的账号被盗，盗号者使用该账号进行了违规操作，导致账号被封。</li>
+                <li><strong>解决过程</strong>：玩家E及时联系管理员，提供了身份验证信息和账号被盗的证据。管理员核实后解封了账号，并协助玩家E重置了密码和安全设置。</li>
+                <li><strong>安全建议</strong>：请妥善保管账号信息，使用强密码，并开启双重认证（如有）。</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>更新历史记录</h2>
+        
+        <h3>版本更新日志</h3>
+        <table>
+            <tr>
+                <th>日期</th>
+                <th>版本号</th>
+                <th>更新内容</th>
+                <th>负责人</th>
+            </tr>
+            <tr>
+                <td>2025-03-01</td>
+                <td>1.0.0</td>
+                <td>初始版本发布，包含基本规则和管理制度</td>
+                <td>个人运营者</td>
+            </tr>
+            <tr>
+                <td>2025-02-15</td>
+                <td>0.9.0</td>
+                <td>测试版本发布，收集玩家反馈</td>
+                <td>个人运营者</td>
+            </tr>
+        </table>
+
+        <h3>规则修改记录</h3>
+        <table>
+            <tr>
+                <th>日期</th>
+                <th>修改内容</th>
+                <th>修改原因</th>
+                <th>生效日期</th>
+            </tr>
+            <tr>
+                <td>2025-03-01</td>
+                <td>正式确定并发布游戏规则</td>
+                <td>服务器正式上线需要明确的规则体系</td>
+                <td>2025-03-01</td>
+            </tr>
+            <tr>
+                <td>2025-02-15</td>
+                <td>起草初步规则文档</td>
+                <td>测试阶段需要基本的行为规范</td>
+                <td>2025-02-15</td>
+            </tr>
+        </table>
+
+        <h3>文档维护信息</h3>
+        <ul>
+            <li><strong>文档所有者</strong>：个人运营者</li>
+            <li><strong>维护频率</strong>：根据需要不定期更新</li>
+            <li><strong>审核流程</strong>：规则修改需经管理员团队审核后发布</li>
+            <li><strong>发布渠道</strong>：Discord、Telegram、游戏内公告</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>联系方式</h2>
+        <p>8.1. 如有任何问题、建议或需要帮助，请通过以下方式联系个人运营者：</p>
+        <ul>
+            <li>Discord: xxx#0000</li>
+            <li>电子邮箱: support@example.com</li>
+        </ul>
+        <p>- Github 主页：https://github.com/yzy15 </p>
+        <p>- Github 仓库：https://github.com/yzy15/eft-server </p>
+    </div>
+    
+    <a href="index.html" class="back-button">返回主页</a>
 </body>
 </html>
