@@ -336,7 +336,16 @@ function initVersionModal() {
     
     // 事件监听器
     // 立即加入按钮点击事件
-    joinServerBtn.addEventListener('click', openModal);
+    if (joinServerBtn) {
+        joinServerBtn.addEventListener('click', function(e) {
+            console.log('立即加入按钮被点击');
+            e.preventDefault();
+            openModal();
+        });
+        console.log('立即加入按钮事件绑定成功');
+    } else {
+        console.error('找不到立即加入按钮元素');
+    }
     
     // 关闭按钮点击事件
     closeModalBtn.addEventListener('click', closeModal);
@@ -789,6 +798,16 @@ window.addEventListener('resize', resizeHandler);
 
 // 初始化页面
 window.addEventListener('DOMContentLoaded', () => {
+    console.log('页面DOM加载完成，开始初始化...');
+    
+    // 确保DOM元素存在
+    const joinServerBtn = document.getElementById('join-server-btn');
+    if (joinServerBtn) {
+        console.log('找到立即加入按钮元素');
+    } else {
+        console.error('找不到立即加入按钮元素');
+    }
+    
     init();
     adjustContentHeight();
     addLinkHoverEffects();
@@ -808,6 +827,8 @@ window.addEventListener('DOMContentLoaded', () => {
         window.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', resizeHandler);
     });
+    
+    console.log('页面初始化完成');
 });
 
 
