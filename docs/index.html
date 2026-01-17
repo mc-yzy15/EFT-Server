@@ -12,13 +12,54 @@
     <meta name="theme-color" content="#FF4D4D">
     <link rel="canonical" href="https://server.yzy15.dpdns.org/">
     <link rel="alternate" hreflang="zh-CN" href="https://server.yzy15.dpdns.org/">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EFT Server",
+      "url": "https://server.yzy15.dpdns.org/",
+      "logo": "https://server.yzy15.dpdns.org/favicon.ico",
+      "description": "专业的逃离塔科夫私人服务器，提供3.9.8低配版和3.11还原版，打造专属于你的塔科夫体验，与志同道合的玩家一起探索这片危险的战场。",
+      "sameAs": [
+        "https://space.bilibili.com/1338637552",
+        "https://blog.csdn.net/m0_68339835",
+        "https://home159263.wordpress.com/"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": "yingmoliuguang@yeah.net",
+          "contactType": "customer service"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CN"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "EFT Server",
+      "url": "https://server.yzy15.dpdns.org/",
+      "description": "专业的逃离塔科夫私人服务器，提供3.9.8低配版和3.11还原版",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
     <script>
         tailwind.config = {
             theme: {
@@ -167,7 +208,7 @@
                     class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary">私人服务器</span>
             </h1>
             <p class="text-[clamp(1rem,3vw,1.5rem)] max-w-3xl mx-auto mb-10 text-light/90">
-                打造专属于你的塔科夫体验，与志同道合的玩家一起探索这片危险的战场
+                打造专属于你的塔科夫体验，与志同道合的玩家一起探索这片危险的战场。我们提供3.9.8低配版和3.11还原版服务器，满足不同配置玩家的需求。
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
                 <button id="join-server-btn"
@@ -227,7 +268,8 @@
             <div class="text-center mb-16">
                 <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold mb-4">服务器特色</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-                <p class="text-light/80 max-w-2xl mx-auto text-lg">我们的服务器提供独特的游戏体验，让你的塔科夫之旅更加精彩</p>
+                <p class="text-light/80 max-w-2xl mx-auto text-lg">
+                    我们的逃离塔科夫私人服务器提供独特的游戏体验，让你的塔科夫之旅更加精彩。无论是3.9.8低配版还是3.11还原版，都能满足不同玩家的需求。</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -450,7 +492,7 @@
                 <!-- 资源（有问题就Shit Fuck CloudFlare CDN） -->
                 <section id="downloadcenter">
                     <div>
-                        <h4 class="text-lg font-semibold mb-4">资源（游戏下载均为3.9.8）</h4>
+                        <h4 class="text-lg font-semibold mb-4">3.9.8资源下载中心及FAQ</h4>
                         <ul class="space-y-2">
                             <li><a href="https://sns.oddba.cn/135493.html?t=229572"
                                     class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载</a>
@@ -632,7 +674,7 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 
 </html>
