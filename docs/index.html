@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFT-EscapeFromTarkov离线版服务器 - 专业的逃离塔科夫私人游戏社区</title>
+    <title>EFT Server - 逃离塔科夫私人服务器 | 3.9.8低配版 | 3.11还原版</title>
+    <meta name="description" content="专业的逃离塔科夫私人服务器，提供3.9.8低配版和3.11还原版，打造专属于你的塔科夫体验，与志同道合的玩家一起探索这片危险的战场。">
+    <meta name="keywords" content="逃离塔科夫, EFT, 私人服务器, 3.9.8低配版, 3.11还原版, 逃离塔科夫离线版, 塔科夫服务器">
+    <meta name="author" content="EFT Server Team">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#FF4D4D">
+    <link rel="canonical" href="https://server.yzy15.dpdns.org/">
+    <link rel="alternate" hreflang="zh-CN" href="https://server.yzy15.dpdns.org/">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -58,57 +67,72 @@
     </style>
     <link rel="stylesheet" href="css/style.css">
 </head>
-    <body class="font-inter bg-dark text-light min-h-screen overflow-x-hidden">
-        
-        
-        <!-- 网格背景动画 -->
-        <div class="grid-bg"></div>
-        <!-- 噪点覆盖层 -->
-        <div class="noise-overlay"></div>
-        
-        <!-- 导航栏（有问题就Shit Fuck CloudFlare CDN） -->
+
+<body class="font-inter bg-dark text-light min-h-screen overflow-x-hidden">
+
+
+    <!-- 网格背景动画 -->
+    <div class="grid-bg"></div>
+    <!-- 噪点覆盖层 -->
+    <div class="noise-overlay"></div>
+
+    <!-- 导航栏（有问题就Shit Fuck CloudFlare CDN） -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 ease-in-out">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center bg-glass rounded-b-xl">
             <div class="flex items-center space-x-2">
                 <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center pulse overflow-hidden">
-                    <img src="favicon.ico" alt="EFT Server" class="w-full h-full object-cover">
+                    <img src="favicon.ico" alt="EFT Server Logo" class="w-full h-full object-cover">
                 </div>
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-3d">EFT Server</span>
+                <span
+                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-3d">EFT
+                    Server</span>
             </div>
-            
+
             <!-- 桌面导航（有问题就Shit Fuck CloudFlare CDN） -->
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="nav-link hover:text-primary transition-colors duration-300">首页</a>
                 <a href="#features" class="nav-link hover:text-primary transition-colors duration-300">特色</a>
                 <a href="#opentime" class="nav-link hover:text-primary transition-colors duration-300">开放时间</a>
-                <a href="guides/guide-3.9.8.html" class="nav-link hover:text-primary transition-colors duration-300">3.9.8版本指南 <span class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
-                <a href="guides/guide-3.11.html" class="nav-link hover:text-primary transition-colors duration-300">3.11版本指南 <span class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
+                <a href="guides/guide-3.9.8.html"
+                    class="nav-link hover:text-primary transition-colors duration-300">3.9.8版本指南 <span
+                        class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
+                <a href="guides/guide-3.11.html"
+                    class="nav-link hover:text-primary transition-colors duration-300">3.11版本指南 <span
+                        class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
                 <a href="#contact" class="nav-link hover:text-primary transition-colors duration-300">联系我们</a>
-				<a href="#downloadcenter" class="nav-link hover:text-primary transition-colors duration-300">资源下载中心</a>
+                <a href="#downloadcenter" class="nav-link hover:text-primary transition-colors duration-300">资源下载中心</a>
             </div>
-            
+
             <!-- 服务器状态指示器（有问题就Shit Fuck CloudFlare CDN） -->
             <div class="flex items-center space-x-2" id="server-status-container">
                 <span class="text-sm hidden md:inline">服务器状态:</span>
                 <div id="server-status-light" class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
             </div>
-            
+
             <!-- 移动导航按钮（有问题就Shit Fuck CloudFlare CDN） -->
             <button id="menu-toggle" class="md:hidden text-2xl">
                 <i class="fa fa-bars"></i>
             </button>
         </div>
-        
+
         <!-- 移动导航菜单（有问题就Shit Fuck CloudFlare CDN） -->
         <div id="mobile-menu" class="md:hidden hidden bg-dark/95 backdrop-blur-lg border-t border-white/10">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
                 <a href="#home" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">首页</a>
-                <a href="#features" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">特色</a>
-                <a href="#opentime" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">开放时间</a>
-                <a href="guides/guide-3.9.8.html" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.9.8版本指南 <span class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
-                <a href="guides/guide-3.11.html" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.11版本指南 <span class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
-                <a href="#contact" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">联系我们</a>
-				<a href="#downloadcenter" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">资源下载中心</a>
+                <a href="#features"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">特色</a>
+                <a href="#opentime"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">开放时间</a>
+                <a href="guides/guide-3.9.8.html"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.9.8版本指南 <span
+                        class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
+                <a href="guides/guide-3.11.html"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.11版本指南 <span
+                        class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
+                <a href="#contact"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">联系我们</a>
+                <a href="#downloadcenter"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">资源下载中心</a>
             </div>
         </div>
     </nav>
@@ -118,62 +142,77 @@
         <!-- 背景效果（有问题就Shit Fuck CloudFlare CDN） -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-secondary/20 via-dark/80 to-dark"></div>
-            <img src="https://picsum.photos/seed/picsum/1920/1080" alt="背景" class="w-full h-full object-cover opacity-30 background-overlay hero-background">
-            
+            <img src="https://picsum.photos/seed/picsum/1920/1080" alt="逃离塔科夫游戏背景"
+                class="w-full h-full object-cover opacity-30 background-overlay hero-background">
+
             <!-- 装饰性网格（有问题就Shit Fuck CloudFlare CDN） -->
-            <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-            
+            <div
+                class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]">
+            </div>
+
             <!-- 光效（有问题就Shit Fuck CloudFlare CDN） -->
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full filter blur-[100px] animate-pulse-slow"></div>
-            <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-secondary/20 rounded-full filter blur-[100px] animate-pulse-slow delay-1000"></div>
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full filter blur-[100px] animate-pulse-slow">
+            </div>
+            <div
+                class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-secondary/20 rounded-full filter blur-[100px] animate-pulse-slow delay-1000">
+            </div>
         </div>
-        
+
         <!-- 内容（有问题就Shit Fuck CloudFlare CDN） -->
         <div class="container mx-auto px-4 py-20 relative z-10 text-center">
             <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-extrabold leading-tight text-shadow-lg mb-6">
                 <span class="block typewriter-enhanced">逃离塔科夫</span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary">私人服务器</span>
+                <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary">私人服务器</span>
             </h1>
             <p class="text-[clamp(1rem,3vw,1.5rem)] max-w-3xl mx-auto mb-10 text-light/90">
                 打造专属于你的塔科夫体验，与志同道合的玩家一起探索这片危险的战场
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                <button id="join-server-btn" class="btn-primary magnetic-btn bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+                <button id="join-server-btn"
+                    class="btn-primary magnetic-btn bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
                     立即加入
                 </button>
-                <a href="#features" class="btn-secondary magnetic-btn bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-full transition-all duration-300">
+                <a href="#features"
+                    class="btn-secondary magnetic-btn bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-full transition-all duration-300">
                     了解更多
                 </a>
             </div>
-            
+
             <!-- 服务器信息卡片（有问题就Shit Fuck CloudFlare CDN） -->
-		<section id="opentime">
-            <div class="max-w-4xl mx-auto bg-glass rounded-2xl p-6 md:p-8 shadow-2xl border border-white/10 backdrop-blur-xl transform transition-all duration-500 hover:translate-y-[-5px] shimmer-border pulse-light">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
-                        <div class="text-3xl text-primary mb-3"><i class="fa fa-server"></i></div>
-                        <h3 class="text-xl font-semibold mb-2">3.11版本服务器</h3>
-                        <p class="text-light/80 break-all">http://server.yzy15.dpdns.org:26969</p>
-                    </div>
-                    <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
-                        <div class="text-3xl text-secondary mb-3"><i class="fa fa-server"></i></div>
-                        <h3 class="text-xl font-semibold mb-2">3.9.8版本服务器(需进群申请)</h3>
-                        <p class="text-light/80 break-all">http://server.yzy15.dpdns.org:29898</p>
-                    </div>
-                    <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
-                        <div class="text-3xl text-accent mb-3"><i class="fa fa-calendar"></i></div>
-                        <h3 class="text-xl font-semibold mb-2">开放时间</h3>
-                        <p class="text-light/80">仅在休息日和法定节假日开放</p>
-                    </div>
-                    <div class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
-                        <div class="text-3xl text-secondary mb-3"><i class="fa fa-users"></i></div>
-                        <h3 class="text-xl font-semibold mb-2">社区玩家</h3>
-                        <p class="text-light/80">活跃玩家: 请进 OOPZ 查看<br>总注册: 请进群查看</p>
+            <section id="opentime">
+                <div
+                    class="max-w-4xl mx-auto bg-glass rounded-2xl p-6 md:p-8 shadow-2xl border border-white/10 backdrop-blur-xl transform transition-all duration-500 hover:translate-y-[-5px] shimmer-border pulse-light">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div
+                            class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
+                            <div class="text-3xl text-primary mb-3"><i class="fa fa-server"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">3.11版本服务器</h3>
+                            <p class="text-light/80 break-all">http://server.yzy15.dpdns.org:26969</p>
+                        </div>
+                        <div
+                            class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
+                            <div class="text-3xl text-secondary mb-3"><i class="fa fa-server"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">3.9.8版本服务器(需进群申请)</h3>
+                            <p class="text-light/80 break-all">http://server.yzy15.dpdns.org:29898</p>
+                        </div>
+                        <div
+                            class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
+                            <div class="text-3xl text-accent mb-3"><i class="fa fa-calendar"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">开放时间</h3>
+                            <p class="text-light/80">仅在休息日和法定节假日开放</p>
+                        </div>
+                        <div
+                            class="feature-card p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
+                            <div class="text-3xl text-secondary mb-3"><i class="fa fa-users"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">社区玩家</h3>
+                            <p class="text-light/80">活跃玩家: 请进 OOPZ 查看<br>总注册: 请进群查看</p>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
-        
+
         <!-- 滚动指示（有问题就Shit Fuck CloudFlare CDN） -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <a href="#features" class="text-white/70 hover:text-white transition-colors duration-300">
@@ -190,73 +229,85 @@
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
                 <p class="text-light/80 max-w-2xl mx-auto text-lg">我们的服务器提供独特的游戏体验，让你的塔科夫之旅更加精彩</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- 特色卡片 1（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div
+                    class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
-                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
                             <i class="fa fa-shield text-2xl text-primary"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">安全稳定</h3>
                         <p class="text-light/70">我们采用高性能服务器和先进的安全系统，确保游戏环境稳定、公平，让你专注于游戏体验。</p>
                     </div>
                 </div>
-                
+
                 <!-- 特色卡片 2（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div
+                    class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
-                        <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
+                        <div
+                            class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
                             <i class="fa fa-sliders text-2xl text-secondary"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">专属定制</h3>
                         <p class="text-light/70">精心调整的游戏参数和平衡设置，为玩家提供更加刺激和有挑战性的游戏体验。</p>
                     </div>
                 </div>
-                
+
                 <!-- 特色卡片 3（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div
+                    class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
-                        <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-all duration-300">
+                        <div
+                            class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-all duration-300">
                             <i class="fa fa-users text-2xl text-accent"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">活跃社区</h3>
                         <p class="text-light/70">加入我们友好而活跃的玩家社区，与其他爱好者交流经验、组队游戏、共同成长。</p>
                     </div>
                 </div>
-                
+
                 <!-- 特色卡片 4（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div
+                    class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
-                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
                             <i class="fa fa-gift text-2xl text-primary"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">专属活动</h3>
                         <p class="text-light/70">定期举办的特色活动和比赛，赢取专属奖励，享受更多游戏乐趣。</p>
                     </div>
                 </div>
-                
+
                 <!-- 特色卡片 5（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div
+                    class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
-                        <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
+                        <div
+                            class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
                             <i class="fa fa-headphones text-2xl text-secondary"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">贴心支持</h3>
                         <p class="text-light/70">我们的管理团队随时为你提供帮助和支持，解决游戏中遇到的任何问题。</p>
                     </div>
                 </div>
-                
+
                 <!-- 特色卡片 6（有问题就Shit Fuck CloudFlare CDN） -->
-                <div class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+                <div
+                    class="feature-card scroll-reveal hover-zoom glass-morph group relative bg-dark/50 rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     <div class="p-6">
-                        <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-all duration-300">
+                        <div
+                            class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-all duration-300">
                             <i class="fa fa-rocket text-2xl text-accent"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">技术优化</h3>
@@ -273,17 +324,18 @@
     <section id="contact" class="py-20 bg-dark/50 relative">
         <!-- 背景效果（有问题就Shit Fuck CloudFlare CDN） -->
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(61,90,128,0.15),transparent_70%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(61,90,128,0.15),transparent_70%)]">
+            </div>
             <div class="absolute inset-0 bg-[linear-gradient(rgba(41,50,65,0.95),rgba(41,50,65,0.95))]"></div>
         </div>
-        
+
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold mb-4">联系我们</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
                 <p class="text-light/80 max-w-2xl mx-auto text-lg">有问题？建议？加入我们的社区，与我们交流</p>
             </div>
-            
+
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 gap-12">
                     <!-- 联系信息（有问题就Shit Fuck CloudFlare CDN） -->
@@ -292,8 +344,10 @@
                             <div class="p-6 md:p-8">
                                 <h3 class="text-2xl font-semibold mb-6">联系方式（请务必优先加群）</h3>
                                 <div class="space-y-6">
-                                    <a href="mailto:yingmoliuguang@yeah.net" class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4 group-hover:bg-primary/30 transition-all duration-300">
+                                    <a href="mailto:yingmoliuguang@yeah.net"
+                                        class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4 group-hover:bg-primary/30 transition-all duration-300">
                                             <i class="fa fa-envelope text-xl text-primary"></i>
                                         </div>
                                         <div>
@@ -310,8 +364,10 @@
                             <div class="p-6 md:p-8">
                                 <h3 class="text-2xl font-semibold mb-6">加入社区</h3>
                                 <div class="space-y-6">
-                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
-                                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mr-4 group-hover:bg-green-500/30 transition-all duration-300">
+                                    <div
+                                        class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mr-4 group-hover:bg-green-500/30 transition-all duration-300">
                                             <i class="fa fa-qq text-xl text-green-400"></i>
                                         </div>
                                         <div>
@@ -319,17 +375,20 @@
                                             <p class="text-light/70">1034718897</p>
                                         </div>
                                     </div>
-                                    
-                                    <div class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
-                                        <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mr-4 group-hover:bg-purple-500/30 transition-all duration-300">
+
+                                    <div
+                                        class="flex items-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group scroll-reveal hover-scale">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mr-4 group-hover:bg-purple-500/30 transition-all duration-300">
                                             <i class="fa fa-headphones text-xl text-purple-400"></i>
                                         </div>
                                         <div>
                                             <h4 class="font-medium">OOPZ 语音聊天</h4>
-                                            <a href="https://oopz.cn/i/wORju7" target="_blank" class="text-primary hover:underline transition-colors duration-300">https://oopz.cn/i/wORju7</a>
+                                            <a href="https://oopz.cn/i/wORju7" target="_blank"
+                                                class="text-primary hover:underline transition-colors duration-300">https://oopz.cn/i/wORju7</a>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mt-4">
                                         <p class="text-light/90 text-center">加入语音聊天请使用官方推荐软件：OOPZ</p>
                                     </div>
@@ -350,92 +409,135 @@
                 <div class="md:col-span-1">
                     <div class="flex items-center space-x-2 mb-4">
                         <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center pulse">
-                    <img src="favicon.ico" alt="EFT Server" class="w-8 h-8 rounded-full">
-                </div>
-                        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">EFT Server</span>
+                            <img src="favicon.ico" alt="EFT Server Logo" class="w-8 h-8 rounded-full">
+                        </div>
+                        <span
+                            class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">EFT
+                            Server</span>
                     </div>
                     <p class="text-light/70 mb-4">专业的逃离塔科夫私人服务器，为玩家提供优质的游戏体验和活跃的社区环境。</p>
                     <div class="flex space-x-4">
-                        <a href="https://space.bilibili.com/1338637552" target="_blank" class="text-light/70 hover:text-primary transition-colors duration-300"><i class="fa fa-play-circle text-xl"></i></a>
-                        <a href="https://blog.csdn.net/m0_68339835" target="_blank" class="text-light/70 hover:text-primary transition-colors duration-300"><i class="fa fa-book text-xl"></i></a>
-                        <a href="https://home159263.wordpress.com/" target="_blank" class="text-light/70 hover:text-primary transition-colors duration-300"><i class="fa fa-globe text-xl"></i></a>
+                        <a href="https://space.bilibili.com/1338637552" target="_blank"
+                            class="text-light/70 hover:text-primary transition-colors duration-300"><i
+                                class="fa fa-play-circle text-xl"></i></a>
+                        <a href="https://blog.csdn.net/m0_68339835" target="_blank"
+                            class="text-light/70 hover:text-primary transition-colors duration-300"><i
+                                class="fa fa-book text-xl"></i></a>
+                        <a href="https://home159263.wordpress.com/" target="_blank"
+                            class="text-light/70 hover:text-primary transition-colors duration-300"><i
+                                class="fa fa-globe text-xl"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- 快速链接（有问题就Shit Fuck CloudFlare CDN） -->
                 <div>
                     <h4 class="text-lg font-semibold mb-4">快速链接</h4>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="text-light/70 hover:text-primary transition-colors duration-300">首页</a></li>
-                        <li><a href="#features" class="text-light/70 hover:text-primary transition-colors duration-300">服务器特色</a></li>
-                        <li><a href="#opentime" class="text-light/70 hover:text-primary transition-colors duration-300">开放时间</a></li>
-                        
-                        <li><a href="#contact" class="text-light/70 hover:text-primary transition-colors duration-300">联系我们</a></li>
-						<li><a href="#downloadcenter" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载中心</a></li>
+                        <li><a href="#home"
+                                class="text-light/70 hover:text-primary transition-colors duration-300">首页</a></li>
+                        <li><a href="#features"
+                                class="text-light/70 hover:text-primary transition-colors duration-300">服务器特色</a></li>
+                        <li><a href="#opentime"
+                                class="text-light/70 hover:text-primary transition-colors duration-300">开放时间</a></li>
+
+                        <li><a href="#contact"
+                                class="text-light/70 hover:text-primary transition-colors duration-300">联系我们</a></li>
+                        <li><a href="#downloadcenter"
+                                class="text-light/70 hover:text-primary transition-colors duration-300">资源下载中心</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- 资源（有问题就Shit Fuck CloudFlare CDN） -->
-				<section id="downloadcenter">
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">资源（游戏下载均为3.9.8）</h4>
-                    <ul class="space-y-2">
-                        <li><a href="https://sns.oddba.cn/135493.html?t=229572" class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载</a></li>
-						<li><a href="thunder://QUFodHRwOi8vY2RuLTExLmVmdC1zdG9yZS5jb20vZWZ0L2NsaWVudC9saXZlL2Rpc3RyaWJzLzAuMTQuOS4xLjMwNjI2XzE3YjE1OGM3LTViNWItNDAzNS1iMDQ4LWU2YjViZDY5N2I5Yi9DbGllbnQuMC4xNC45LjEuMzA2MjYuemlwWlo" class="text-light/70 hover:text-primary transition-colors duration-300">使用迅雷一键下载游戏本体</a></li>
-                        <li><a href="https://github.com/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载2-Github</a></li>
-                        <li><a href="https://bgithub.xyz/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像1（bgithub）</a></li>
-                        <li><a href="https://kkgithub.com/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像2（KKgithub）</a></li>
-                        <li><a href="https://dgithub.xyz/mc-yzy15/EFT-Server/releases" class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像3（Dgithub）</a></li>
-                        <li><a href="https://github.akams.cn/" class="text-light/70 hover:text-primary transition-colors duration-300">GitHub 文件代理加速</a></li>
-                        <li><a href="https://sns.oddba.cn/8011.html" class="text-light/70 hover:text-primary transition-colors duration-300">攻略指南</a></li>
-                        <li><a href="https://sns.oddba.cn/4245.html" class="text-light/70 hover:text-primary transition-colors duration-300">常见问题</a></li>
-                        <li><a href="policy.html" class="text-light/70 hover:text-primary transition-colors duration-300">服务器规则</a></li>
-                    </ul>
-                </div>
+                <section id="downloadcenter">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">资源（游戏下载均为3.9.8）</h4>
+                        <ul class="space-y-2">
+                            <li><a href="https://sns.oddba.cn/135493.html?t=229572"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载</a>
+                            </li>
+                            <li><a href="thunder://QUFodHRwOi8vY2RuLTExLmVmdC1zdG9yZS5jb20vZWZ0L2NsaWVudC9saXZlL2Rpc3RyaWJzLzAuMTQuOS4xLjMwNjI2XzE3YjE1OGM3LTViNWItNDAzNS1iMDQ4LWU2YjViZDY5N2I5Yi9DbGllbnQuMC4xNC45LjEuMzA2MjYuemlwWlo"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">使用迅雷一键下载游戏本体</a>
+                            </li>
+                            <li><a href="https://github.com/mc-yzy15/EFT-Server/releases"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">游戏下载2-Github</a>
+                            </li>
+                            <li><a href="https://bgithub.xyz/mc-yzy15/EFT-Server/releases"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像1（bgithub）</a>
+                            </li>
+                            <li><a href="https://kkgithub.com/mc-yzy15/EFT-Server/releases"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像2（KKgithub）</a>
+                            </li>
+                            <li><a href="https://dgithub.xyz/mc-yzy15/EFT-Server/releases"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">资源下载-GitHub镜像3（Dgithub）</a>
+                            </li>
+                            <li><a href="https://github.akams.cn/"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">GitHub
+                                    文件代理加速</a></li>
+                            <li><a href="https://sns.oddba.cn/8011.html"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">攻略指南</a>
+                            </li>
+                            <li><a href="https://sns.oddba.cn/4245.html"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">常见问题</a>
+                            </li>
+                            <li><a href="policy.html"
+                                    class="text-light/70 hover:text-primary transition-colors duration-300">服务器规则</a>
+                            </li>
+                        </ul>
+                    </div>
             </div>
-            
+
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <a href="https://github.com/yzy15" class="text-light/50 text-sm mb-4 md:mb-0">© 2023-2025 Github mc-yzy15 保留所有权利。</a>
+                <a href="https://github.com/yzy15" class="text-light/50 text-sm mb-4 md:mb-0">© 2023-2025 Github
+                    mc-yzy15 保留所有权利。</a>
             </div>
         </div>
     </footer>
 
     <!-- 返回顶部按钮（有问题就Shit Fuck CloudFlare CDN） -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary/80 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-100 visible">
+    <button id="back-to-top"
+        class="fixed bottom-8 right-8 bg-primary/80 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-100 visible">
         <i class="fa fa-arrow-up"></i>
     </button>
 
     <!-- 服务器版本选择模态窗口 -->
     <div id="version-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
         <!-- 模态窗口背景 -->
-        <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300"></div>
-        
+        <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300">
+        </div>
+
         <!-- 模态窗口内容 -->
-        <div id="modal-content" class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-3xl mx-4 transform transition-all duration-300 scale-95 opacity-0">
+        <div id="modal-content"
+            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-3xl mx-4 transform transition-all duration-300 scale-95 opacity-0">
             <!-- 关闭按钮 -->
-            <button id="close-modal" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark/50 flex items-center justify-center text-light/70 hover:text-white transition-colors duration-300 z-10">
+            <button id="close-modal"
+                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark/50 flex items-center justify-center text-light/70 hover:text-white transition-colors duration-300 z-10">
                 <i class="fa fa-times text-xl"></i>
             </button>
-            
+
             <!-- 模态窗口标题 -->
             <div class="p-6 md:p-8 border-b border-white/10">
                 <h2 class="text-[clamp(1.5rem,4vw,2.5rem)] font-bold mb-2 text-center">选择服务器版本</h2>
                 <p class="text-light/70 text-center">请选择您想要使用的服务器版本</p>
             </div>
-            
+
             <!-- 版本选项 -->
             <div class="p-6 md:p-8 space-y-6">
                 <!-- 3.9.8 版本选项 -->
-                <div id="version-398" class="version-option bg-white/5 hover:bg-white/10 rounded-xl p-6 border border-white/10 transition-all duration-300 cursor-pointer relative overflow-hidden group">
-                    <div class="absolute -right-12 -top-12 w-36 h-36 bg-primary/10 rounded-full group-hover:bg-primary/15 transition-all duration-500 transform group-hover:scale-110"></div>
+                <div id="version-398"
+                    class="version-option bg-white/5 hover:bg-white/10 rounded-xl p-6 border border-white/10 transition-all duration-300 cursor-pointer relative overflow-hidden group">
+                    <div
+                        class="absolute -right-12 -top-12 w-36 h-36 bg-primary/10 rounded-full group-hover:bg-primary/15 transition-all duration-500 transform group-hover:scale-110">
+                    </div>
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-semibold">3.9.8 版本</h3>
-                            <span class="inline-block bg-primary/20 text-primary px-4 py-1 rounded-full text-sm font-medium">低配</span>
+                            <span
+                                class="inline-block bg-primary/20 text-primary px-4 py-1 rounded-full text-sm font-medium">低配</span>
                         </div>
                         <div class="mb-6">
                             <div class="flex items-center mb-4">
-                                <input type="radio" name="server-version" id="radio-398" value="3.9.8" class="w-5 h-5 text-primary focus:ring-primary bg-dark border-white/30">
+                                <input type="radio" name="server-version" id="radio-398" value="3.9.8"
+                                    class="w-5 h-5 text-primary focus:ring-primary bg-dark border-white/30">
                                 <label for="radio-398" class="ml-3 text-light/90 cursor-pointer">选择此版本</label>
                             </div>
                         </div>
@@ -447,18 +549,23 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- 3.11 版本选项 -->
-                <div id="version-311" class="version-option bg-white/5 hover:bg-white/10 rounded-xl p-6 border border-white/10 transition-all duration-300 cursor-pointer relative overflow-hidden group">
-                    <div class="absolute -right-12 -top-12 w-36 h-36 bg-secondary/10 rounded-full group-hover:bg-secondary/15 transition-all duration-500 transform group-hover:scale-110"></div>
+                <div id="version-311"
+                    class="version-option bg-white/5 hover:bg-white/10 rounded-xl p-6 border border-white/10 transition-all duration-300 cursor-pointer relative overflow-hidden group">
+                    <div
+                        class="absolute -right-12 -top-12 w-36 h-36 bg-secondary/10 rounded-full group-hover:bg-secondary/15 transition-all duration-500 transform group-hover:scale-110">
+                    </div>
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-semibold">3.11 版本</h3>
-                            <span class="inline-block bg-secondary/20 text-secondary px-4 py-1 rounded-full text-sm font-medium">还原</span>
+                            <span
+                                class="inline-block bg-secondary/20 text-secondary px-4 py-1 rounded-full text-sm font-medium">还原</span>
                         </div>
                         <div class="mb-6">
                             <div class="flex items-center mb-4">
-                                <input type="radio" name="server-version" id="radio-311" value="3.11" class="w-5 h-5 text-secondary focus:ring-secondary bg-dark border-white/30">
+                                <input type="radio" name="server-version" id="radio-311" value="3.11"
+                                    class="w-5 h-5 text-secondary focus:ring-secondary bg-dark border-white/30">
                                 <label for="radio-311" class="ml-3 text-light/90 cursor-pointer">选择此版本</label>
                             </div>
                         </div>
@@ -471,32 +578,36 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- 模态窗口按钮 -->
             <div class="p-6 md:p-8 border-t border-white/10 flex flex-col sm:flex-row justify-center gap-4">
-                <button id="select-version-btn" class="btn-primary bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30 disabled:opacity-50 disabled:pointer-events-none">
+                <button id="select-version-btn"
+                    class="btn-primary bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30 disabled:opacity-50 disabled:pointer-events-none">
                     确认选择
                 </button>
-                <button id="cancel-select-btn" class="btn-secondary bg-transparent border-2 border-white/30 text-light/70 hover:bg-white/5 font-bold py-3 px-8 rounded-full transition-all duration-300">
+                <button id="cancel-select-btn"
+                    class="btn-secondary bg-transparent border-2 border-white/30 text-light/70 hover:bg-white/5 font-bold py-3 px-8 rounded-full transition-all duration-300">
                     取消
                 </button>
             </div>
         </div>
     </div>
-    
+
     <!-- 确认对话框 -->
     <div id="confirm-dialog" class="fixed inset-0 z-50 flex items-center justify-center hidden">
         <!-- 对话框背景 -->
-        <div id="confirm-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"></div>
-        
+        <div id="confirm-backdrop"
+            class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"></div>
+
         <!-- 对话框内容 -->
-        <div id="confirm-content" class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4 transform transition-all duration-300 scale-95 opacity-0">
-            
+        <div id="confirm-content"
+            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4 transform transition-all duration-300 scale-95 opacity-0">
+
             <!-- 对话框标题 -->
             <div class="p-6 border-b border-white/10">
                 <h3 class="text-xl font-bold text-center">确认版本选择</h3>
             </div>
-            
+
             <!-- 对话框消息 -->
             <div class="p-6">
                 <p id="confirm-message" class="text-light/70 text-center mb-4">您确定要选择此版本吗？</p>
@@ -505,13 +616,15 @@
                     <p><i class="fa fa-info-circle text-accent mr-2"></i> 请确保您的电脑满足所选版本的系统要求</p>
                 </div>
             </div>
-            
+
             <!-- 对话框按钮 -->
             <div class="p-6 border-t border-white/10 flex flex-col sm:flex-row justify-center gap-4">
-                <button id="confirm-yes" class="btn-primary bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+                <button id="confirm-yes"
+                    class="btn-primary bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
                     确认
                 </button>
-                <button id="confirm-no" class="btn-secondary bg-transparent border-2 border-white/30 text-light/70 hover:bg-white/5 font-bold py-3 px-8 rounded-full transition-all duration-300">
+                <button id="confirm-no"
+                    class="btn-secondary bg-transparent border-2 border-white/30 text-light/70 hover:bg-white/5 font-bold py-3 px-8 rounded-full transition-all duration-300">
                     返回
                 </button>
             </div>
@@ -521,4 +634,5 @@
     <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
