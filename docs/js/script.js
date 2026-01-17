@@ -116,6 +116,8 @@ function init() {
 
 // 服务器版本选择模态窗口相关函数
 function initVersionModal() {
+    console.log('开始初始化版本选择模态窗口...');
+
     // 获取DOM元素
     const joinServerBtn = document.getElementById('join-server-btn');
     const versionModal = document.getElementById('version-modal');
@@ -139,48 +141,75 @@ function initVersionModal() {
     let selectedVersion = null;
 
     // 检查所有元素是否存在
-    if (!joinServerBtn || !versionModal || !modalBackdrop || !modalContent ||
-        !closeModalBtn || !cancelSelectBtn || !selectVersionBtn ||
-        !confirmDialog || !confirmBackdrop || !confirmContent ||
-        !confirmMessage || !confirmYesBtn || !confirmNoBtn) {
-        console.warn('版本选择模态窗口的部分DOM元素未找到');
+    const missingElements = [];
+    if (!joinServerBtn) missingElements.push('join-server-btn');
+    if (!versionModal) missingElements.push('version-modal');
+    if (!modalBackdrop) missingElements.push('modal-backdrop');
+    if (!modalContent) missingElements.push('modal-content');
+    if (!closeModalBtn) missingElements.push('close-modal');
+    if (!cancelSelectBtn) missingElements.push('cancel-select-btn');
+    if (!selectVersionBtn) missingElements.push('select-version-btn');
+    if (!confirmDialog) missingElements.push('confirm-dialog');
+    if (!confirmBackdrop) missingElements.push('confirm-backdrop');
+    if (!confirmContent) missingElements.push('confirm-content');
+    if (!confirmMessage) missingElements.push('confirm-message');
+    if (!confirmYesBtn) missingElements.push('confirm-yes');
+    if (!confirmNoBtn) missingElements.push('confirm-no');
+
+    if (missingElements.length > 0) {
+        console.error('版本选择模态窗口缺少以下DOM元素:', missingElements);
+        console.error('请检查HTML中是否包含所有必需的模态窗口元素');
         return;
     }
+
+    console.log('所有模态窗口DOM元素已找到');
 
     // 禁用确认按钮直到选择版本
     selectVersionBtn.disabled = true;
 
     // 打开模态窗口函数
     function openModal() {
-        // 防止背景滚动
-        document.body.style.overflow = 'hidden';
+        console.log('打开模态窗口');
+        try {
+            // 防止背景滚动
+            document.body.style.overflow = 'hidden';
 
-        // 显示模态窗口
-        versionModal.classList.remove('hidden');
+            // 显示模态窗口
+            versionModal.classList.remove('hidden');
+            versionModal.style.display = 'flex';
 
-        // 添加动画效果
-        setTimeout(() => {
-            modalBackdrop.style.opacity = '1';
-            modalContent.style.opacity = '1';
-            modalContent.style.transform = 'scale(1)';
-        }, 10);
+            // 添加动画效果
+            requestAnimationFrame(() => {
+                modalBackdrop.style.opacity = '1';
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'scale(1)';
+            });
+        } catch (error) {
+            console.error('打开模态窗口时出错:', error);
+        }
     }
 
     // 关闭模态窗口函数
     function closeModal() {
-        // 移除动画效果
-        modalBackdrop.style.opacity = '0';
-        modalContent.style.opacity = '0';
-        modalContent.style.transform = 'scale(0.95)';
+        console.log('关闭模态窗口');
+        try {
+            // 移除动画效果
+            modalBackdrop.style.opacity = '0';
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.95)';
 
-        // 隐藏模态窗口
-        setTimeout(() => {
-            versionModal.classList.add('hidden');
-            // 恢复背景滚动
-            document.body.style.overflow = 'auto';
-            // 重置选中状态
-            resetSelection();
-        }, 300);
+            // 隐藏模态窗口
+            setTimeout(() => {
+                versionModal.classList.add('hidden');
+                versionModal.style.display = 'none';
+                // 恢复背景滚动
+                document.body.style.overflow = 'auto';
+                // 重置选中状态
+                resetSelection();
+            }, 300);
+        } catch (error) {
+            console.error('关闭模态窗口时出错:', error);
+        }
     }
 
     // 打开确认对话框函数
@@ -340,6 +369,7 @@ function initVersionModal() {
         joinServerBtn.addEventListener('click', function (e) {
             console.log('立即加入按钮被点击');
             e.preventDefault();
+            e.stopPropagation();
             openModal();
         });
         console.log('立即加入按钮事件绑定成功');
@@ -802,27 +832,30 @@ window.addEventListener('DOMContentLoaded', () => {
         console.error('找不到立即加入按钮元素');
     }
 
-    init();
-    adjustContentHeight();
-    addLinkHoverEffects();
-    // createParticles(); // 可选：如果需要粒子效果，可以取消注释
+    // 延迟初始化以确保所有元素都已渲染
+    setTimeout(() => {
+        init();
+        adjustContentHeight();
+        addLinkHoverEffects();
+        // createParticles(); // 可选：如果需要粒子效果，可以取消注释
 
-    // 确保所有元素初始可见
-    const allElements = document.querySelectorAll('*');
-    allElements.forEach(el => {
-        if (el.style.opacity === '0') {
-            el.style.opacity = '1';
-        }
-    });
+        // 确保所有元素初始可见
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+            if (el.style.opacity === '0') {
+                el.style.opacity = '1';
+            }
+        });
 
-    // 添加页面卸载时的清理函数，防止内存泄漏
-    window.addEventListener('beforeunload', () => {
-        // 移除事件监听器
-        window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', resizeHandler);
-    });
+        // 添加页面卸载时的清理函数，防止内存泄漏
+        window.addEventListener('beforeunload', () => {
+            // 移除事件监听器
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', resizeHandler);
+        });
 
-    console.log('页面初始化完成');
+        console.log('页面初始化完成');
+    }, 100);
 });
 
 

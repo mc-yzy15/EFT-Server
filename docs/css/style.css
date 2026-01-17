@@ -42,6 +42,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
 /* 添加全局装饰性网格 */
@@ -105,6 +108,7 @@ body::before {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
 }
 
 #navbar.scrolled {
@@ -1502,6 +1506,78 @@ a.contact-card:hover {
 .flip-card-back {
     transform: rotateY(180deg);
     background: linear-gradient(135deg, var(--dark-deep), var(--dark));
+}
+
+/* 模态窗口修复 */
+#version-modal,
+#confirm-dialog {
+    z-index: 9999;
+}
+
+#version-modal.hidden,
+#confirm-dialog.hidden {
+    display: none !important;
+}
+
+#version-modal:not(.hidden),
+#confirm-dialog:not(.hidden) {
+    display: flex !important;
+}
+
+/* 确保模态窗口内容居中 */
+#modal-content,
+#confirm-content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* 修复容器布局 */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* 确保所有元素默认可见 */
+* {
+    box-sizing: border-box;
+}
+
+/* 修复可能的z-index问题 */
+.navbar {
+    z-index: 1000;
+}
+
+#back-to-top {
+    z-index: 1000;
+}
+
+/* 确保背景元素不干扰内容 */
+.grid-bg,
+.noise-overlay {
+    z-index: -1;
+}
+
+/* 修复可能的滚动问题 */
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+/* 确保模态窗口背景正确显示 */
+#modal-backdrop,
+#confirm-backdrop {
+    z-index: 9998;
+}
+
+/* 修复可能的响应式问题 */
+@media (max-width: 768px) {
+    #modal-content,
+    #confirm-content {
+        max-height: 85vh;
+        margin: 0.5rem;
+    }
 }
 
 .flip-card-back {
