@@ -5,7 +5,7 @@
 
 ::-webkit-scrollbar-track {
     background: linear-gradient(to bottom, #293241, #1a1f2a);
-    border-left: 1px solid rgba(255,255,255,0.05);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -37,7 +37,8 @@
 body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, var(--dark-deep), var(--dark));
-    color: #ffffff; /* 使用纯白色确保可读性 */
+    color: #ffffff;
+    /* 使用纯白色确保可读性 */
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
@@ -51,7 +52,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
@@ -93,6 +94,7 @@ body::before {
     0% {
         filter: contrast(1.15) brightness(0.85) saturate(1.1) blur(1px);
     }
+
     100% {
         filter: contrast(1.2) brightness(0.9) saturate(1.15) blur(0.5px);
     }
@@ -265,14 +267,20 @@ body::before {
 }
 
 /* 表单元素样式 - 精致版 */
-input[type="text"], input[type="email"], textarea, select {
+input[type="text"],
+input[type="email"],
+textarea,
+select {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--light);
 }
 
-input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(255, 77, 77, 0.2);
     border-color: var(--primary);
@@ -332,6 +340,7 @@ a.contact-card:hover {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -376,7 +385,7 @@ a.contact-card:hover {
     .container {
         max-width: 1024px;
     }
-    
+
     .hero-title {
         font-size: clamp(2.2rem, 7vw, 4.5rem) !important;
     }
@@ -386,11 +395,11 @@ a.contact-card:hover {
     .container {
         max-width: 768px;
     }
-    
+
     .grid-cols-3 {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .hero-content {
         text-align: center;
         padding: 0 1rem;
@@ -402,54 +411,54 @@ a.contact-card:hover {
         max-width: 640px;
         padding: 0 1rem;
     }
-    
+
     .nav-link::after {
         display: none;
     }
-    
+
     .feature-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
-    
+
     .feature-card {
         margin-bottom: 1rem;
     }
-    
+
     .grid-cols-3,
     .grid-cols-2 {
         grid-template-columns: 1fr;
     }
-    
+
     .schedule-row:hover {
         transform: translateX(4px);
     }
-    
+
     .btn-primary,
     .btn-secondary {
         font-weight: 600;
         font-size: 0.875rem;
         padding: 0.75rem 1.5rem;
     }
-    
+
     .hero-section {
         padding: 4rem 0;
     }
-    
+
     .hero-title {
         font-size: clamp(1.8rem, 6vw, 3rem) !important;
         line-height: 1.2;
     }
-    
+
     .hero-subtitle {
         font-size: clamp(0.9rem, 2.5vw, 1.2rem);
         line-height: 1.4;
     }
-    
+
     .section-title {
         font-size: clamp(1.5rem, 4vw, 2.5rem);
     }
-    
+
     .mobile-menu-open {
         max-height: 500px;
         opacity: 1;
@@ -461,27 +470,27 @@ a.contact-card:hover {
     .container {
         padding: 0 0.75rem;
     }
-    
+
     .btn-group {
         flex-direction: column;
         gap: 0.75rem;
     }
-    
+
     .btn-primary,
     .btn-secondary {
         width: 100%;
         max-width: 280px;
         margin: 0 auto;
     }
-    
+
     .feature-grid {
         gap: 1rem;
     }
-    
+
     .card-padding {
         padding: 1.25rem;
     }
-    
+
     .text-responsive {
         font-size: 0.875rem;
     }
@@ -491,23 +500,23 @@ a.contact-card:hover {
     .container {
         padding: 0 0.5rem;
     }
-    
+
     .hero-section {
         padding: 3rem 0;
     }
-    
+
     .hero-title {
         font-size: clamp(1.5rem, 5vw, 2.5rem) !important;
     }
-    
+
     .section-padding {
         padding: 3rem 0;
     }
-    
+
     .card-content {
         padding: 1rem;
     }
-    
+
     .mobile-menu {
         padding: 1rem 0.5rem;
     }
@@ -541,9 +550,11 @@ a.contact-card:hover {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -551,45 +562,46 @@ a.contact-card:hover {
 
 /* 3D文字效果 */
 .text-3d {
-    text-shadow: 
+    text-shadow:
         0 1px 0 #ccc,
         0 2px 0 #c9c9c9,
         0 3px 0 #bbb,
         0 4px 0 #b9b9b9,
         0 5px 0 #aaa,
-        0 6px 1px rgba(0,0,0,.1),
-        0 0 5px rgba(0,0,0,.1),
-        0 1px 3px rgba(0,0,0,.3),
-        0 3px 5px rgba(0,0,0,.2),
-        0 5px 10px rgba(0,0,0,.25),
-        0 10px 10px rgba(0,0,0,.2),
-        0 20px 20px rgba(0,0,0,.15);
+        0 6px 1px rgba(0, 0, 0, .1),
+        0 0 5px rgba(0, 0, 0, .1),
+        0 1px 3px rgba(0, 0, 0, .3),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .25),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .15);
     transform: translateZ(20px);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .text-3d:hover {
     transform: translateZ(30px) scale(1.05);
-    text-shadow: 
+    text-shadow:
         0 1px 0 #ccc,
         0 2px 0 #c9c9c9,
         0 3px 0 #bbb,
         0 4px 0 #b9b9b9,
         0 5px 0 #aaa,
-        0 6px 1px rgba(0,0,0,.1),
-        0 0 5px rgba(0,0,0,.1),
-        0 1px 3px rgba(0,0,0,.3),
-        0 3px 5px rgba(0,0,0,.2),
-        0 5px 10px rgba(0,0,0,.25),
-        0 10px 10px rgba(0,0,0,.2),
-        0 20px 20px rgba(0,0,0,.15),
-        0 30px 30px rgba(0,0,0,.1);
+        0 6px 1px rgba(0, 0, 0, .1),
+        0 0 5px rgba(0, 0, 0, .1),
+        0 1px 3px rgba(0, 0, 0, .3),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .25),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .15),
+        0 30px 30px rgba(0, 0, 0, .1);
 }
 
 /* 霓虹发光文字效果 */
 .neon-text {
-    color: #ffffff; /* 使用纯白色确保可读性 */
-    text-shadow: 
+    color: #ffffff;
+    /* 使用纯白色确保可读性 */
+    text-shadow:
         0 0 5px var(--primary),
         0 0 10px var(--primary),
         0 0 15px var(--primary),
@@ -600,8 +612,15 @@ a.contact-card:hover {
 }
 
 @keyframes neon-flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        text-shadow: 
+
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        text-shadow:
             0 0 5px var(--primary),
             0 0 10px var(--primary),
             0 0 15px var(--primary),
@@ -609,7 +628,10 @@ a.contact-card:hover {
             0 0 35px var(--primary),
             0 0 40px var(--primary);
     }
-    20%, 24%, 55% {
+
+    20%,
+    24%,
+    55% {
         text-shadow: none;
     }
 }
@@ -626,13 +648,18 @@ a.contact-card:hover {
 }
 
 @keyframes particle-float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
-    10%, 90% {
+
+    10%,
+    90% {
         opacity: 1;
     }
+
     50% {
         transform: translateY(-100px) rotate(180deg);
         opacity: 0.8;
@@ -662,7 +689,7 @@ a.contact-card:hover {
     left: 50%;
     width: 0;
     height: 0;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
@@ -675,8 +702,10 @@ a.contact-card:hover {
 
 /* 滚动时显示动画 */
 .scroll-reveal {
-    opacity: 1; /* 改为默认可见 */
-    transform: translateY(0); /* 改为默认位置 */
+    opacity: 1;
+    /* 改为默认可见 */
+    transform: translateY(0);
+    /* 改为默认位置 */
     transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
@@ -704,8 +733,8 @@ a.contact-card:hover {
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: 0.15em;
-    animation: 
-        typing 3.5s steps(40, end) cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+    animation:
+        typing 3.5s steps(40, end) cubic-bezier(0.175, 0.885, 0.32, 1.275),
         blink-caret 0.75s step-end infinite,
         typewriter-glow 2s ease-in-out infinite;
     position: relative;
@@ -713,9 +742,12 @@ a.contact-card:hover {
 }
 
 @keyframes typewriter-glow {
-    0%, 100% {
+
+    0%,
+    100% {
         text-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
     }
+
     50% {
         text-shadow: 0 0 20px rgba(255, 77, 77, 0.8), 0 0 30px rgba(255, 77, 77, 0.6);
     }
@@ -723,8 +755,8 @@ a.contact-card:hover {
 
 /* 悬停放大卡片 */
 .hover-zoom {
-    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                box-shadow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
 }
 
@@ -747,12 +779,11 @@ a.contact-card:hover {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, 
-        var(--primary), 
-        var(--accent), 
-        var(--secondary), 
-        var(--primary)
-    );
+    background: linear-gradient(45deg,
+            var(--primary),
+            var(--accent),
+            var(--secondary),
+            var(--primary));
     background-size: 400% 400%;
     border-radius: 10px;
     z-index: -1;
@@ -760,9 +791,12 @@ a.contact-card:hover {
 }
 
 @keyframes shimmer-border-animate {
-    0%, 100% {
+
+    0%,
+    100% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
@@ -777,6 +811,13 @@ a.contact-card:hover {
     border-radius: 12px;
 }
 
+/* 毛玻璃效果基础 */
+.bg-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
 /* 脉冲光效 */
 .pulse-light {
     animation: pulse-light-effect 4s ease-in-out infinite;
@@ -784,13 +825,16 @@ a.contact-card:hover {
 }
 
 @keyframes pulse-light-effect {
-    0%, 100% {
-        box-shadow: 
+
+    0%,
+    100% {
+        box-shadow:
             0 0 20px rgba(255, 77, 77, 0.3),
             inset 0 0 20px rgba(255, 77, 77, 0.1);
     }
+
     50% {
-        box-shadow: 
+        box-shadow:
             0 0 40px rgba(255, 77, 77, 0.6),
             inset 0 0 30px rgba(255, 77, 77, 0.2);
     }
@@ -800,16 +844,19 @@ a.contact-card:hover {
 .bg-gradient {
     background: linear-gradient(135deg, var(--dark-deep), var(--dark-light), var(--dark-deep));
     background-size: 200% auto;
-    /* animation: bg-gradient-animation 15s ease infinite; */ /* 暂时禁用动画以提高性能 */
+    /* animation: bg-gradient-animation 15s ease infinite; */
+    /* 暂时禁用动画以提高性能 */
 }
 
 @keyframes bg-gradient-animation {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -829,11 +876,14 @@ a.contact-card:hover {
 
 /* 脉冲效果 - 精致版 */
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
         box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
     }
+
     50% {
         opacity: 0.8;
         transform: scale(1.05);
@@ -847,10 +897,13 @@ a.contact-card:hover {
 
 /* 呼吸效果 - 高级版 */
 @keyframes breathe {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
         opacity: 0.8;
     }
+
     50% {
         box-shadow: 0 0 30px rgba(255, 77, 77, 0.6);
         opacity: 1;
@@ -867,13 +920,14 @@ a.contact-card:hover {
     0% {
         background-position-x: 0;
     }
+
     100% {
         background-position-x: 1000px;
     }
 }
 
 .wave-bg {
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,77,77,0.1) 50%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 77, 77, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
     background-size: 1000px 100%;
     animation: wave 15s linear infinite;
 }
@@ -913,9 +967,11 @@ a.contact-card:hover {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -952,12 +1008,10 @@ a.contact-card:hover {
     left: -60%;
     width: 20%;
     height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.3) 50%,
-        rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
     transform: rotate(30deg);
     animation: metallic-sheen-animate 3s infinite;
 }
@@ -966,6 +1020,7 @@ a.contact-card:hover {
     0% {
         left: -60%;
     }
+
     100% {
         left: 120%;
     }
@@ -1043,6 +1098,7 @@ a.contact-card:hover {
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(100%);
     }
@@ -1061,14 +1117,17 @@ a.contact-card:hover {
     width: 100%;
     height: 100%;
     z-index: -2;
-    pointer-events: none; /* 确保不干扰交互 */
-    opacity: 0.5; /* 降低不透明度 */
+    pointer-events: none;
+    /* 确保不干扰交互 */
+    opacity: 0.5;
+    /* 降低不透明度 */
 }
 
 @keyframes gridMove {
     0% {
         background-position: 0 0;
     }
+
     100% {
         background-position: 50px 50px;
     }
@@ -1172,6 +1231,7 @@ a.contact-card:hover {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1237,10 +1297,10 @@ a.contact-card:hover {
 
 /* 骨架屏加载效果 - 高级版 */
 .skeleton {
-    background: linear-gradient(90deg, 
-        var(--dark) 25%, 
-        rgba(61, 90, 128, 0.4) 50%, 
-        var(--dark) 75%);
+    background: linear-gradient(90deg,
+            var(--dark) 25%,
+            rgba(61, 90, 128, 0.4) 50%,
+            var(--dark) 75%);
     background-size: 200% 100%;
     animation: loading 1.8s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 8px;
@@ -1251,6 +1311,7 @@ a.contact-card:hover {
     0% {
         background-position: 200% 0;
     }
+
     100% {
         background-position: -200% 0;
     }
@@ -1290,12 +1351,13 @@ a.contact-card:hover {
 
 /* 触摸设备上的按钮反馈 */
 @media (hover: none) and (pointer: coarse) {
+
     .btn-primary:active,
     .btn-secondary:active {
         transform: scale(0.95);
         transition: transform 0.1s ease;
     }
-    
+
     .feature-card:active {
         background: rgba(255, 255, 255, 0.05);
     }
@@ -1351,6 +1413,7 @@ a.contact-card:hover {
         width: 0;
         opacity: 0;
     }
+
     to {
         width: 100%;
         opacity: 1;
@@ -1362,17 +1425,20 @@ a.contact-card:hover {
     border-right: 0.15em solid var(--primary);
     white-space: nowrap;
     margin: 0 auto;
-    animation: 
-        typing 3.5s steps(40, end) cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+    animation:
+        typing 3.5s steps(40, end) cubic-bezier(0.175, 0.885, 0.32, 1.275),
         blink-caret 0.75s step-end infinite;
     position: relative;
     display: inline-block;
 }
 
 @keyframes blink-caret {
-    from, to {
+
+    from,
+    to {
         border-color: transparent;
     }
+
     50% {
         border-color: var(--primary);
         box-shadow: 0 0 10px var(--primary);
@@ -1395,6 +1461,7 @@ a.contact-card:hover {
     0% {
         width: 0;
     }
+
     100% {
         width: 100%;
     }
