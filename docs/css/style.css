@@ -1511,7 +1511,7 @@ a.contact-card:hover {
 /* 模态窗口修复 */
 #version-modal,
 #confirm-dialog {
-    z-index: 9999;
+    z-index: 9999 !important;
 }
 
 #version-modal.hidden,
@@ -1524,11 +1524,20 @@ a.contact-card:hover {
     display: flex !important;
 }
 
-/* 确保模态窗口内容居中 */
+/* 确保模态窗口背景和内容可以正确交互 */
+#modal-backdrop,
+#confirm-backdrop {
+    z-index: 9998 !important;
+    pointer-events: auto;
+}
+
+/* 确保模态窗口内容居中且可点击 */
 #modal-content,
 #confirm-content {
     max-height: 90vh;
     overflow-y: auto;
+    pointer-events: auto !important;
+    z-index: 9999 !important;
 }
 
 /* 修复容器布局 */
@@ -1578,6 +1587,32 @@ body {
         max-height: 85vh;
         margin: 0.5rem;
     }
+}
+
+/* 确保模态窗口内部所有元素可以点击 */
+#version-modal button,
+#version-modal input,
+#version-modal label,
+#version-modal .version-option,
+#confirm-dialog button {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+/* 确保版本选项可以点击 */
+.version-option {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+.version-option input[type="radio"] {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
+.version-option label {
+    pointer-events: auto !important;
+    cursor: pointer;
 }
 
 .flip-card-back {

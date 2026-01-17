@@ -564,14 +564,14 @@
     </button>
 
     <!-- 服务器版本选择模态窗口 -->
-    <div id="version-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div id="version-modal" class="fixed inset-0 flex items-center justify-center hidden" style="z-index: 9999;">
         <!-- 模态窗口背景 -->
-        <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300">
+        <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300" style="z-index: 9998;">
         </div>
 
         <!-- 模态窗口内容 -->
         <div id="modal-content"
-            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-3xl mx-4 transform transition-all duration-300 scale-95 opacity-0">
+            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-3xl mx-4 transform transition-all duration-300 scale-95 opacity-0" style="z-index: 9999; pointer-events: auto;">
             <!-- 关闭按钮 -->
             <button id="close-modal"
                 class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark/50 flex items-center justify-center text-light/70 hover:text-white transition-colors duration-300 z-10">
@@ -658,14 +658,14 @@
     </div>
 
     <!-- 确认对话框 -->
-    <div id="confirm-dialog" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div id="confirm-dialog" class="fixed inset-0 flex items-center justify-center hidden" style="z-index: 10000;">
         <!-- 对话框背景 -->
         <div id="confirm-backdrop"
-            class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"></div>
+            class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300" style="z-index: 9999;"></div>
 
         <!-- 对话框内容 -->
         <div id="confirm-content"
-            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4 transform transition-all duration-300 scale-95 opacity-0">
+            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4 transform transition-all duration-300 scale-95 opacity-0" style="z-index: 10000; pointer-events: auto;">
 
             <!-- 对话框标题 -->
             <div class="p-6 border-b border-white/10">

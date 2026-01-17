@@ -177,6 +177,12 @@ function initVersionModal() {
             // 显示模态窗口
             versionModal.classList.remove('hidden');
             versionModal.style.display = 'flex';
+            versionModal.style.zIndex = '9999';
+
+            // 确保背景和内容的z-index正确
+            modalBackdrop.style.zIndex = '9998';
+            modalContent.style.zIndex = '9999';
+            modalContent.style.pointerEvents = 'auto';
 
             // 添加动画效果
             requestAnimationFrame(() => {
@@ -224,6 +230,12 @@ function initVersionModal() {
 
         // 显示确认对话框
         confirmDialog.classList.remove('hidden');
+        confirmDialog.style.zIndex = '10000';
+
+        // 确保背景和内容的z-index正确
+        confirmBackdrop.style.zIndex = '9999';
+        confirmContent.style.zIndex = '10000';
+        confirmContent.style.pointerEvents = 'auto';
 
         // 添加动画效果
         setTimeout(() => {
