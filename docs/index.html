@@ -112,7 +112,9 @@
         rel="stylesheet" crossorigin>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography" defer></script>
     <script defer>
-        tailwind.config = {
+        // 禁用 Tailwind CDN 的生产环境警告
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
             theme: {
                 extend: {
                     colors: {
@@ -186,63 +188,49 @@
     <!-- 噪点覆盖层 -->
     <div class="noise-overlay"></div>
 
-    <!-- 导航栏（有问题就Shit Fuck CloudFlare CDN） -->
+    <!-- 导航栏 -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 ease-in-out" style="z-index: 1000;">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center bg-glass rounded-b-xl">
             <div class="flex items-center space-x-2">
                 <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center pulse overflow-hidden">
                     <img src="favicon.ico" alt="EFT Server Logo" class="w-full h-full object-cover">
                 </div>
-                <span
-                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-3d">EFT
-                    Server</span>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-3d">EFT Server</span>
             </div>
 
-            <!-- 桌面导航（有问题就Shit Fuck CloudFlare CDN） -->
+            <!-- 桌面导航 -->
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="nav-link hover:text-primary transition-colors duration-300">首页</a>
                 <a href="#features" class="nav-link hover:text-primary transition-colors duration-300">特色</a>
                 <a href="#opentime" class="nav-link hover:text-primary transition-colors duration-300">开放时间</a>
-                <a href="guides/guide-3.9.8.html"
-                    class="nav-link hover:text-primary transition-colors duration-300">3.9.8版本指南 <span
-                        class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
-                <a href="guides/guide-3.11.html"
-                    class="nav-link hover:text-primary transition-colors duration-300">3.11版本指南 <span
-                        class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
+                <a href="guides/guide-3.9.8.html" class="nav-link hover:text-primary transition-colors duration-300">3.9.8版本指南 <span class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
+                <a href="guides/guide-3.11.html" class="nav-link hover:text-primary transition-colors duration-300">3.11版本指南 <span class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
                 <a href="#contact" class="nav-link hover:text-primary transition-colors duration-300">联系我们</a>
                 <a href="#downloadcenter" class="nav-link hover:text-primary transition-colors duration-300">资源下载中心</a>
             </div>
 
-            <!-- 服务器状态指示器（有问题就Shit Fuck CloudFlare CDN） -->
+            <!-- 服务器状态指示器 -->
             <div class="flex items-center space-x-2" id="server-status-container">
                 <span class="text-sm hidden md:inline">服务器状态:</span>
                 <div id="server-status-light" class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
             </div>
 
-            <!-- 移动导航按钮（有问题就Shit Fuck CloudFlare CDN） -->
+            <!-- 移动导航按钮 -->
             <button id="menu-toggle" class="md:hidden text-2xl">
                 <i class="fa fa-bars"></i>
             </button>
         </div>
 
-        <!-- 移动导航菜单（有问题就Shit Fuck CloudFlare CDN） -->
+        <!-- 移动导航菜单 -->
         <div id="mobile-menu" class="md:hidden hidden bg-dark/95 backdrop-blur-lg border-t border-white/10">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
                 <a href="#home" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">首页</a>
-                <a href="#features"
-                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">特色</a>
-                <a href="#opentime"
-                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">开放时间</a>
-                <a href="guides/guide-3.9.8.html"
-                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.9.8版本指南 <span
-                        class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
-                <a href="guides/guide-3.11.html"
-                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.11版本指南 <span
-                        class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
-                <a href="#contact"
-                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">联系我们</a>
-                <a href="#downloadcenter"
-                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">资源下载中心</a>
+                <a href="#features" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">特色</a>
+                <a href="#opentime" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">开放时间</a>
+                <a href="guides/guide-3.9.8.html" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.9.8版本指南 <span class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
+                <a href="guides/guide-3.11.html" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.11版本指南 <span class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
+                <a href="#contact" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">联系我们</a>
+                <a href="#downloadcenter" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">资源下载中心</a>
             </div>
         </div>
     </nav>
