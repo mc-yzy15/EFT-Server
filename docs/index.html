@@ -4,19 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Tag Manager -->
+    <!-- Manual font preloads with CORS to override Cloudflare's auto-injected preloads -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hjp-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Google Tag Manager - 智能加载 -->
     <script>
-        try {
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5PX95NVC');
-        } catch(e) {
-            console.warn('Google Tag Manager failed to load:', e);
-        }
+        window.addEventListener('googleConnectivityChecked', function(e) {
+            if (e.detail.connected) {
+                try {
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-5PX95NVC');
+                } catch(err) {
+                    console.warn('Google Tag Manager failed to load:', err);
+                }
+            }
+        });
     </script>
     <!-- End Google Tag Manager -->
+
     <title>EFT Server - 逃离塔科夫私人服务器 | 3.9.8低配版 | 3.11还原版</title>
     <meta name="description" content="专业的逃离塔科夫私人服务器，提供3.9.8低配版和3.11还原版，打造专属于你的塔科夫体验，与志同道合的玩家一起探索这片危险的战场。">
     <meta name="keywords" content="逃离塔科夫, EFT, 私人服务器, 3.9.8低配版, 3.11还原版, 逃离塔科夫离线版, 塔科夫服务器">
@@ -25,18 +34,83 @@
     <meta name="theme-color" content="#FF4D4D">
     <link rel="canonical" href="https://server.yzy15.dpdns.org/">
     <link rel="alternate" hreflang="zh-CN" href="https://server.yzy15.dpdns.org/">
-    <!-- Google tag (gtag.js) -->
+
+    <!-- Google 服务智能检测 -->
+    <!-- 默认启用，检测到无法连接时自动禁用 -->
     <script>
-        try {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-FRM7CNLEQT');
-        } catch(e) {
-            console.warn('Google Analytics failed to initialize:', e);
-        }
+        (function() {
+            // 默认启用
+            let ENABLE_GOOGLE_ANALYTICS = true;
+            let ENABLE_GTM = true;
+
+            // 检测是否能连接 Google
+            function checkGoogleConnectivity() {
+                return new Promise((resolve) => {
+                    // 设置超时时间（3秒）
+                    const timeout = setTimeout(() => {
+                        console.warn('Google 服务连接超时，自动禁用');
+                        resolve(false);
+                    }, 3000);
+
+                    // 尝试加载一个小图片来检测连接
+                    const img = new Image();
+                    img.onload = () => {
+                        clearTimeout(timeout);
+                        console.log('Google 服务连接正常');
+                        resolve(true);
+                    };
+                    img.onerror = () => {
+                        clearTimeout(timeout);
+                        console.warn('Google 服务连接失败，自动禁用');
+                        resolve(false);
+                    };
+
+                    // 使用 Google 的 favicon 进行检测
+                    img.src = 'https://www.google.com/favicon.ico?' + Date.now();
+                });
+            }
+
+            // 执行检测并设置全局变量
+            checkGoogleConnectivity().then(connected => {
+                window.ENABLE_GOOGLE_ANALYTICS = connected;
+                window.ENABLE_GTM = connected;
+
+                // 触发自定义事件，通知其他脚本
+                const event = new CustomEvent('googleConnectivityChecked', {
+                    detail: { connected }
+                });
+                window.dispatchEvent(event);
+            });
+
+            // 立即设置初始值（检测完成前使用默认值）
+            window.ENABLE_GOOGLE_ANALYTICS = ENABLE_GOOGLE_ANALYTICS;
+            window.ENABLE_GTM = ENABLE_GTM;
+        })();
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRM7CNLEQT" onerror="console.warn('Google Analytics script failed to load')"></script>
+
+    <!-- Google tag (gtag.js) - 智能加载 -->
+    <script>
+        window.addEventListener('googleConnectivityChecked', function(e) {
+            if (e.detail.connected) {
+                try {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-FRM7CNLEQT');
+                } catch(err) {
+                    console.warn('Google Analytics failed to initialize:', err);
+                }
+            }
+        });
+    </script>
+    <script>
+        window.addEventListener('googleConnectivityChecked', function(e) {
+            if (e.detail.connected) {
+                document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=G-FRM7CNLEQT" onerror="console.warn(\'Google Analytics script failed to load\')"><\/script>');
+            }
+        });
+    </script>
+
     <!-- 结构化数据 -->
     <script type="application/ld+json">
     {
@@ -134,17 +208,38 @@
 </head>
 
 <body class="font-inter bg-dark text-light min-h-screen overflow-x-hidden">
-        
-        
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PX95NVC"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        
-        <!-- 网格背景动画 -->
-        <div class="grid-bg"></div>
-        <!-- 噪点覆盖层 -->
-        <div class="noise-overlay"></div>
+
+    <!-- Google Tag Manager (noscript) - 智能加载 -->
+    <script>
+        // 检查是否已经完成连接检测
+        if (window.ENABLE_GTM === true) {
+            document.write('<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PX95NVC" height="0" width="0" style="display:none;visibility:hidden"><\/iframe><\/noscript>');
+        } else if (window.ENABLE_GTM === undefined) {
+            // 如果检测还未完成，监听事件
+            window.addEventListener('googleConnectivityChecked', function(e) {
+                if (e.detail.connected) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-5PX95NVC';
+                    iframe.height = '0';
+                    iframe.width = '0';
+                    iframe.style.display = 'none';
+                    iframe.style.visibility = 'hidden';
+
+                    const noscript = document.createElement('noscript');
+                    noscript.appendChild(iframe);
+
+                    // 插入到 body 开头
+                    document.body.insertBefore(noscript, document.body.firstChild);
+                }
+            });
+        }
+    </script>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- 网格背景动画 -->
+    <div class="grid-bg"></div>
+    <!-- 噪点覆盖层 -->
+    <div class="noise-overlay"></div>
 
     <!-- 导航栏（有问题就Shit Fuck CloudFlare CDN） -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 ease-in-out" style="z-index: 1000;">
