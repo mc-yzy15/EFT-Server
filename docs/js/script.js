@@ -104,7 +104,10 @@ function init() {
 
     // 创建粒子效果（只在桌面端）
     if (window.innerWidth > 768) {
-        createAdvancedParticles();
+        // 延迟执行以确保 DOM 完全准备好
+        setTimeout(() => {
+            createAdvancedParticles();
+        }, 100);
     }
 
     // 每分钟检查一次服务器状态
@@ -713,6 +716,12 @@ function checkElementsInView() {
 // 创建高级粒子效果
 function createAdvancedParticles() {
     if (particlesCreated) return;
+
+    // 检查 document.body 是否存在
+    if (!document.body) {
+        console.warn('document.body not ready, skipping particle creation');
+        return;
+    }
 
     const particlesContainer = document.createElement('div');
     particlesContainer.classList.add('particles-container');
