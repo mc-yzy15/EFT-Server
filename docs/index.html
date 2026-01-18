@@ -110,9 +110,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" crossorigin>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script defer>
         tailwind.config = {
             theme: {
                 extend: {
@@ -130,6 +129,7 @@
             }
         }
     </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style type="text/tailwindcss">
         @layer utilities {
             .content-auto {
@@ -253,7 +253,7 @@
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-secondary/20 via-dark/80 to-dark"></div>
             <img src="https://picsum.photos/seed/picsum/1920/1080" alt="逃离塔科夫游戏背景"
-                class="w-full h-full object-cover opacity-30 background-overlay hero-background">
+                class="w-full h-full object-cover opacity-30 background-overlay hero-background" loading="lazy" onerror="this.style.display='none'">
 
             <!-- 装饰性网格（有问题就Shit Fuck CloudFlare CDN） -->
             <div

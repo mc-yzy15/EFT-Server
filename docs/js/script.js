@@ -860,10 +860,10 @@ window.addEventListener('DOMContentLoaded', () => {
         addLinkHoverEffects();
         // createParticles(); // 可选：如果需要粒子效果，可以取消注释
 
-        // 确保所有元素初始可见
-        const allElements = document.querySelectorAll('*');
-        allElements.forEach(el => {
-            if (el.style.opacity === '0') {
+        // 确保所有元素初始可见（只处理有 scroll-reveal 类的元素）
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach(el => {
+            if (el.style.opacity === '0' || el.style.opacity === '') {
                 el.style.opacity = '1';
             }
         });
