@@ -23,18 +23,18 @@
 
             try {
                 window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
+                function gtag() { dataLayer.push(arguments); }
                 gtag('js', new Date());
                 gtag('config', 'G-FRM7CNLEQT');
 
                 const script = document.createElement('script');
                 script.async = true;
                 script.src = 'https://www.googletagmanager.com/gtag/js?id=G-FRM7CNLEQT';
-                script.onerror = function() {
+                script.onerror = function () {
                     console.warn('Google Analytics 加载失败（可能是网络问题或被拦截）');
                 };
                 document.head.appendChild(script);
-            } catch(e) {
+            } catch (e) {
                 console.warn('Google Analytics 初始化失败:', e);
             }
         }
@@ -45,20 +45,23 @@
             window.gtmLoaded = true;
 
             try {
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','GTM-5PX95NVC');
-            } catch(e) {
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-5PX95NVC');
+            } catch (e) {
                 console.warn('Google Tag Manager 加载失败:', e);
             }
         }
 
         // 页面加载完成后异步加载 Google 服务
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // 延迟 2 秒加载，确保页面完全渲染
-            setTimeout(function() {
+            setTimeout(function () {
                 loadGoogleAnalytics();
                 loadGTM();
             }, 2000);
@@ -167,8 +170,8 @@
 
     <!-- Google Tag Manager noscript - 异步加载 -->
     <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
                 const iframe = document.createElement('iframe');
                 iframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-5PX95NVC';
                 iframe.height = '0';
@@ -195,7 +198,9 @@
                 <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center pulse overflow-hidden">
                     <img src="favicon.ico" alt="EFT Server Logo" class="w-full h-full object-cover">
                 </div>
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-3d">EFT Server</span>
+                <span
+                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-3d">EFT
+                    Server</span>
             </div>
 
             <!-- 桌面导航 -->
@@ -203,8 +208,12 @@
                 <a href="#home" class="nav-link hover:text-primary transition-colors duration-300">首页</a>
                 <a href="#features" class="nav-link hover:text-primary transition-colors duration-300">特色</a>
                 <a href="#opentime" class="nav-link hover:text-primary transition-colors duration-300">开放时间</a>
-                <a href="guides/guide-3.9.8.html" class="nav-link hover:text-primary transition-colors duration-300">3.9.8版本指南 <span class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
-                <a href="guides/guide-3.11.html" class="nav-link hover:text-primary transition-colors duration-300">3.11版本指南 <span class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
+                <a href="guides/guide-3.9.8.html"
+                    class="nav-link hover:text-primary transition-colors duration-300">3.9.8版本指南 <span
+                        class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
+                <a href="guides/guide-3.11.html"
+                    class="nav-link hover:text-primary transition-colors duration-300">3.11版本指南 <span
+                        class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
                 <a href="#contact" class="nav-link hover:text-primary transition-colors duration-300">联系我们</a>
                 <a href="#downloadcenter" class="nav-link hover:text-primary transition-colors duration-300">资源下载中心</a>
             </div>
@@ -225,12 +234,20 @@
         <div id="mobile-menu" class="md:hidden hidden bg-dark/95 backdrop-blur-lg border-t border-white/10">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
                 <a href="#home" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">首页</a>
-                <a href="#features" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">特色</a>
-                <a href="#opentime" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">开放时间</a>
-                <a href="guides/guide-3.9.8.html" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.9.8版本指南 <span class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
-                <a href="guides/guide-3.11.html" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.11版本指南 <span class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
-                <a href="#contact" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">联系我们</a>
-                <a href="#downloadcenter" class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">资源下载中心</a>
+                <a href="#features"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">特色</a>
+                <a href="#opentime"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">开放时间</a>
+                <a href="guides/guide-3.9.8.html"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.9.8版本指南 <span
+                        class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">低配</span></a>
+                <a href="guides/guide-3.11.html"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">3.11版本指南 <span
+                        class="text-xs bg-blue-500 text-white px-1 py-0.5 rounded">还原</span></a>
+                <a href="#contact"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">联系我们</a>
+                <a href="#downloadcenter"
+                    class="py-2 px-4 hover:bg-primary/10 rounded-lg transition-colors duration-300">资源下载中心</a>
             </div>
         </div>
     </nav>
@@ -241,7 +258,8 @@
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-secondary/20 via-dark/80 to-dark"></div>
             <img src="https://picsum.photos/seed/picsum/1920/1080" alt="逃离塔科夫游戏背景"
-                class="w-full h-full object-cover opacity-30 background-overlay hero-background" loading="lazy" onerror="this.style.display='none'">
+                class="w-full h-full object-cover opacity-30 background-overlay hero-background" loading="lazy"
+                onerror="this.style.display='none'">
 
             <!-- 装饰性网格（有问题就Shit Fuck CloudFlare CDN） -->
             <div
@@ -602,12 +620,14 @@
     <!-- 服务器版本选择模态窗口 -->
     <div id="version-modal" class="fixed inset-0 flex items-center justify-center hidden" style="z-index: 9999;">
         <!-- 模态窗口背景 -->
-        <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300" style="z-index: 9998;">
+        <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300"
+            style="z-index: 9998;">
         </div>
 
         <!-- 模态窗口内容 -->
         <div id="modal-content"
-            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-3xl mx-4 transform transition-all duration-300 scale-95 opacity-0" style="z-index: 9999; pointer-events: auto;">
+            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-3xl mx-4 transform transition-all duration-300 scale-95 opacity-0"
+            style="z-index: 9999; pointer-events: auto;">
             <!-- 关闭按钮 -->
             <button id="close-modal"
                 class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark/50 flex items-center justify-center text-light/70 hover:text-white transition-colors duration-300 z-10">
@@ -696,12 +716,13 @@
     <!-- 确认对话框 -->
     <div id="confirm-dialog" class="fixed inset-0 flex items-center justify-center hidden" style="z-index: 10000;">
         <!-- 对话框背景 -->
-        <div id="confirm-backdrop"
-            class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300" style="z-index: 9999;"></div>
+        <div id="confirm-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"
+            style="z-index: 9999;"></div>
 
         <!-- 对话框内容 -->
         <div id="confirm-content"
-            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4 transform transition-all duration-300 scale-95 opacity-0" style="z-index: 10000; pointer-events: auto;">
+            class="relative bg-dark rounded-2xl border border-white/10 shadow-2xl w-full max-w-md mx-4 transform transition-all duration-300 scale-95 opacity-0"
+            style="z-index: 10000; pointer-events: auto;">
 
             <!-- 对话框标题 -->
             <div class="p-6 border-b border-white/10">

@@ -1,0 +1,16 @@
+{
+  "name": "eft-server-docs",
+  "version": "1.0.0",
+  "description": "EFT Server Documentation",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch",
+    "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
