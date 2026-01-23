@@ -113,57 +113,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" crossorigin>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography" defer></script>
-    <script defer>
-        // 禁用 Tailwind CDN 的生产环境警告
-        window.tailwind = window.tailwind || {};
-        window.tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#FF4D4D',
-                        secondary: '#3D5A80',
-                        dark: '#293241',
-                        light: '#EEF5FF',
-                        accent: '#F2CC8F'
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                },
-            }
-        }
-    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            }
-            .text-shadow-lg {
-                text-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            }
-            .bg-glass {
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-            }
-            .animate-float {
-                animation: float 6s ease-in-out infinite;
-            }
-            @keyframes float {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-20px); }
-                100% { transform: translateY(0px); }
-            }
-            .animate-pulse-slow {
-                animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            }
-        }
-    </style>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body class="font-inter bg-dark text-light min-h-screen overflow-x-hidden">
