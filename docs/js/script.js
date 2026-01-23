@@ -407,7 +407,7 @@ function initVersionModal() {
         if (joinServerBtn) {
             // 移除可能存在的旧事件监听器
             joinServerBtn.onclick = null;
-            
+
             // 添加新的事件监听器
             joinServerBtn.addEventListener('click', function (e) {
                 console.log('立即加入按钮被点击');
@@ -875,26 +875,26 @@ function adjustContentHeight() {
 const resizeHandler = debounce(adjustContentHeight, 250);
 window.addEventListener('resize', resizeHandler);
 
-// 初始化页面
-window.addEventListener('DOMContentLoaded', () => {
-    console.log('页面DOM加载完成，开始初始化...');
+// 初始化页面 - 适配 Cloudflare 环境
+(function () {
+    // 确保页面完全加载
+    function initPage() {
+        console.log('页面加载完成，开始初始化...');
 
-    // 确保DOM元素存在
-    const joinServerBtn = document.getElementById('join-server-btn');
-    if (joinServerBtn) {
-        console.log('找到立即加入按钮元素');
-    } else {
-        console.error('找不到立即加入按钮元素');
-    }
+        // 确保DOM元素存在
+        const joinServerBtn = document.getElementById('join-server-btn');
+        if (joinServerBtn) {
+            console.log('找到立即加入按钮元素');
+        } else {
+            console.error('找不到立即加入按钮元素');
+        }
 
-    // 延迟初始化以确保所有元素都已渲染
-    setTimeout(() => {
+        // 初始化所有功能
         init();
         adjustContentHeight();
         addLinkHoverEffects();
-        // createParticles(); // 可选：如果需要粒子效果，可以取消注释
 
-        // 确保所有元素初始可见（只处理有 scroll-reveal 类的元素）
+        // 确保所有元素初始可见
         const revealElements = document.querySelectorAll('.scroll-reveal');
         revealElements.forEach(el => {
             if (el.style.opacity === '0' || el.style.opacity === '') {
@@ -902,46 +902,74 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 添加页面卸载时的清理函数，防止内存泄漏
+        // 添加页面卸载时的清理函数
         window.addEventListener('beforeunload', () => {
-            // 移除事件监听器
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', resizeHandler);
         });
 
         console.log('页面初始化完成');
-    }, 100);
-});
+    }
 
+    // 多种初始化方式，确保在不同环境下都能正常工作
+    if (document.readyState === 'complete') {
+        initPage();
+    } else if (document.readyState === 'interactive') {
+        setTimeout(initPage, 100);
+    } else {
+        window.addEventListener('load', initPage);
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(initPage, 200);
+        });
+    }
 
+    // 直接为立即加入按钮添加点击事件，绕过可能的初始化问题
+    setTimeout(() => {
+        const joinServerBtn = document.getElementById('join-server-btn');
+        const versionModal = document.getElementById('version-modal');
 
-// 添加键盘快捷键
-function addKeyboardShortcuts() {
-    document.addEventListener('keydown', (e) => {
-        // ESC键关闭移动菜单
-        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-            toggleMobileMenu();
+        if (joinServerBtn && versionModal) {
+            // 添加直接的点击事件处理，作为备用方案
+            joinServerBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                console.log('直接处理立即加入按钮点击事件');
+
+                // 确保模态窗口正确显示
+                try {
+                    document.body.style.overflow = 'hidden';
+                    versionModal.classList.remove('hidden');
+                    versionModal.style.display = 'flex';
+                    versionModal.style.zIndex = '9999';
+
+                    const modalBackdrop = document.getElementById('modal-backdrop');
+                    const modalContent = document.getElementById('modal-content');
+
+                    if (modalBackdrop && modalContent) {
+                        modalBackdrop.style.opacity = '0';
+                        modalContent.style.opacity = '0';
+                        modalContent.style.transform = 'scale(0.95)';
+
+                        setTimeout(() => {
+                            modalBackdrop.style.opacity = '1';
+                            modalContent.style.opacity = '1';
+                            modalContent.style.transform = 'scale(1)';
+                        }, 10);
+                    }
+                } catch (error) {
+                    console.error('直接处理点击事件时出错:', error);
+                }
+            });
+
+            console.log('已添加直接点击事件处理作为备用方案');
         }
+    }, 500);
+})();
 
-        // Ctrl + / 或 Cmd + / 显示帮助
-        if ((e.ctrlKey || e.metaKey) && e.key === '/') {
-            e.preventDefault();
-            showKeyboardShortcuts();
-        }
-    });
-}
 
-// 显示键盘快捷键帮助
-function showKeyboardShortcuts() {
-    const shortcuts = [
-        { key: 'ESC', action: '关闭菜单' },
-        { key: 'Ctrl+/ 或 Cmd+/', action: '显示快捷键帮助' },
-        { key: 'Home', action: '回到顶部' }
-    ];
 
-    // 这里可以添加一个漂亮的模态框显示快捷键
-    console.log('键盘快捷键:', shortcuts);
-}
+
 
 // 页面性能优化
 function optimizePerformance() {
