@@ -121,54 +121,77 @@ function init() {
 function initVersionModal() {
     console.log('开始初始化版本选择模态窗口...');
 
-    // 获取DOM元素
-    const joinServerBtn = document.getElementById('join-server-btn');
-    const versionModal = document.getElementById('version-modal');
-    const modalBackdrop = document.getElementById('modal-backdrop');
-    const modalContent = document.getElementById('modal-content');
-    const closeModalBtn = document.getElementById('close-modal');
-    const cancelSelectBtn = document.getElementById('cancel-select-btn');
-    const selectVersionBtn = document.getElementById('select-version-btn');
-    const versionOptions = document.querySelectorAll('.version-option');
-    const radioButtons = document.querySelectorAll('input[name="server-version"]');
-
-    // 确认对话框元素
-    const confirmDialog = document.getElementById('confirm-dialog');
-    const confirmBackdrop = document.getElementById('confirm-backdrop');
-    const confirmContent = document.getElementById('confirm-content');
-    const confirmMessage = document.getElementById('confirm-message');
-    const confirmYesBtn = document.getElementById('confirm-yes');
-    const confirmNoBtn = document.getElementById('confirm-no');
-
-    // 当前选中的版本
+    // 全局变量，确保内部函数可以访问
+    let joinServerBtn, versionModal, modalBackdrop, modalContent, closeModalBtn, cancelSelectBtn, selectVersionBtn;
+    let versionOptions, radioButtons;
+    let confirmDialog, confirmBackdrop, confirmContent, confirmMessage, confirmYesBtn, confirmNoBtn;
     let selectedVersion = null;
 
-    // 检查所有元素是否存在
-    const missingElements = [];
-    if (!joinServerBtn) missingElements.push('join-server-btn');
-    if (!versionModal) missingElements.push('version-modal');
-    if (!modalBackdrop) missingElements.push('modal-backdrop');
-    if (!modalContent) missingElements.push('modal-content');
-    if (!closeModalBtn) missingElements.push('close-modal');
-    if (!cancelSelectBtn) missingElements.push('cancel-select-btn');
-    if (!selectVersionBtn) missingElements.push('select-version-btn');
-    if (!confirmDialog) missingElements.push('confirm-dialog');
-    if (!confirmBackdrop) missingElements.push('confirm-backdrop');
-    if (!confirmContent) missingElements.push('confirm-content');
-    if (!confirmMessage) missingElements.push('confirm-message');
-    if (!confirmYesBtn) missingElements.push('confirm-yes');
-    if (!confirmNoBtn) missingElements.push('confirm-no');
+    // 初始化函数
+    function initializeElements() {
+        // 获取DOM元素
+        joinServerBtn = document.getElementById('join-server-btn');
+        versionModal = document.getElementById('version-modal');
+        modalBackdrop = document.getElementById('modal-backdrop');
+        modalContent = document.getElementById('modal-content');
+        closeModalBtn = document.getElementById('close-modal');
+        cancelSelectBtn = document.getElementById('cancel-select-btn');
+        selectVersionBtn = document.getElementById('select-version-btn');
+        versionOptions = document.querySelectorAll('.version-option');
+        radioButtons = document.querySelectorAll('input[name="server-version"]');
 
-    if (missingElements.length > 0) {
-        console.error('版本选择模态窗口缺少以下DOM元素:', missingElements);
-        console.error('请检查HTML中是否包含所有必需的模态窗口元素');
-        return;
+        // 确认对话框元素
+        confirmDialog = document.getElementById('confirm-dialog');
+        confirmBackdrop = document.getElementById('confirm-backdrop');
+        confirmContent = document.getElementById('confirm-content');
+        confirmMessage = document.getElementById('confirm-message');
+        confirmYesBtn = document.getElementById('confirm-yes');
+        confirmNoBtn = document.getElementById('confirm-no');
+
+        // 检查所有元素是否存在
+        const missingElements = [];
+        if (!joinServerBtn) missingElements.push('join-server-btn');
+        if (!versionModal) missingElements.push('version-modal');
+        if (!modalBackdrop) missingElements.push('modal-backdrop');
+        if (!modalContent) missingElements.push('modal-content');
+        if (!closeModalBtn) missingElements.push('close-modal');
+        if (!cancelSelectBtn) missingElements.push('cancel-select-btn');
+        if (!selectVersionBtn) missingElements.push('select-version-btn');
+        if (!confirmDialog) missingElements.push('confirm-dialog');
+        if (!confirmBackdrop) missingElements.push('confirm-backdrop');
+        if (!confirmContent) missingElements.push('confirm-content');
+        if (!confirmMessage) missingElements.push('confirm-message');
+        if (!confirmYesBtn) missingElements.push('confirm-yes');
+        if (!confirmNoBtn) missingElements.push('confirm-no');
+
+        if (missingElements.length > 0) {
+            console.error('版本选择模态窗口缺少以下DOM元素:', missingElements);
+            console.error('请检查HTML中是否包含所有必需的模态窗口元素');
+            return false;
+        }
+
+        console.log('所有模态窗口DOM元素已找到');
+        return true;
     }
 
-    console.log('所有模态窗口DOM元素已找到');
+    // 初始化样式和状态
+    function initializeStyles() {
+        // 禁用确认按钮直到选择版本
+        selectVersionBtn.disabled = true;
 
-    // 禁用确认按钮直到选择版本
-    selectVersionBtn.disabled = true;
+        // 确保模态窗口初始状态正确
+        versionModal.style.display = 'none';
+        versionModal.classList.add('hidden');
+        modalBackdrop.style.opacity = '0';
+        modalContent.style.opacity = '0';
+        modalContent.style.transform = 'scale(0.95)';
+
+        // 确保确认对话框初始状态正确
+        confirmDialog.classList.add('hidden');
+        confirmBackdrop.style.opacity = '0';
+        confirmContent.style.opacity = '0';
+        confirmContent.style.transform = 'scale(0.95)';
+    }
 
     // 打开模态窗口函数
     function openModal() {
@@ -188,11 +211,11 @@ function initVersionModal() {
             modalContent.style.pointerEvents = 'auto';
 
             // 添加动画效果
-            requestAnimationFrame(() => {
+            setTimeout(() => {
                 modalBackdrop.style.opacity = '1';
                 modalContent.style.opacity = '1';
                 modalContent.style.transform = 'scale(1)';
-            });
+            }, 10);
         } catch (error) {
             console.error('打开模态窗口时出错:', error);
         }
@@ -378,84 +401,95 @@ function initVersionModal() {
         }, 3000);
     }
 
-    // 事件监听器
-    // 立即加入按钮点击事件
-    if (joinServerBtn) {
-        joinServerBtn.addEventListener('click', function (e) {
-            console.log('立即加入按钮被点击');
-            e.preventDefault();
+    // 绑定事件监听器
+    function bindEventListeners() {
+        // 立即加入按钮点击事件
+        if (joinServerBtn) {
+            // 移除可能存在的旧事件监听器
+            joinServerBtn.onclick = null;
+            
+            // 添加新的事件监听器
+            joinServerBtn.addEventListener('click', function (e) {
+                console.log('立即加入按钮被点击');
+                e.preventDefault();
+                e.stopPropagation();
+                openModal();
+            });
+            console.log('立即加入按钮事件绑定成功');
+        } else {
+            console.error('找不到立即加入按钮元素');
+        }
+
+        // 关闭按钮点击事件
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelSelectBtn.addEventListener('click', closeModal);
+
+        // 点击背景关闭模态窗口
+        modalBackdrop.addEventListener('click', closeModal);
+
+        // 阻止点击内容时关闭模态窗口
+        modalContent.addEventListener('click', (e) => {
             e.stopPropagation();
-            openModal();
         });
-        console.log('立即加入按钮事件绑定成功');
-    } else {
-        console.error('找不到立即加入按钮元素');
+
+        // 单选按钮变化事件
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    handleVersionSelect(e.target.value);
+                }
+            });
+        });
+
+        // 版本选项点击事件
+        versionOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const version = option.id.replace('version-', '').replace('398', '3.9.8').replace('311', '3.11');
+                const radio = document.querySelector(`input[name="server-version"][value="${version}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    handleVersionSelect(version);
+                }
+            });
+        });
+
+        // 确认选择按钮点击事件
+        selectVersionBtn.addEventListener('click', () => {
+            if (selectedVersion) {
+                openConfirmDialog(selectedVersion);
+            }
+        });
+
+        // 确认对话框事件
+        confirmNoBtn.addEventListener('click', closeConfirmDialog);
+        confirmYesBtn.addEventListener('click', handleFinalConfirmation);
+
+        // 点击背景关闭确认对话框
+        confirmBackdrop.addEventListener('click', closeConfirmDialog);
+
+        // 阻止点击内容时关闭确认对话框
+        confirmContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // ESC键关闭当前打开的窗口
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!confirmDialog.classList.contains('hidden')) {
+                    closeConfirmDialog();
+                } else if (!versionModal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            }
+        });
     }
 
-    // 关闭按钮点击事件
-    closeModalBtn.addEventListener('click', closeModal);
-    cancelSelectBtn.addEventListener('click', closeModal);
-
-    // 点击背景关闭模态窗口
-    modalBackdrop.addEventListener('click', closeModal);
-
-    // 阻止点击内容时关闭模态窗口
-    modalContent.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    // 单选按钮变化事件
-    radioButtons.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                handleVersionSelect(e.target.value);
-            }
-        });
-    });
-
-    // 版本选项点击事件
-    versionOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const version = option.id.replace('version-', '').replace('398', '3.9.8').replace('311', '3.11');
-            const radio = document.querySelector(`input[name="server-version"][value="${version}"]`);
-            if (radio) {
-                radio.checked = true;
-                handleVersionSelect(version);
-            }
-        });
-    });
-
-    // 确认选择按钮点击事件
-    selectVersionBtn.addEventListener('click', () => {
-        if (selectedVersion) {
-            openConfirmDialog(selectedVersion);
-        }
-    });
-
-    // 确认对话框事件
-    confirmNoBtn.addEventListener('click', closeConfirmDialog);
-    confirmYesBtn.addEventListener('click', handleFinalConfirmation);
-
-    // 点击背景关闭确认对话框
-    confirmBackdrop.addEventListener('click', closeConfirmDialog);
-
-    // 阻止点击内容时关闭确认对话框
-    confirmContent.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    // ESC键关闭当前打开的窗口
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            if (!confirmDialog.classList.contains('hidden')) {
-                closeConfirmDialog();
-            } else if (!versionModal.classList.contains('hidden')) {
-                closeModal();
-            }
-        }
-    });
-
-    console.log('版本选择模态窗口初始化完成');
+    // 主初始化流程
+    if (initializeElements()) {
+        initializeStyles();
+        bindEventListeners();
+        console.log('版本选择模态窗口初始化完成');
+    }
 }
 
 // 更新服务器状态
@@ -943,27 +977,3 @@ function optimizeForTouch() {
     }
 }
 
-// 导出函数（用于调试和扩展）
-window.EFTSERVER = {
-    init,
-    handleScroll,
-    smoothScroll,
-    addKeyboardShortcuts,
-    optimizePerformance,
-    updateServerStatus,
-    createAdvancedParticles
-};
-
-// 添加CSS动画关键帧
-(function () {
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-10px) translateX(10px); }
-            50% { transform: translateY(0) translateX(20px); }
-            75% { transform: translateY(10px) translateX(10px); }
-        }
-    `;
-    document.head.appendChild(style);
-})();
