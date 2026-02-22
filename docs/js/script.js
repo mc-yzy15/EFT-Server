@@ -247,8 +247,8 @@ function initVersionModal() {
     // 打开确认对话框函数
     function openConfirmDialog(version) {
         const versionNames = {
-            '3.9.8': '3.9.8 低配版本',
-            '3.11': '3.11 还原版本'
+            '4.0': '4.0 还原版本',
+            '3.11': '3.11 稳定版本'
         };
 
         // 更新确认消息
@@ -314,7 +314,7 @@ function initVersionModal() {
         versionOptions.forEach(option => {
             option.classList.remove('border-primary', 'border-secondary', 'border-white/10');
             if (option.id === `version-${version.replace('.', '')}`) {
-                option.classList.add(version === '3.9.8' ? 'border-primary' : 'border-secondary');
+                option.classList.add(version === '4.0' ? 'border-primary' : 'border-secondary');
             } else {
                 option.classList.add('border-white/10');
             }
@@ -338,7 +338,7 @@ function initVersionModal() {
 
         // 跳转到相应的版本指南页面作为回退方案
         const guideUrls = {
-            '3.9.8': 'guides/guide-3.9.8.html',
+            '4.0': 'guides/guide-4.0.html',
             '3.11': 'guides/guide-3.11.html'
         };
 
@@ -367,13 +367,13 @@ function initVersionModal() {
 
         // 设置通知内容
         const versionNames = {
-            '3.9.8': '3.9.8 低配版本',
-            '3.11': '3.11 还原版本'
+            '4.0': '4.0 还原版本',
+            '3.11': '3.11 稳定版本'
         };
 
         notification.innerHTML = `
             <div class="flex items-center space-x-4">
-                <div class="w-10 h-10 rounded-full ${version === '3.9.8' ? 'bg-primary/20 text-primary' : 'bg-secondary/20 text-secondary'} flex items-center justify-center">
+                <div class="w-10 h-10 rounded-full ${version === '4.0' ? 'bg-primary/20 text-primary' : 'bg-secondary/20 text-secondary'} flex items-center justify-center">
                     <i class="fa fa-check text-xl"></i>
                 </div>
                 <div>
@@ -444,7 +444,7 @@ function initVersionModal() {
         // 版本选项点击事件
         versionOptions.forEach(option => {
             option.addEventListener('click', () => {
-                const version = option.id.replace('version-', '').replace('398', '3.9.8').replace('311', '3.11');
+                const version = option.id.replace('version-', '').replace('40', '4.0').replace('311', '3.11');
                 const radio = document.querySelector(`input[name="server-version"][value="${version}"]`);
                 if (radio) {
                     radio.checked = true;
