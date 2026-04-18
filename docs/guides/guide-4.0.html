@@ -10,9 +10,9 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-5PX95NVC');</script>
     <!-- End Google Tag Manager -->
-    <title>逃离塔科夫4.0版本安装指南 - 还原版服务器安装教程</title>
+    <title>逃离塔科夫4.0版本安装指南 - 先行测试版服务器安装教程</title>
     <meta name="description" content="详细的逃离塔科夫4.0版本安装指南，适合配置较低的电脑，提供流畅的游戏体验，包括客户端安装、modSync模组配置和服务器连接步骤。">
-    <meta name="keywords" content="逃离塔科夫, 4.0版本, 安装指南, 还原版, Beta Testing, 服务器连接, modSync, 客户端安装">
+    <meta name="keywords" content="逃离塔科夫, 4.0版本, 安装指南, 先行测试版, Alpha Testing, 服务器连接, modSync, 客户端安装">
     <meta name="author" content="EFT Server Team">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#FF4D4D">
@@ -32,7 +32,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "逃离塔科夫4.0版本安装指南 - 还原版服务器安装教程",
+      "headline": "逃离塔科夫4.0版本安装指南 - 先行测试版服务器安装教程",
       "description": "详细的逃离塔科夫4.0版本安装指南，适合配置较低的电脑，提供流畅的游戏体验，包括客户端安装、modSync模组配置和服务器连接步骤。",
       "image": "https://server.yzy15.dpdns.org/favicon.ico",
       "author": {
@@ -48,7 +48,7 @@
         }
       },
       "datePublished": "2026-02-22",
-      "dateModified": "2026-02-22",
+      "dateModified": "2026-04-19",
       "articleBody": "详细的逃离塔科夫4.0版本安装指南，包括安装SPT4.0版本（客户端版本0.16.9.40087）、安装适用于4.0版本的modSync模组和连接到服务器的步骤。"
     }
     </script>
@@ -90,8 +90,22 @@
     <!-- End Google Tag Manager (noscript) -->
     <div class="container mx-auto px-4 py-16">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold mb-4 text-primary">4.0版本安装指南 <span class="text-sm bg-red-500 text-white px-2 py-1 rounded">还原版</span></h1>
-            <p class="text-light/70 max-w-2xl mx-auto">更贴近官方最新版本，拥有最新的游戏功能 <span class="text-xs bg-yellow-500 text-white px-1 py-0.5 rounded ml-1">Beta Testing</span></p>
+            <h1 class="text-4xl font-bold mb-4 text-primary">4.0版本安装指南 <span class="text-sm bg-red-500 text-white px-2 py-1 rounded">先行测试版</span></h1>
+            <p class="text-light/70 max-w-2xl mx-auto">更贴近官方最新版本，拥有最新的游戏功能 <span class="text-xs bg-yellow-500 text-white px-1 py-0.5 rounded ml-1">开发中 Alpha</span></p>
+            <div class="mt-6 bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 max-w-2xl mx-auto">
+                <div class="flex items-start">
+                    <i class="fa fa-exclamation-triangle text-yellow-500 mt-1 mr-3"></i>
+                    <div>
+                        <h4 class="font-semibold text-yellow-500 mb-2">Alpha Testing 封闭测试说明</h4>
+                        <ul class="text-light/80 text-sm space-y-1">
+                            <li>• 4.0版本目前处于封闭开发阶段，所有模组均未开发完成</li>
+                            <li>• 需要玩家自行迁移模组，具有一定技术门槛</li>
+                            <li>• 此版本完全公益化运营</li>
+                            <li>• 参与封闭测试可获得群公告鸣谢</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="max-w-4xl mx-auto bg-glass rounded-2xl overflow-hidden shadow-2xl border border-white-10">
@@ -103,25 +117,17 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-6">1</div>
                             <div class="flex-1">
-                                <h3 class="text-2xl font-semibold mb-4">安装 SPT4.0 版本</h3>
-                                <p class="text-light/70 mb-6">首先需要安装《逃离塔科夫》的 SPT4.0 版本（客户端版本0.16.9.40087），这是连接到我们服务器4.0版本的基础。</p>
+                                <h3 class="text-2xl font-semibold mb-4">Alpha Testing 封闭测试资格申请</h3>
+                                <p class="text-light/70 mb-6">4.0版本目前处于封闭开发阶段（Alpha Testing），所有模组均未开发完成，需要玩家自行迁移模组。此版本完全公益化运营，参与者可获得群公告鸣谢。</p>
                                 <div class="bg-white/5 p-4 rounded-lg">
-                                    <h4 class="font-medium text-accent mb-2">安装前准备：</h4>
-                                    <ul class="list-disc list-inside space-y-2 text-light/80">
-                                        <li>确保您的电脑物理内存达到或超过16GB，虚拟内存设置为物理内存的1-1.2倍</li>
-                                        <li>确保游戏路径中不包含中文</li>
-                                        <li>建议使用Bandizip、Winrar或7ZIP解压，避免使用Windows系统自带解压功能</li>
-                                        <li>推荐使用SSD存储以获得更好的游戏体验</li>
-                                    </ul>
-                                    
-                                    <h4 class="font-medium text-accent mt-4 mb-2">安装步骤：</h4>
+                                    <h4 class="font-medium text-accent mb-2">封闭测试申请流程：</h4>
                                     <ol class="list-decimal list-inside space-y-2 text-light/80">
-                                        <li>下载SPT 4.0客户端（版本0.16.9.40087）</li>
-                                        <li class="text-primary font-medium">请加入我们的QQ群获取4.0版本客户端</li>
-                                        <li>QQ群：1034718897</li>
-                                        <li>将下载的压缩包解压到您选择的目录</li>
-                                        <li>确保解压完整，不要有任何遗漏文件</li>
-                                        <li>运行SPT.Launcher.exe启动器</li>
+                                        <li class="text-primary font-medium">请先加入我们的QQ群获取4.0版本客户端</li>
+                                        <li>QQ群：<strong>1034718897</strong></li>
+                                        <li>加入群后，<strong>连续群主</strong>，并告知群主你会哪些编程语言</li>
+                                        <li>群主将根据你所掌握的编程语言判断是否符合参与封闭测试的条件</li>
+                                        <li>通过审核后，群主将提供4.0版本客户端及modSync模组</li>
+                                        <li class="text-yellow-500">注：由于所有模组均未开发完成，需要具备一定编程能力来进行模组迁移</li>
                                     </ol>
                                 </div>
                             </div>
@@ -134,17 +140,23 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-6">2</div>
                             <div class="flex-1">
-                                <h3 class="text-2xl font-semibold mb-4">安装 modSync 模组</h3>
-                                <p class="text-light/70 mb-6">安装适用于4.0版本的modSync模组以确保您的游戏版本与服务器兼容，并自动同步所需的模组。</p>
+                                <h3 class="text-2xl font-semibold mb-4">安装 SPT4.0 版本</h3>
+                                <p class="text-light/70 mb-6">获得客户端后，安装《逃离塔科夫》的 SPT4.0 版本（客户端版本0.16.9.40087），这是连接到我们服务器4.0版本的基础。</p>
                                 <div class="bg-white/5 p-4 rounded-lg">
-                                    <h4 class="font-medium text-accent mb-2">安装步骤：</h4>
+                                    <h4 class="font-medium text-accent mb-2">安装前准备：</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-light/80">
+                                        <li>确保您的电脑物理内存达到或超过16GB，虚拟内存设置为物理内存的1-1.2倍</li>
+                                        <li>确保游戏路径中不包含中文</li>
+                                        <li>建议使用Bandizip、Winrar或7ZIP解压，避免使用Windows系统自带解压功能</li>
+                                        <li>推荐使用SSD存储以获得更好的游戏体验</li>
+                                    </ul>
+                                    
+                                    <h4 class="font-medium text-accent mt-4 mb-2">安装步骤：</h4>
                                     <ol class="list-decimal list-inside space-y-2 text-light/80">
-                                        <li>下载适用于4.0版本的modSync模组</li>
-                                        <li class="text-primary font-medium">请加入我们的QQ群获取modSync模组</li>
-                                        <li>QQ群：1034718897</li>
-                                        <li>将模组压缩包解压至游戏根目录</li>
-                                        <li>解压后模组将自动安装到正确位置</li>
-                                        <li>安装完成后模组将自动启用，无需进行手动配置</li>
+                                        <li>下载SPT 4.0客户端（版本0.16.9.40087）</li>
+                                        <li>将下载的压缩包解压到您选择的目录</li>
+                                        <li>确保解压完整，不要有任何遗漏文件</li>
+                                        <li>运行SPT.Launcher.exe启动器</li>
                                     </ol>
                                 </div>
                             </div>
@@ -156,6 +168,28 @@
                     <div class="relative">
                         <div class="flex items-start">
                             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-6">3</div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-semibold mb-4">协助开发 / 迁移模组</h3>
+                                <p class="text-light/70 mb-6">4.0版本目前所有模组均未开发完成，需要具备编程能力的玩家协助迁移模组。这是封闭测试的核心参与方式。</p>
+                                <div class="bg-white/5 p-4 rounded-lg">
+                                    <h4 class="font-medium text-accent mb-2">开发任务说明：</h4>
+                                    <ol class="list-decimal list-inside space-y-2 text-light/80">
+                                        <li>从群主处获取4.0版本的modSync模组及开发文档</li>
+                                        <li>根据群主分配的任务，协助迁移现有模组到4.0版本</li>
+                                        <li>测试模组兼容性和功能性</li>
+                                        <li>向群主反馈问题并协助优化</li>
+                                        <li class="text-yellow-500">注：此版本完全公益化运营，参与者将在群公告中获得鸣谢</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute top-12 left-6 h-full w-0.5 bg-primary/30"></div>
+                    </div>
+                    
+                    <!-- 步骤 4 -->
+                    <div class="relative">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl mr-6">4</div>
                             <div class="flex-1">
                                 <h3 class="text-2xl font-semibold mb-4">连接到服务器</h3>
                                 <p class="text-light/70 mb-6">完成上述步骤后，您就可以连接到我们的4.0版本服务器了。</p>
