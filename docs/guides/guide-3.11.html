@@ -55,10 +55,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        :root {
+            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+        }
+        body { font-family: var(--font-inter); }
+        .font-loaded body { font-family: 'Inter', var(--font-inter); }
 
         body {
-            font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #f0f0f0;
             min-height: 100vh;
@@ -82,6 +85,49 @@
             border-color: rgba(255, 255, 255, 0.1);
         }
     </style>
+    <script>
+    (function() {
+        var FONT_LOAD_TIMEOUT = 3000;
+        var FONT_FAMILY = 'Inter:wght@300;400;500;600;700';
+        var FONT_SOURCES = [
+            { name: 'cloudflare', css: 'https://fonts.googleapis.com/css2?family=' + FONT_FAMILY + '&display=swap' },
+            { name: 'china-mirror', css: 'https://fonts.font.im/css2?family=' + FONT_FAMILY + '&display=swap' }
+        ];
+        var fontLoaded = false;
+        var fontLink = null;
+
+        function loadFont(sourceIndex) {
+            if (sourceIndex >= FONT_SOURCES.length || fontLoaded) return;
+            var source = FONT_SOURCES[sourceIndex];
+            fontLink = document.createElement('link');
+            fontLink.rel = 'stylesheet';
+            fontLink.href = source.css;
+            fontLink.crossOrigin = 'anonymous';
+            
+            var timeoutId = setTimeout(function() {
+                if (!fontLoaded) {
+                    console.warn('[Font] ' + source.name + ' timeout');
+                    if (fontLink && fontLink.parentNode) fontLink.parentNode.removeChild(fontLink);
+                    loadFont(sourceIndex + 1);
+                }
+            }, FONT_LOAD_TIMEOUT);
+
+            fontLink.onload = function() {
+                clearTimeout(timeoutId);
+                if (!fontLoaded) {
+                    fontLoaded = true;
+                    document.documentElement.classList.add('font-loaded');
+                }
+            };
+            fontLink.onerror = function() {
+                clearTimeout(timeoutId);
+                loadFont(sourceIndex + 1);
+            };
+            document.head.appendChild(fontLink);
+        }
+        loadFont(0);
+    })();
+    </script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->

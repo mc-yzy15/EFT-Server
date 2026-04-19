@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -50,10 +50,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        :root {
+            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+        }
+        body { font-family: var(--font-inter); }
+        .font-loaded body { font-family: 'Inter', var(--font-inter); }
 
         body {
-            font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #f0f0f0;
             min-height: 100vh;
@@ -86,6 +89,73 @@
             background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link-chip {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link-chip:hover {
+            background: rgba(79, 172, 254, 0.15);
+            color: #4facfe;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 12px;
+        }
+
+        .section-title-bar {
+            width: 4px;
+            height: 32px;
+            background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .section-title h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #4facfe;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(79, 172, 254, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 40;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #4facfe;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
         }
 
         .card-hover {
@@ -121,6 +191,49 @@
             }
         }
     </style>
+    <script>
+    (function() {
+        var FONT_LOAD_TIMEOUT = 3000;
+        var FONT_FAMILY = 'Inter:wght@300;400;500;600;700';
+        var FONT_SOURCES = [
+            { name: 'cloudflare', css: 'https://fonts.googleapis.com/css2?family=' + FONT_FAMILY + '&display=swap' },
+            { name: 'china-mirror', css: 'https://fonts.font.im/css2?family=' + FONT_FAMILY + '&display=swap' }
+        ];
+        var fontLoaded = false;
+        var fontLink = null;
+
+        function loadFont(sourceIndex) {
+            if (sourceIndex >= FONT_SOURCES.length || fontLoaded) return;
+            var source = FONT_SOURCES[sourceIndex];
+            fontLink = document.createElement('link');
+            fontLink.rel = 'stylesheet';
+            fontLink.href = source.css;
+            fontLink.crossOrigin = 'anonymous';
+            
+            var timeoutId = setTimeout(function() {
+                if (!fontLoaded) {
+                    console.warn('[Font] ' + source.name + ' timeout');
+                    if (fontLink && fontLink.parentNode) fontLink.parentNode.removeChild(fontLink);
+                    loadFont(sourceIndex + 1);
+                }
+            }, FONT_LOAD_TIMEOUT);
+
+            fontLink.onload = function() {
+                clearTimeout(timeoutId);
+                if (!fontLoaded) {
+                    fontLoaded = true;
+                    document.documentElement.classList.add('font-loaded');
+                }
+            };
+            fontLink.onerror = function() {
+                clearTimeout(timeoutId);
+                loadFont(sourceIndex + 1);
+            };
+            document.head.appendChild(fontLink);
+        }
+        loadFont(0);
+    })();
+    </script>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PX95NVC"
@@ -132,18 +245,18 @@
                 <a href="../index.html" class="text-primary font-bold text-lg flex items-center">
                     <i class="fa fa-home mr-2"></i> EFT Server
                 </a>
-                <div class="hidden md:flex items-center space-x-1 text-sm">
-                    <a href="#version-overview" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">版本速览</a>
-                    <a href="#basic-operations" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">基础操作</a>
-                    <a href="#map-guide" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">地图攻略</a>
-                    <a href="#weapons-ammo" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">武器弹药</a>
-                    <a href="#economy" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">赚钱经济</a>
-                    <a href="#quest-order" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">任务顺序</a>
-                    <a href="#spt-gameplay" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">SPT玩法</a>
-                    <a href="#community" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">社区须知</a>
-                    <a href="#video-tutorials" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">视频教程</a>
-                    <a href="#external-resources" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">外部资源</a>
-                    <a href="#faq" class="px-3 py-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">FAQ</a>
+                <div class="hidden md:flex items-center space-x-0.5">
+                    <a href="#version-overview" class="nav-link-chip text-white/70 hover:text-white">版本速览</a>
+                    <a href="#basic-operations" class="nav-link-chip text-white/70 hover:text-white">基础操作</a>
+                    <a href="#map-guide" class="nav-link-chip text-white/70 hover:text-white">地图攻略</a>
+                    <a href="#weapons-ammo" class="nav-link-chip text-white/70 hover:text-white">武器弹药</a>
+                    <a href="#economy" class="nav-link-chip text-white/70 hover:text-white">赚钱经济</a>
+                    <a href="#quest-order" class="nav-link-chip text-white/70 hover:text-white">任务顺序</a>
+                    <a href="#spt-gameplay" class="nav-link-chip text-white/70 hover:text-white">SPT玩法</a>
+                    <a href="#community" class="nav-link-chip text-white/70 hover:text-white">社区须知</a>
+                    <a href="#video-tutorials" class="nav-link-chip text-white/70 hover:text-white">视频教程</a>
+                    <a href="#external-resources" class="nav-link-chip text-white/70 hover:text-white">外部资源</a>
+                    <a href="#faq" class="nav-link-chip text-white/70 hover:text-white">FAQ</a>
                 </div>
                 <button id="mobile-menu-btn" class="md:hidden text-white text-xl p-2" onclick="document.getElementById('mobile-nav').classList.toggle('active')">
                     <i class="fa fa-bars"></i>
@@ -166,19 +279,17 @@
     </nav>
 
     <div class="container mx-auto px-4 pt-24 pb-16">
-        <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary">0.16版本新手游玩攻略</h1>
-            <p class="text-white/60 max-w-3xl mx-auto text-lg mb-6">从零开始掌握逃离塔科夫0.16版本的核心机制、操作技巧与地图知识，助你在诺维恩斯克地区生存下去</p>
-            <div class="inline-flex items-center gap-3">
-                <span class="text-sm bg-blue-500/80 text-white px-3 py-1.5 rounded-full font-medium">0.16.1.3 / SPT 3.11.4</span>
-                <span class="text-sm bg-green-500/80 text-white px-3 py-1.5 rounded-full font-medium">稳定版</span>
+        <div class="text-center mb-20">
+            <div class="inline-flex items-center gap-2 mb-6">
+                <span class="text-xs bg-blue-500/80 text-white px-3 py-1 rounded-full font-medium tracking-wide">0.16.1.3 / SPT 3.11.4</span>
+                <span class="text-xs bg-green-500/80 text-white px-3 py-1 rounded-full font-medium tracking-wide">稳定版</span>
             </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">0.16版本新手游玩攻略</h1>
+            <p class="text-white/50 max-w-3xl mx-auto text-lg leading-relaxed">从零开始掌握逃离塔科夫0.16版本的核心机制、操作技巧与地图知识，助你在诺维恩斯克地区生存下去</p>
         </div>
 
         <section id="version-overview" class="mb-20">
-            <div class="flex items-center mb-8">
-                <div class="w-1 h-8 bg-primary rounded-full mr-4"></div>
-                <h2 class="text-3xl font-bold text-primary">0.16版本新机制速览</h2>
+            <div class="section-title"><div class="section-title-bar"></div><h2>0.16版本新机制速览</h2>
             </div>
             <p class="text-white/60 mb-8 max-w-4xl">0.16版本是逃离塔科夫的一次重大更新，引入了冻伤效果、AI检测改动、视觉后坐力重做、海关地图重做、冬季主题、新武器和声望系统等多项核心机制变更。以下逐一详解每个新机制，帮助新手快速适应版本变化。</p>
 
@@ -421,9 +532,7 @@
         </section>
 
         <section id="basic-operations" class="mb-20">
-            <div class="flex items-center mb-8">
-                <div class="w-1 h-8 bg-primary rounded-full mr-4"></div>
-                <h2 class="text-3xl font-bold text-primary">基础操作与界面指南</h2>
+            <div class="section-title"><div class="section-title-bar"></div><h2>基础操作与界面指南</h2>
             </div>
             <p class="text-white/60 mb-8 max-w-4xl">掌握逃离塔科夫的核心操作是生存的第一步。本模块详细列出所有关键键位、PMC与Scav的区别、商人系统、跳蚤市场和藏身处等基础知识。</p>
 
@@ -1054,9 +1163,7 @@
         </section>
 
         <section id="map-guide" class="mb-20">
-            <div class="flex items-center mb-8">
-                <div class="w-1 h-8 bg-primary rounded-full mr-4"></div>
-                <h2 class="text-3xl font-bold text-primary">新手地图攻略</h2>
+            <div class="section-title"><div class="section-title-bar"></div><h2>新手地图攻略</h2>
             </div>
             <p class="text-white/60 mb-8 max-w-4xl">熟悉地图是逃离塔科夫中最重要的技能之一。以下5张地图是新手最常接触的，每张地图都包含安全路线、撤离点、危险区域、钥匙房和实用建议。</p>
 
@@ -1470,10 +1577,8 @@
 
     </div>
 
-<section id="weapons" class="mb-16">
-    <div class="flex items-center mb-8">
-        <div class="w-1 h-8 bg-primary mr-4 rounded"></div>
-        <h2 class="text-3xl font-bold text-primary">🔫 武器与弹药指南</h2>
+<section id="weapons-ammo" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>🔫 武器与弹药指南</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10 mb-8">
@@ -1811,10 +1916,8 @@
     </div>
 </section>
 
-<section id="economy" class="mb-16">
-    <div class="flex items-center mb-8">
-        <div class="w-1 h-8 bg-primary mr-4 rounded"></div>
-        <h2 class="text-3xl font-bold text-primary">💰 赚钱与经济系统</h2>
+<section id="economy" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>💰 赚钱与经济系统</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10 mb-8">
@@ -2137,10 +2240,8 @@
     </div>
 </section>
 
-<section id="quests" class="mb-16">
-    <div class="flex items-center mb-8">
-        <div class="w-1 h-8 bg-primary mr-4 rounded"></div>
-        <h2 class="text-3xl font-bold text-primary">📋 任务推进顺序</h2>
+<section id="quest-order" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>📋 任务推进顺序</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10 mb-8">
@@ -2335,10 +2436,8 @@
     </div>
 </section>
 
-<section id="spt" class="mb-16">
-    <div class="flex items-center mb-8">
-        <div class="w-1 h-8 bg-primary mr-4 rounded"></div>
-        <h2 class="text-3xl font-bold text-primary">⚙️ SPT 3.11.4 专属玩法</h2>
+<section id="spt-gameplay" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>⚙️ SPT 3.11.4 专属玩法</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10 mb-8">
@@ -2650,10 +2749,8 @@
     </div>
 </section>
 
-<section id="community" class="mb-16">
-    <div class="flex items-center mb-8">
-        <div class="w-1 h-8 bg-primary mr-4 rounded"></div>
-        <h2 class="text-3xl font-bold text-primary">🌐 社区服务器须知</h2>
+<section id="community" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>🌐 社区服务器须知</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10 mb-8">
@@ -2759,14 +2856,11 @@
     </div>
 </section>
 
-<section id="resources" class="mb-16">
-    <div class="flex items-center mb-8">
-        <div class="w-1 h-8 bg-primary mr-4 rounded"></div>
-        <h2 class="text-3xl font-bold text-primary">📚 视频教程与外部资源</h2>
+<section id="video-tutorials" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>🎬 视频教程</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10 mb-8">
-        <h3 class="text-xl font-semibold mb-2 text-accent">视频教程</h3>
         <p class="text-light/70 mb-6">通过视频教程可以更直观地学习游戏技巧和服务器使用方法。以下是推荐的教程资源。</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <a href="https://oopz.cn/i/wORju7" target="_blank" rel="noopener noreferrer" class="block bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl p-6 border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]">
@@ -2780,7 +2874,7 @@
             <a href="https://www.bilibili.com/video/BV1tfebzNEY6" target="_blank" rel="noopener noreferrer" class="block bg-gradient-to-br from-pink-500/20 to-blue-500/20 rounded-xl p-6 border border-pink-500/30 hover:border-pink-500/60 transition-all duration-300 hover:scale-[1.02]">
                 <div class="flex items-center mb-3">
                     <i class="fa fa-play-circle text-2xl text-pink-400 mr-3"></i>
-                    <h4 class="text-lg font-bold text-pink-400">B站视频教程 ①</h4>
+                    <h4 class="text-lg font-bold text-pink-400">0基础保姆级教程</h4>
                 </div>
                 <p class="text-light/80 text-sm mb-3">新手入门视频教程，涵盖基础操作、地图导航和战斗技巧。适合刚接触游戏的玩家观看学习。</p>
                 <div class="text-pink-400 text-sm font-semibold">BV1tfebzNEY6 →</div>
@@ -2788,20 +2882,25 @@
             <a href="https://www.bilibili.com/video/BV1xfYkeuEeU" target="_blank" rel="noopener noreferrer" class="block bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-xl p-6 border border-green-500/30 hover:border-green-500/60 transition-all duration-300 hover:scale-[1.02]">
                 <div class="flex items-center mb-3">
                     <i class="fa fa-play-circle text-2xl text-green-400 mr-3"></i>
-                    <h4 class="text-lg font-bold text-green-400">B站视频教程 ②</h4>
+                    <h4 class="text-lg font-bold text-green-400">塔科夫军校 第一期</h4>
                 </div>
-                <p class="text-light/80 text-sm mb-3">进阶玩法视频教程，深入讲解配枪思路、弹药选择和经济系统。适合有一定基础后想要提升的玩家。</p>
+                <p class="text-light/80 text-sm mb-3">进阶玩法视频教程，从游戏都没有到独立从所有地图撤离，无档萌新带你入门。</p>
                 <div class="text-green-400 text-sm font-semibold">BV1xfYkeuEeU →</div>
             </a>
             <a href="https://www.bilibili.com/video/BV1CN4y1G7B1" target="_blank" rel="noopener noreferrer" class="block bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-xl p-6 border border-orange-500/30 hover:border-orange-500/60 transition-all duration-300 hover:scale-[1.02]">
                 <div class="flex items-center mb-3">
                     <i class="fa fa-play-circle text-2xl text-orange-400 mr-3"></i>
-                    <h4 class="text-lg font-bold text-orange-400">B站视频教程 ③</h4>
+                    <h4 class="text-lg font-bold text-orange-400">拓海新手入坑指南</h4>
                 </div>
-                <p class="text-light/80 text-sm mb-3">SPT服务器安装与配置视频教程，手把手教你从零开始搭建SPT环境并连接到社区服务器。</p>
+                <p class="text-light/80 text-sm mb-3">拓海的新手入坑指南，深入讲解配枪思路、弹药选择和经济系统。适合有一定基础后想要提升的玩家。</p>
                 <div class="text-orange-400 text-sm font-semibold">BV1CN4y1G7B1 →</div>
             </a>
         </div>
+    </div>
+</section>
+
+<section id="external-resources" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>🔗 外部资源</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10">
@@ -2897,10 +2996,8 @@
     </div>
 </section>
 
-<section id="faq" class="mb-16">
-    <div class="flex items-center mb-8">
-        <div class="w-1 h-8 bg-primary mr-4 rounded"></div>
-        <h2 class="text-3xl font-bold text-primary">❓ 常见问题 FAQ</h2>
+<section id="faq" class="mb-20">
+    <div class="section-title"><div class="section-title-bar"></div><h2>❓ 常见问题 FAQ</h2>
     </div>
 
     <div class="bg-glass rounded-2xl p-6 md:p-8 border border-white-10">
@@ -3103,6 +3200,10 @@
     </div>
 </section>
 
+    <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
 <footer class="text-center mt-12 pt-8 border-t border-white/10">
     <a href="https://github.com/mc-yzy15" target="_blank" rel="noopener noreferrer" class="text-light/50 text-sm">© 2023-2025 Github mc-yzy15 保留所有权利。</a>
     <span class="text-light/50 text-sm"> | 最后更新: 2026-04-19 | Commit: <a href="https://github.com/mc-yzy15/EFT-Server/commit/379012dd7244923daf3819f7d7e1310e50ee221c" target="_blank" rel="noopener noreferrer" class="hover:text-primary">379012dd</a></span>
@@ -3112,6 +3213,19 @@
         </a>
     </div>
 </footer>
+
+<script>
+(function() {
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+})();
+</script>
 
 </body>
 </html>

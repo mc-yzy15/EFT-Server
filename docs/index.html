@@ -146,12 +146,14 @@
     <link rel="dns-prefetch" href="https://server.yzy15.dpdns.org">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://fonts.font.im">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link rel="preconnect" href="https://server.yzy15.dpdns.org">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.font.im" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- 预加载关键资源 -->
@@ -596,10 +598,87 @@
       ]
     }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" crossorigin>
+    <!-- 字体加载策略：Cloudflare CDN 优先 -> 国内镜像 fallback -> 系统字体 -->
+    <style>
+        :root {
+            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+        }
+        body { font-family: var(--font-inter); }
+        .font-inter { font-family: var(--font-inter); }
+        .font-loaded body { font-family: 'Inter', var(--font-inter); }
+    </style>
+    <script>
+    (function() {
+        var FONT_LOAD_TIMEOUT = 3000;
+        var FONT_FAMILY = 'Inter:wght@300;400;500;600;700;800';
+        var FONT_SOURCES = [
+            {
+                name: 'cloudflare',
+                css: 'https://fonts.googleapis.com/css2?family=' + FONT_FAMILY + '&display=swap',
+                priority: 1
+            },
+            {
+                name: 'china-mirror',
+                css: 'https://fonts.font.im/css2?family=' + FONT_FAMILY + '&display=swap',
+                priority: 2
+            }
+        ];
+        var currentSourceIndex = 0;
+        var fontLoaded = false;
+        var fontLink = null;
+
+        function createFontLink(url) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = url;
+            link.crossOrigin = 'anonymous';
+            return link;
+        }
+
+        function loadFont(sourceIndex) {
+            if (sourceIndex >= FONT_SOURCES.length || fontLoaded) return;
+            
+            var source = FONT_SOURCES[sourceIndex];
+            fontLink = createFontLink(source.css);
+            
+            var timeoutId = setTimeout(function() {
+                if (!fontLoaded) {
+                    console.warn('[Font Loader] ' + source.name + ' timeout, trying next source');
+                    if (fontLink && fontLink.parentNode) {
+                        fontLink.parentNode.removeChild(fontLink);
+                    }
+                    loadFont(sourceIndex + 1);
+                }
+            }, FONT_LOAD_TIMEOUT);
+
+            fontLink.onload = function() {
+                clearTimeout(timeoutId);
+                if (!fontLoaded) {
+                    fontLoaded = true;
+                    document.documentElement.classList.add('font-loaded');
+                    console.log('[Font Loader] Successfully loaded from: ' + source.name);
+                }
+            };
+
+            fontLink.onerror = function() {
+                clearTimeout(timeoutId);
+                console.warn('[Font Loader] ' + source.name + ' failed, trying next source');
+                loadFont(sourceIndex + 1);
+            };
+
+            document.head.appendChild(fontLink);
+        }
+
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() {
+                fontLoaded = true;
+                document.documentElement.classList.add('font-loaded');
+            });
+        }
+
+        loadFont(0);
+    })();
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 

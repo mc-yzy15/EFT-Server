@@ -32,12 +32,11 @@ jobs:
           import json
           import os
 
-          html_files = [
-              'docs/index.html',
-              'docs/policy.html',
-              'docs/guides/guide-4.0.html',
-              'docs/guides/guide-3.11.html'
-          ]
+          html_files = subprocess.check_output(
+              ['find', 'docs', '-name', '*.html', '-type', 'f'],
+              text=True
+          ).strip().split('\n')
+          html_files = [f for f in html_files if f]
 
           results = {}
           for file in html_files:
