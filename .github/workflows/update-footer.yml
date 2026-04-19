@@ -1,0 +1,111 @@
+name: Update Site Footer Date
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**/*.html'
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-footer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Get commit dates and IDs for HTML files
+        id: git_dates
+        run: |
+          python3 << 'EOF'
+          import subprocess
+          import json
+          import os
+
+          html_files = [
+              'docs/index.html',
+              'docs/policy.html',
+              'docs/guides/guide-4.0.html',
+              'docs/guides/guide-3.11.html'
+          ]
+
+          results = {}
+          for file in html_files:
+              if os.path.exists(file):
+                  result = subprocess.run(
+                      ['git', 'log', '-1', '--format=%ad %H', '--date=short', '--', file],
+                      capture_output=True,
+                      text=True
+                  )
+                  if result.returncode == 0 and result.stdout.strip():
+                      parts = result.stdout.strip().split(' ', 1)
+                      if len(parts) == 2:
+                          date, commit_id = parts
+                          results[file] = {'date': date, 'commit_id': commit_id}
+                  else:
+                      results[file] = {'date': 'Unknown', 'commit_id': 'Unknown'}
+              else:
+                  results[file] = {'date': 'Unknown', 'commit_id': 'Unknown'}
+
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f"dates={json.dumps(results)}\n")
+          print(f"Git dates: {json.dumps(results, indent=2)}")
+          EOF
+
+      - name: Update HTML footer with git date and commit
+        run: |
+          python3 << 'EOF'
+          import json
+          import os
+          import re
+
+          with open(os.environ['GITHUB_OUTPUT'], 'r') as f:
+              outputs = {}
+              for line in f:
+                  if '=' in line:
+                      key, value = line.strip().split('=', 1)
+                      outputs[key] = value
+
+          dates_str = outputs.get('dates', '{}')
+          dates = json.loads(dates_str)
+
+          for file_path, info in dates.items():
+              if os.path.exists(file_path) and info['date'] != 'Unknown':
+                  with open(file_path, 'r', encoding='utf-8') as f:
+                      content = f.read()
+
+                  date = info['date']
+                  commit_id = info['commit_id']
+                  short_commit = commit_id[:8]
+
+                  pattern = r'(id="update-info"[^>]*>).*?(</span>)'
+                  replacement = rf'\1| 最后更新: {date} | Commit: <a href="https://github.com/mc-yzy15/EFT-Server/commit/{commit_id}" target="_blank" class="hover:text-primary">{short_commit}</a>\2'
+
+                  new_content, count = re.subn(pattern, replacement, content)
+
+                  if count > 0:
+                      with open(file_path, 'w', encoding='utf-8') as f:
+                          f.write(new_content)
+                      print(f"Updated {file_path} with date {date} and commit {short_commit}")
+                  else:
+                      print(f"Update-info pattern not found in {file_path}")
+          EOF
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git diff --stat
+          git add -A
+          git commit -m "ci: auto-update site footer with latest commit info" || echo "No changes to commit"
+          git push || echo "No changes to push"
