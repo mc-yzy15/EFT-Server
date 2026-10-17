@@ -1,5 +1,5 @@
 instance_name = "eft-yzy"
-instance_id = "6467e294-0144-47aa-9005-c1b693aad3b8"
+instance_id = ""
 ipv6_public_addr_auto = true
 dhcp = true
 listeners = [
