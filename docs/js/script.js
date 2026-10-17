@@ -122,7 +122,7 @@ function initVersionModal() {
 }
 
 // 更新服务器状态 - 通过检测公网地址判断
-const SERVER_CHECK_URL = "https://202.189.23.245:26969";
+const SERVER_CHECK_URL = "https://43.226.62.254:35951";
 function updateServerStatus() {
   if (!serverStatusLight) return;
   serverStatusLight.className =
